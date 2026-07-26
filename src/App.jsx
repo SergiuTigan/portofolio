@@ -95,6 +95,7 @@ export default function App() {
     heroBody2: L(T("I work as an independent contractor through my own Romanian company — usually as the person who owns the frontend end-to-end. Alongside that I've designed, built and shipped three of my own products, and I still run them.", 'Lucrez ca contractor independent, prin propria companie din România — de obicei ca persoana care deține frontendul cap-coadă. În paralel am proiectat, construit și lansat trei produse proprii, pe care le operez și acum.')),
     ctaWork: L(T('See the case studies', 'Vezi studiile de caz')),
     ctaTalk: L(T('Start a conversation', 'Hai să vorbim')),
+    cv: L(T('Download CV', 'Descarcă CV')),
     workKicker: L(T('Selected work', 'Lucrări selectate')),
     workTitle: L(T('Nine projects, taken apart', 'Nouă proiecte, desfăcute')),
     workBody: L(T('Every one of these has a full case study: the problem, the architecture decision, what I built, and an interactive demo that recreates the interface — anonymised, since most of this work sits under NDA.', 'Fiecare are un studiu de caz complet: problema, decizia de arhitectură, ce am construit și un demo interactiv care recreează interfața — anonimizat, pentru că majoritatea muncii e sub NDA.')),
@@ -247,6 +248,7 @@ export default function App() {
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, alignItems: 'center' }}>
               <button className="btn btn-primary" onClick={() => jump('work')}>{t.ctaWork}</button>
               <button className="btn btn-ghost" onClick={() => jump('contact')}>{t.ctaTalk}</button>
+              <a className="btn btn-secondary" href="/Sergiu_Tigan_CV.pdf" download="Sergiu_Tigan_CV.pdf" style={{ fontSize: 13 }}>{t.cv} ↓</a>
               <span style={{ display: 'flex', gap: 14, marginLeft: 8, fontSize: 12, color: 'var(--color-neutral-500)' }}>
                 <a href="mailto:sergiu@tigan.dev">sergiu@tigan.dev</a>
                 <a href="https://github.com/SergiuTigan" target="_blank" rel="noreferrer">github.com/SergiuTigan</a>
@@ -406,6 +408,7 @@ export default function App() {
                   <a href="mailto:sergiu@tigan.dev">sergiu@tigan.dev</a>
                   <span style={{ color: 'var(--color-neutral-500)' }}>+40 740 014 666</span>
                   <span style={{ color: 'var(--color-neutral-500)' }}>{t.contactLoc}</span>
+                  <a href="/Sergiu_Tigan_CV.pdf" download="Sergiu_Tigan_CV.pdf">{t.cv} (PDF)</a>
                 </div>
               </div>
               {!sent ? (
