@@ -1,0 +1,78 @@
+/* Page-level styles from Portfolio.dc.html helmet + hover states converted from style-hover attributes. */
+
+html { scroll-behavior: smooth; }
+body { margin: 0; background: #161826; }
+a { color: var(--color-accent-300); text-decoration: none; }
+a:hover { color: var(--color-accent-200); text-decoration: underline; }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(10px) } to { opacity: 1; transform: none } }
+@keyframes glowIn { from { opacity: 0 } to { opacity: 1 } }
+@keyframes demoPulse { 0%,100% { opacity: 0.35 } 50% { opacity: 1 } }
+@keyframes demoRise { from { opacity: 0; transform: translateY(6px) } to { opacity: 1; transform: none } }
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #14161f; }
+::-webkit-scrollbar-thumb { background: #3f424d; border-radius: 999px; }
+
+/* header nav buttons */
+.hnav-btn {
+  cursor: pointer; font: inherit; font-size: 12px; padding: 6px 11px;
+  border-radius: var(--radius-sm); background: transparent; border: 0;
+  color: var(--color-neutral-400);
+}
+.hnav-btn:hover { color: var(--color-text); background: color-mix(in srgb, #e9e9ed 6%, transparent); }
+
+/* work index rows */
+.case-row {
+  cursor: pointer; font: inherit; text-align: left; width: 100%;
+  display: grid; grid-template-columns: 118px 1fr 1fr auto; gap: 22px; align-items: center;
+  padding: 20px 8px; background: transparent; border: 0;
+  border-bottom: 1px solid var(--color-neutral-900); color: var(--color-text);
+  transition: background 0.2s ease, padding 0.2s ease;
+}
+.case-row:hover { background: color-mix(in srgb, var(--color-accent) 7%, transparent); padding-left: 16px; }
+
+/* work cards */
+.case-card {
+  cursor: pointer; font: inherit; text-align: left; color: var(--color-text);
+  display: grid; gap: 10px; align-content: start;
+  border: 1px solid var(--color-neutral-800);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.case-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+
+/* back link on case page */
+.back-btn {
+  cursor: pointer; font: inherit; font-size: 12px; background: transparent;
+  border: 0; padding: 0; color: var(--color-neutral-500);
+}
+.back-btn:hover { color: var(--color-accent-300); }
+
+/* prev / next cards */
+.pn-card {
+  cursor: pointer; font: inherit; padding: 20px;
+  border: 1px solid var(--color-neutral-800); border-radius: var(--radius-md);
+  background: transparent; color: var(--color-text); display: grid; gap: 5px;
+}
+.pn-card:hover { background: color-mix(in srgb, var(--color-accent) 7%, transparent); border-color: var(--color-accent-700); }
+
+/* demo — BE block palette */
+.palette-btn {
+  cursor: grab; font: inherit; text-align: left; font-size: 12px; padding: 8px 10px;
+  border-radius: var(--radius-sm); border: 1px dashed var(--color-neutral-700);
+  background: #1b1d2c; color: var(--color-neutral-300);
+  display: flex; justify-content: space-between; gap: 8px;
+}
+.palette-btn:hover { border-color: var(--color-accent-500); color: var(--color-text); }
+
+/* responsive */
+@media (max-width: 860px) {
+  .case-row { grid-template-columns: 1fr; gap: 8px; }
+  .case-row > .row-arrow { display: none; }
+  .grid-2col, .about-grid, .contact-grid, .pn-grid { grid-template-columns: 1fr !important; }
+  .case-section { grid-template-columns: 1fr !important; }
+  .case-section .case-side { position: static !important; }
+  .demo-2col, .demo-sidebar { grid-template-columns: 1fr !important; }
+  .header-inner { flex-wrap: wrap; gap: 10px !important; }
+  .header-inner nav { order: 3; width: 100%; margin-left: 0 !important; }
+}
