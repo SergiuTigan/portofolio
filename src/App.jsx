@@ -125,7 +125,6 @@ export default function App() {
     backAll: L(T('All work', 'Toate proiectele')),
     viewLabel: L(T('Reading view', 'Mod de citire')),
     prev: L(T('Previous', 'Anterior')), next: L(T('Next', 'Următor')),
-    footerNote: L(T('Designed in Claude Design · built with Claude Code', 'Proiectat în Claude Design · construit cu Claude Code')),
   }), [lang])
 
   const navItems = [
@@ -468,6 +467,22 @@ export default function App() {
                 <span key={s} style={{ fontSize: 11, padding: '3px 9px', borderRadius: 999, border: '1px solid var(--color-neutral-800)', color: 'var(--color-neutral-400)' }}>{s}</span>
               ))}
             </div>
+            {caseView.c.live && (
+              <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 14, margin: '14px 0 6px', padding: '12px 15px', border: '1px solid var(--color-accent-800)', borderRadius: 'var(--radius-md)', background: 'color-mix(in srgb, var(--color-accent) 7%, transparent)' }}>
+                <a className="btn btn-primary" href={caseView.c.live.url} target="_blank" rel="noreferrer" style={{ fontSize: 12, padding: '6px 13px' }}>
+                  {L(T('Try it live', 'Încearcă live'))} ↗
+                </a>
+                <span style={{ fontSize: 12, color: 'var(--color-neutral-400)' }}>
+                  {L(T('Demo account: ', 'Cont demo: '))}
+                  <code style={{ color: 'var(--color-accent-300)', fontSize: 12 }}>{caseView.c.live.user}</code>
+                  {' · '}
+                  <code style={{ color: 'var(--color-accent-300)', fontSize: 12 }}>{caseView.c.live.pass}</code>
+                </span>
+                <span style={{ fontSize: 11, color: 'var(--color-neutral-600)' }}>
+                  {L(T('Sandbox environment — data resets, nothing here is real.', 'Mediu sandbox — datele se resetează, nimic de aici nu e real.'))}
+                </span>
+              </div>
+            )}
             <hr className="hr" />
           </section>
 
@@ -616,7 +631,6 @@ export default function App() {
       <footer style={{ borderTop: '1px solid var(--color-neutral-900)', position: 'relative', zIndex: 1 }}>
         <div style={{ maxWidth: 1180, margin: '0 auto', padding: '22px 28px', display: 'flex', gap: 16, flexWrap: 'wrap', fontSize: 11, color: 'var(--color-neutral-600)' }}>
           <span>© 2026 Sergiu-Marian Țigan · Next Level Tech SRL</span>
-          <span style={{ marginLeft: 'auto' }}>{t.footerNote}</span>
         </div>
       </footer>
     </div>

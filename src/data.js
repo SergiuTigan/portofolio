@@ -366,6 +366,7 @@ const CASES = [
     id: 'horae', client: 'Horae', demo: 'horae', own: true,
     sector: T('Own product · multi-tenant production platform', 'Produs propriu · platformă multi-tenant de producție'),
     period: 'horae.ca',
+    // live: { url: 'https://demo.test.horae.ca', user: 'demo@horae.ca', pass: 'HoraeDemo2026!' }, // enable when demo org is seeded on test
     tags: ['Next.js', 'NestJS', 'PostgreSQL', 'Multi-tenant', 'White-label', 'Real-time', 'RBAC'],
     stack: ['Next.js 16 (App Router)', 'React 19', 'NestJS', 'Prisma', 'PostgreSQL', 'Redis', 'Socket.IO', 'CASL', 'SwiftUI (iOS 17+)', 'Kotlin / Jetpack Compose', 'pnpm + Turborepo', 'Docker'],
     oneLiner: T('A multi-tenant production and inventory platform for confectionery businesses — recipes, production tasks, FIFO stock, orders, deliveries and multi-location transfers — one NestJS backend serving a Next.js web app plus native iOS and Android clients.', 'O platformă multi-tenant de producție și inventar pentru cofetării — rețete, taskuri de producție, stoc FIFO, comenzi, livrări și transferuri între locații — un singur backend NestJS care servește o aplicație web Next.js plus clienți nativi iOS și Android.'),
