@@ -724,7 +724,7 @@ export default function Demo({ kind, lang, chrome }) {
   const L = o => (o && typeof o === 'object' && 'en' in o) ? o[lang === 'ro' ? 'ro' : 'en'] : o
   const Body = KINDS[kind] || DevhubDemo
   return (
-    <div style={{ border: '1px solid var(--color-neutral-800)', borderRadius: 'var(--radius-lg)', background: 'linear-gradient(180deg, #1b1d2c, #161826)', overflow: 'hidden' }}>
+    <div className="demo-scope" style={{ border: '1px solid var(--color-neutral-800)', borderRadius: 'var(--radius-lg)', background: 'linear-gradient(180deg, #1b1d2c, #161826)', overflow: 'hidden', boxShadow: '0 18px 44px -18px rgba(24, 20, 14, 0.45)' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 14px', borderBottom: '1px solid var(--color-neutral-900)', background: '#14161f' }}>
         <div style={{ display: 'flex', gap: 5 }}>
           <span style={{ width: 8, height: 8, borderRadius: 999, background: 'var(--color-neutral-700)' }}></span>
