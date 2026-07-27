@@ -4,18 +4,18 @@ const T = (en, ro) => ({ en, ro });
 const CASES = [
   {
     id: 'devhub', client: 'DevHub', demo: 'devhub',
-    sector: T('iGaming · white-label platform', 'iGaming · platformă white-label'),
+    sector: T('Regulated B2C · white-label platform', 'B2C reglementat · platformă white-label'),
     period: T('Jun 2025 — present', 'Iun 2025 — prezent'),
     tags: ['Angular', 'NgRx', 'Micro-frontends', 'Design systems', 'PWA'],
     stack: ['Angular', 'TypeScript', 'NgRx (Store, Effects, Entity)', 'RxJS', 'Angular Material', 'SCSS', 'PWA', 'i18n', 'Jasmine/Karma', 'Claude Code + GitHub CLI'],
-    oneLiner: T('One frontend serving ten casino and sportsbook brands — theming, gamification and payment flows in a single Angular/NgRx codebase.', 'Un singur frontend pentru zece branduri de casino și pariuri — theming, gamificare și fluxuri de plată, într-un singur cod Angular/NgRx.'),
+    oneLiner: T('One frontend serving ten consumer brands in a regulated industry — theming, gamification and payment flows in a single Angular/NgRx codebase.', 'Un singur frontend pentru zece branduri de consum într-o industrie reglementată — theming, gamificare și fluxuri de plată, într-un singur cod Angular/NgRx.'),
     context: [
-      T('I develop the core frontend of a white-label iGaming platform. Ten casino and sportsbook brands run on it across several markets, each with its own look, its own regulatory copy and its own promotional calendar — and all of them on one codebase.', 'Dezvolt frontendul principal al unei platforme iGaming white-label. Zece branduri de casino și pariuri rulează pe ea, în mai multe piețe, fiecare cu propriul aspect, propriile texte de reglementare și propriul calendar de promoții — toate pe un singur cod.'),
+      T('I develop the core frontend of a white-label consumer platform in a heavily regulated industry. Ten brands run on it across several European markets, each with its own look, its own regulatory copy and its own promotional calendar — and all of them on one codebase.', 'Dezvolt frontendul principal al unei platforme white-label de consum, într-o industrie strict reglementată. Zece branduri rulează pe ea, în mai multe piețe europene, fiecare cu propriul aspect, propriile texte de reglementare și propriul calendar de promoții — toate pe un singur cod.'),
       T('My side of the work is the modular Angular/NgRx architecture that makes that possible, plus ownership of user-facing feature areas: lobby pages, gamification and payment flows.', 'Partea mea este arhitectura modulară Angular/NgRx care face asta posibilă, plus responsabilitatea unor zone de produs: paginile de lobby, gamificarea și fluxurile de plată.'),
     ],
     challenge: [
       T('Onboarding a new brand used to mean touching code. Colors, typography, layout and copy were spread across components, so every launch was a small fork waiting to happen — and ten brands multiply every inconsistency by ten.', 'Adăugarea unui brand nou însemna atins codul. Culorile, tipografia, layoutul și textele erau împrăștiate în componente, deci fiecare lansare era un mic fork în devenire — iar zece branduri înmulțesc orice inconsecvență cu zece.'),
-      T('At the same time the surface is real-time: balances, live odds, bonus states and payment confirmations all change under the user, on mobile, on unreliable connections.', 'În același timp, interfața e în timp real: balanțe, cote live, stări de bonus și confirmări de plată se schimbă sub utilizator, pe mobil, pe conexiuni instabile.'),
+      T('At the same time the surface is real-time: balances, live pricing, reward states and payment confirmations all change under the user, on mobile, on unreliable connections.', 'În același timp, interfața e în timp real: balanțe, prețuri live, stări de recompensă și confirmări de plată se schimbă sub utilizator, pe mobil, pe conexiuni instabile.'),
     ],
     built: [
       { title: T('Runtime theming system', 'Sistem de theming la runtime'), body: T('Color palettes, typography and layout expressed as tokens, so a new brand is configuration rather than a code change.', 'Palete de culori, tipografie și layout exprimate ca tokenuri, astfel încât un brand nou e configurație, nu modificare de cod.') },
@@ -25,7 +25,7 @@ const CASES = [
       { title: T('Automated pre-PR review', 'Review automat înainte de PR'), body: T('An Angular code-review pipeline (Claude Code + GitHub CLI) that flags anti-patterns before a human ever opens the diff.', 'Un pipeline de review Angular (Claude Code + GitHub CLI) care semnalează anti-pattern-uri înainte ca un om să deschidă diff-ul.') },
     ],
     metrics: [
-      { label: T('Brands on one codebase', 'Branduri pe un singur cod'), before: '1', after: '10', note: T('Casino and sportsbook brands live across markets.', 'Branduri de casino și pariuri, live în mai multe piețe.') },
+      { label: T('Brands on one codebase', 'Branduri pe un singur cod'), before: '1', after: '10', note: T('Consumer brands live across regulated markets.', 'Branduri de consum, live în piețe reglementate.') },
       { label: T('Code-review turnaround', 'Timp de review'), before: T('baseline', 'referință'), after: '−80%', note: T('After the automated pre-PR review pipeline landed.', 'După introducerea pipeline-ului automat de review.') },
       { label: T('New brand onboarding', 'Onboarding brand nou'), before: T('code fork', 'fork de cod'), after: T('config', 'configurație'), note: T('Theming moved out of components and into tokens.', 'Themingul a ieșit din componente și a intrat în tokenuri.') },
     ],
@@ -40,10 +40,10 @@ const CASES = [
       ] },
       { title: T('Shell', 'Shell'), nodes: [
         { label: T('Theming engine', 'Motor de theming'), note: T('Reads the active brand config and applies tokens at runtime — color, radius, typography, spacing, wordmark. This is the piece that turns ten launches into ten config files.', 'Citește configul brandului activ și aplică tokenurile la runtime — culoare, rotunjire, tipografie, spațiere, logo. Asta transformă zece lansări în zece fișiere de configurare.') },
-        { label: T('Routing & guards', 'Rutare și guards'), note: T('Feature areas are lazy-loaded per brand entitlement; a brand without sportsbook never downloads it.', 'Zonele de produs se încarcă lazy, per drepturile brandului; un brand fără pariuri nu descarcă niciodată acel cod.') },
+        { label: T('Routing & guards', 'Rutare și guards'), note: T('Feature areas are lazy-loaded per brand entitlement; a brand without a feature never downloads its code.', 'Zonele de produs se încarcă lazy, per drepturile brandului; un brand fără un feature nu descarcă niciodată acel cod.') },
       ] },
       { title: T('Features', 'Funcționalități'), nodes: [
-        { label: T('Lobby & games', 'Lobby și jocuri'), note: T('Game tiles, categories, search and personalisation — the highest-traffic surface, so it is the most carefully virtualised.', 'Tile-uri de joc, categorii, căutare și personalizare — suprafața cu cel mai mult trafic, deci și cea mai atent virtualizată.') },
+        { label: T('Content & discovery', 'Conținut și descoperire'), note: T('Content tiles, categories, search and personalisation — the highest-traffic surface, so it is the most carefully virtualised.', 'Tile-uri de conținut, categorii, căutare și personalizare — suprafața cu cel mai mult trafic, deci și cea mai atent virtualizată.') },
         { label: T('Gamification', 'Gamificare'), note: T('Missions, tournaments and reward states, which are the hardest to model because they change while the user is looking at them.', 'Misiuni, turnee și stări de recompensă — cel mai greu de modelat, pentru că se schimbă chiar în timp ce utilizatorul se uită la ele.') },
         { label: T('Payments', 'Plăți'), note: T('Deposit and withdrawal flows with per-market providers, optimistic UI and hard failure states.', 'Fluxuri de depunere și retragere cu furnizori pe piață, UI optimist și stări de eșec clare.') },
       ] },
@@ -53,7 +53,7 @@ const CASES = [
         { label: T('Shared UI lib', 'Librărie UI comună'), note: T('The component layer every brand consumes — the reason a fix lands once and appears everywhere.', 'Stratul de componente pe care îl consumă toate brandurile — motivul pentru care o corecție se face o dată și apare peste tot.') },
       ] },
     ],
-    demoNote: T('A tenant switcher over an anonymised lobby: pick a brand and watch color, radius, typography and wordmark change while the markup stays the same.', 'Un switcher de brand peste un lobby anonimizat: alege un brand și vezi cum se schimbă culoarea, rotunjirea, tipografia și logoul, în timp ce markupul rămâne același.'),
+    demoNote: T('A tenant switcher over an anonymised storefront: pick a brand and watch color, radius, typography and wordmark change while the markup stays the same.', 'Un switcher de brand peste un storefront anonimizat: alege un brand și vezi cum se schimbă culoarea, rotunjirea, tipografia și logoul, în timp ce markupul rămâne același.'),
   },
   {
     id: 'exadel', client: 'Exadel — Compliance Cockpit', demo: 'exadel',

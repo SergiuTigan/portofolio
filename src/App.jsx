@@ -11,7 +11,7 @@ const FLAVOR = {
 }
 
 const DOMAIN = {
-  devhub: 'iGaming', exadel: 'Compliance', mtd: 'Automotive', she: 'Banking & finance',
+  devhub: 'Regulated B2C', exadel: 'Compliance', mtd: 'Automotive', she: 'Banking & finance',
   be: 'Banking & finance', pulse: 'Fitness', dobby: 'Food & hospitality',
   luppy: 'Health', horae: 'Food & hospitality',
 }
@@ -78,7 +78,7 @@ export default function App() {
     hire: L(T('Work with me', 'Hai să lucrăm')),
     cv: L(T('Download CV', 'Descarcă CV')),
     available: L(T('Available for contract · remote', 'Disponibil pentru contract · remote')),
-    heroBody: L(T('Eight years of frontend for casinos, car makers, banks and compliance teams — plus three products of my own, designed, shipped and still running.', 'Opt ani de frontend pentru cazinouri, producători auto, bănci și echipe de conformitate — plus trei produse proprii, proiectate, lansate și încă în funcțiune.')),
+    heroBody: L(T('Eight years of frontend for regulated consumer platforms, car makers, banks and compliance teams — plus three products of my own, designed, shipped and still running.', 'Opt ani de frontend pentru platforme de consum reglementate, producători auto, bănci și echipe de conformitate — plus trei produse proprii, proiectate, lansate și încă în funcțiune.')),
     ctaWork: L(T('See the work', 'Vezi proiectele')),
     workKicker: L(T('Case studies', 'Studii de caz')),
     workTitle: L(T('Nine projects, each in its own colors', 'Nouă proiecte, fiecare în culorile lui')),

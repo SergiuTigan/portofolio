@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Sergiu-Marian Țigan — CV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #221f1a;
+    --soft: #4c4638;
+    --muted: #8a8271;
+    --red: #d6303f;
+    --line: #dcd4c4;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  @page { size: A4; margin: 0; }
+  html, body { background: #fff; }
+  body { font-family: 'Inter', sans-serif; color: var(--ink); font-size: 10px; line-height: 1.44; }
+  .page { width: 210mm; min-height: 297mm; padding: 14mm 15mm 12mm; page-break-after: always; }
+  .page:last-child { page-break-after: auto; }
+
+  h1 { font-family: 'Archivo', sans-serif; font-weight: 900; font-size: 34px; line-height: 0.98; letter-spacing: -0.015em; text-transform: uppercase; }
+  .role { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 12.5px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--red); margin-top: 7px; }
+  .contact { text-align: right; font-size: 9.6px; line-height: 1.75; }
+  .contact a { color: var(--red); text-decoration: none; }
+  .head { display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; }
+
+  .meta { display: grid; grid-template-columns: 1.1fr 1.6fr 1fr; border-top: 1.5px solid var(--ink); border-bottom: 1.5px solid var(--ink); margin: 12px 0 14px; }
+  .meta > div { padding: 7px 10px 7px 0; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 9px; letter-spacing: 0.05em; text-transform: uppercase; }
+  .meta > div + div { padding-left: 12px; border-left: 1px solid var(--line); }
+  .meta .hl { color: var(--red); }
+
+  .summary { font-size: 10.4px; line-height: 1.62; color: var(--soft); }
+  .summary b { color: var(--ink); }
+
+  h2 { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; border-bottom: 1.5px solid var(--ink); padding-bottom: 4px; margin: 13px 0 8px; }
+
+  .skills { display: grid; gap: 0; }
+  .skill-row { display: grid; grid-template-columns: 105px 1fr; gap: 14px; padding: 4.5px 0; border-bottom: 1px solid var(--line); }
+  .skill-row:last-child { border-bottom: 0; }
+  .skill-row .k { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 9.4px; color: var(--red); letter-spacing: 0.02em; }
+
+  .job { border-left: 3px solid var(--red); padding-left: 12px; margin-bottom: 10px; }
+  .job-head { display: flex; justify-content: space-between; align-items: baseline; gap: 14px; }
+  .job-head h3 { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 12.5px; letter-spacing: -0.01em; }
+  .job-head h3 span { font-weight: 500; color: var(--muted); font-size: 11px; }
+  .dates { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 8.8px; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  .stack { font-size: 8.8px; color: var(--red); font-weight: 600; margin: 2px 0 5px; }
+  .job ul { list-style: none; }
+  .job li { position: relative; padding-left: 12px; margin-bottom: 2.5px; color: var(--soft); }
+  .job li::before { content: ''; position: absolute; left: 0; top: 6.5px; width: 4.5px; height: 4.5px; background: var(--red); transform: rotate(45deg); }
+  .job li b { color: var(--ink); }
+
+  .products { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0; }
+  .products > div { padding: 2px 14px 0 0; }
+  .products > div + div { padding-left: 14px; border-left: 1px solid var(--line); }
+  .products .kick { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 8.4px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--red); }
+  .products h3 { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 13px; text-transform: uppercase; margin: 3px 0 4px; }
+  .products p { font-size: 9.6px; color: var(--soft); }
+  .products a { color: var(--red); text-decoration: none; font-weight: 600; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+  .edu h3 { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 11px; }
+  .edu .sub { font-size: 9.4px; color: var(--muted); }
+  .lang-row { display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px solid var(--line); font-size: 10px; }
+  .lang-row:last-child { border-bottom: 0; }
+  .lang-row span:last-child { color: var(--muted); }
+
+  .earlier .job { border-left-color: var(--line); }
+  .note { font-size: 9.4px; color: var(--muted); margin-bottom: 8px; }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="head">
+    <div>
+      <h1>Sergiu-<br>Marian Țigan</h1>
+      <div class="role">Senior Frontend Engineer — Angular</div>
+    </div>
+    <div class="contact">
+      +40 740 014 666<br>
+      <a href="mailto:sergiu@tigan.dev">sergiu@tigan.dev</a><br>
+      <a href="https://sergiu.tigan.dev">sergiu.tigan.dev</a> — portfolio<br>
+      <a href="https://linkedin.com/in/sergiu-tigan">linkedin.com/in/sergiu-tigan</a><br>
+      <a href="https://github.com/SergiuTigan">github.com/SergiuTigan</a>
+    </div>
+  </div>
+
+  <div class="meta">
+    <div>Cluj-Napoca, Romania · CET</div>
+    <div>Remote — 4+ hrs daily overlap with US Eastern</div>
+    <div class="hl">Independent Contractor</div>
+  </div>
+
+  <p class="summary">
+    Senior frontend engineer, <b>8+ years specialized in Angular</b>, shipping production systems across
+    regulated, high-stakes industries — automotive, banking, regulatory compliance, and high-traffic
+    consumer platforms. I architect multi-brand and micro-frontend platforms — white-label theming,
+    Module Federation, Nx monorepos — and have independently designed, built, shipped, and operated
+    three of my own SaaS products, one serving ~250 daily active users. Equally comfortable owning a
+    feature end-to-end or being the sole frontend engineer on a mission-critical app, working directly
+    with stakeholders in Agile teams. Engaging through my own Romanian company — no payroll, benefits,
+    or visa overhead.
+  </p>
+
+  <h2>Technical Skills</h2>
+  <div class="skills">
+    <div class="skill-row"><span class="k">Languages</span><span>TypeScript · JavaScript (ES2023) · HTML5 · CSS3 · SCSS</span></div>
+    <div class="skill-row"><span class="k">Frameworks</span><span>Angular (8–18) · React · Next.js · Node.js · NestJS</span></div>
+    <div class="skill-row"><span class="k">Architecture</span><span>NgRx (Store, Effects, Entity) · RxJS · micro-frontends · Module Federation · Nx monorepos · white-label / multi-brand · design systems &amp; tokens · Web Components · SSR (Angular Universal)</span></div>
+    <div class="skill-row"><span class="k">UI &amp; Styling</span><span>Angular Material · Tailwind · Bootstrap · Ag-Grid · Highcharts · ngx-datatable · Figma · responsive · accessibility (WCAG) · Storybook · PWA · i18n</span></div>
+    <div class="skill-row"><span class="k">Testing</span><span>Jasmine · Karma · Jest · Playwright · unit, integration &amp; e2e · code review</span></div>
+    <div class="skill-row"><span class="k">Tooling</span><span>Git · CI/CD · GitHub CLI · Azure DevOps · Agile/Scrum · performance optimization</span></div>
+    <div class="skill-row"><span class="k">Backend &amp; Data</span><span>REST APIs · GraphQL · Firebase · Supabase · PostgreSQL</span></div>
+  </div>
+
+  <h2>Experience</h2>
+  <div class="job" style="border-left-color: var(--ink)">
+    <div class="job-head">
+      <h3>Independent Frontend Engineer — Contract</h3>
+      <span class="dates">2020 — Present</span>
+    </div>
+    <div class="note">Next Level Tech (own company) — Cluj-Napoca</div>
+    <p style="color: var(--soft)">Senior Angular contractor delivering for clients across automotive, banking, compliance, and regulated consumer platforms — concurrent and sequential Agile/Scrum engagements.</p>
+  </div>
+
+  <div class="job">
+    <div class="job-head">
+      <h3>DevHub <span>— white-label consumer platform · regulated industry</span></h3>
+      <span class="dates">Jun 2025 — Present</span>
+    </div>
+    <div class="stack">Angular · TypeScript · NgRx (Store, Effects, Entity) · RxJS · Angular Material · SCSS · PWA · i18n</div>
+    <ul>
+      <li>Develop the core frontend of a white-label consumer platform serving <b>10 brands across regulated European markets</b>, in a modular Angular/NgRx architecture built for multi-brand scalability.</li>
+      <li>Built a custom theming system (color palettes, typography, layout) enabling rapid onboarding of new brands with minimal code changes, plus shared component libraries reused across brand deployments.</li>
+      <li>Own key feature areas — user-facing pages, gamification, payment flows — managing complex real-time state with NgRx Store/Effects/Entity; delivered responsive, mobile-first UI with PWA, i18n and Jasmine/Karma tests.</li>
+      <li>Built an automated pre-PR Angular code-review pipeline (Claude Code + GitHub CLI) that flags anti-patterns before human review, <b>cutting review turnaround by ~80%</b>.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-head">
+      <h3>Exadel — Compliance Cockpit <span>— regulatory compliance</span></h3>
+      <span class="dates">Mar — Sep 2025</span>
+    </div>
+    <div class="stack">Angular 18 · NgRx · RxJS · Nx · Module Federation · Highcharts · SCSS · i18next · NestJS</div>
+    <ul>
+      <li>Built the Campaigns module frontend of an enterprise regulatory-compliance platform serving organizations across Europe, as an Angular 18 micro-frontend with Module Federation in an Nx monorepo.</li>
+      <li>Designed a multi-step campaign wizard for compliance teams to create, schedule and manage employee awareness and training campaigns, with a recipient-management system for employee/group targeting.</li>
+      <li>Built interactive dashboards with real-time completion tracking (Highcharts), implemented i18n for campaign content, and contributed to a shared Web Components + Angular library documented in Storybook.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="page">
+  <div class="job">
+    <div class="job-head">
+      <h3>MTD Technology <span>— automotive, vehicle software updates</span></h3>
+      <span class="dates">Mar 2024 — May 2025</span>
+    </div>
+    <div class="stack">Angular · TypeScript · Ag-Grid · ngx-datatable · Angular Material · Bootstrap</div>
+    <ul>
+      <li><b>Sole frontend engineer</b> on a mission-critical software-update management tool used across five Volkswagen Group brands — Volkswagen, Seat, Porsche, Cupra, Bentley — owning the entire frontend end-to-end.</li>
+      <li>Built data-dense UI with Ag-Grid, ngx-datatable, Angular Material and Bootstrap; worked closely with backend developers on data flow and translated stakeholder requirements directly into shipped improvements.</li>
+      <li>Led the full frontend handover: defined the role, interviewed and selected the incoming developer, and onboarded them for zero-disruption continuity.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-head">
+      <h3>SHE Group <span>— financial / tax reporting</span></h3>
+      <span class="dates">May 2024 — Mar 2025</span>
+    </div>
+    <div class="stack">Angular · Angular Material · Nx · SCSS · TypeScript</div>
+    <ul>
+      <li>Delivered a solution for managing tax reports, integrating closely with backend teams for seamless data flow.</li>
+      <li>Used Nx to manage multiple frontend applications in a monorepo; designed reusable Angular Material + vanilla SCSS components that fed a code-generation tool, streamlining development across teams.</li>
+      <li>Led client meetings to gather requirements and keep delivery aligned with business needs.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-head">
+      <h3>Be | Shaping the Future <span>— banking</span></h3>
+      <span class="dates">Jun 2023 — Mar 2024</span>
+    </div>
+    <div class="stack">Angular 17 · Angular Material · Bootstrap 5</div>
+    <ul>
+      <li>Built financial applications for a leading Romanian bank, including a financial-planning tool and a drag-and-drop PDF generator that streamlined report creation for banking and investment professionals.</li>
+      <li>Developed modern, responsive UIs and partnered with backend and business teams to set milestones and ship within strict deadlines.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-head">
+      <h3>Wirtek Romania <span>— green energy</span></h3>
+      <span class="dates">Jun 2022 — Jun 2023</span>
+    </div>
+    <div class="stack">Angular · TypeScript · SCSS · Azure DevOps</div>
+    <ul>
+      <li>Led frontend development of a green-energy application within a 10-person team, driving feature delivery and client satisfaction.</li>
+      <li>Integrated closely with backend via Azure DevOps to troubleshoot and resolve issues, and mentored junior developers.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-head">
+      <h3>Fabrit Global <span>— sports arena booking</span></h3>
+      <span class="dates">Nov 2021 — Nov 2022</span>
+    </div>
+    <ul>
+      <li>Built and maintained the frontend of a booking platform (Angular 8/5, Azure DevOps), optimizing performance across mobile and desktop and shipping new features and stability improvements.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-head">
+      <h3>P4B Group <span>— Angular 12 product</span></h3>
+      <span class="dates">Mar 2020 — Nov 2021</span>
+    </div>
+    <ul>
+      <li>Led the frontend of an Angular 12 product with a PHP backend, coordinating two other frontend developers and enforcing code consistency, performance and clean integration.</li>
+    </ul>
+  </div>
+
+  <h2>Founder &amp; Own Products — Next Level Tech</h2>
+  <p class="note">Designed, built, shipped and operated solo — proof of end-to-end ownership. Live demos at <a href="https://sergiu.tigan.dev" style="color: var(--red); text-decoration: none; font-weight: 600">sergiu.tigan.dev</a>.</p>
+  <div class="products">
+    <div>
+      <div class="kick">AI Fitness Platform</div>
+      <h3>Pulse</h3>
+      <p>Next.js / Firebase. Trainer–client workflows, AI-driven workout generation, 70+ exercise library, white-label branding.</p>
+    </div>
+    <div>
+      <div class="kick">~250 Daily Active Users</div>
+      <h3>Dobby</h3>
+      <p>Angular / Node / Supabase food-ordering platform. Migrated SQLite → PostgreSQL to support growth, with real-time order updates.<br><a href="https://dobby.tigan.dev">dobby.tigan.dev</a></p>
+    </div>
+    <div>
+      <div class="kick">Multi-Tenant Production Platform</div>
+      <h3>Horae</h3>
+      <p>Next.js / NestJS / PostgreSQL. Recipes, FIFO stock, orders — one API serving web, iOS and Android clients, white-label per tenant.<br><a href="https://horae.ca">horae.ca</a></p>
+    </div>
+  </div>
+
+  <h2>Earlier Experience</h2>
+  <div class="earlier">
+    <div class="job">
+      <div class="job-head">
+        <h3>msg systems Romania <span>— Junior Frontend Developer</span></h3>
+        <span class="dates">Jan 2017 — Mar 2020</span>
+      </div>
+      <ul>
+        <li>Built a medical/insurance application for AOK Plus (Angular 8, SCSS, SAP Spartacus); led the migration to the production version of Spartacus, improved load times and ensured cross-browser compatibility.</li>
+      </ul>
+    </div>
+    <div class="job">
+      <div class="job-head">
+        <h3>Draexlmaier Group <span>— Backend Developer Intern, Germany</span></h3>
+        <span class="dates">Nov 2015 — Dec 2016</span>
+      </div>
+      <ul>
+        <li>SAP ABAP training; built front- and back-end features for a retail app on S/4HANA, SAPUI5 and SAP Fiori.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="two-col" style="margin-top: 14px">
+    <div class="edu">
+      <h2 style="margin-top: 0">Education</h2>
+      <h3>B.Sc. Informatics <span class="dates" style="float: right">2011 — 2014</span></h3>
+      <div class="sub">Universitatea Politehnica din Timișoara</div>
+    </div>
+    <div>
+      <h2 style="margin-top: 0">Languages</h2>
+      <div class="lang-row"><span>Romanian</span><span>Native</span></div>
+      <div class="lang-row"><span>English</span><span>Professional working</span></div>
+      <div class="lang-row"><span>German</span><span>Limited working</span></div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

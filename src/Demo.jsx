@@ -24,19 +24,19 @@ function DevhubDemo({ L }) {
   const themes = [
     { name: 'Brand A', accent: '#9184d9', onAccent: '#161826', bar: '#1f2136', ground: '#191b28', ink: '#e9e9ed', radius: '8px', tracking: '-0.01em', wordmark: 'AURELIS' },
     { name: 'Brand B', accent: '#e0a54d', onAccent: '#1a1408', bar: '#231b0f', ground: '#1c1710', ink: '#f3ead9', radius: '2px', tracking: '0.14em', wordmark: 'GOLDLINE' },
-    { name: 'Brand C', accent: '#4fb8a0', onAccent: '#08201b', bar: '#0f2420', ground: '#0f1e1b', ink: '#dcefe9', radius: '14px', tracking: '-0.02em', wordmark: 'tidalbet' },
-    { name: 'Brand D', accent: '#d96a8a', onAccent: '#25101a', bar: '#2a1520', ground: '#221219', ink: '#f6e3ea', radius: '999px', tracking: '0.04em', wordmark: 'ROSA·PLAY' },
+    { name: 'Brand C', accent: '#4fb8a0', onAccent: '#08201b', bar: '#0f2420', ground: '#0f1e1b', ink: '#dcefe9', radius: '14px', tracking: '-0.02em', wordmark: 'tidalwave' },
+    { name: 'Brand D', accent: '#d96a8a', onAccent: '#25101a', bar: '#2a1520', ground: '#221219', ink: '#f6e3ea', radius: '999px', tracking: '0.04em', wordmark: 'ROSA&CO' },
   ]
   const theme = themes[brand]
   const tiles = [
-    { kind: L(T('Slots', 'Sloturi')), name: 'Neon Reels', rtp: 'RTP 96.4%' },
-    { kind: L(T('Live', 'Live')), name: 'Blackjack VIP', rtp: L(T('3 seats', '3 locuri')) },
-    { kind: L(T('Sportsbook', 'Pariuri')), name: 'UCL Final', rtp: '2.15 / 3.40' },
-    { kind: L(T('Slots', 'Sloturi')), name: 'Aztec Rush', rtp: 'RTP 95.1%' },
-    { kind: L(T('Crash', 'Crash')), name: 'Skyfall', rtp: '×1.00 →' },
-    { kind: L(T('Live', 'Live')), name: 'Roulette EU', rtp: L(T('open', 'liber')) },
-    { kind: L(T('Sportsbook', 'Pariuri')), name: 'NBA Spread', rtp: '1.86 / 1.94' },
-    { kind: L(T('Slots', 'Sloturi')), name: 'Fruit Vault', rtp: 'RTP 96.9%' },
+    { kind: L(T('Featured', 'Recomandat')), name: 'Neon Nights', rtp: L(T('trending #1', 'trending #1')) },
+    { kind: L(T('Live', 'Live')), name: 'Arena Finals', rtp: L(T('12.4k watching', '12.4k urmăresc')) },
+    { kind: L(T('Series', 'Seriale')), name: 'Skyfall', rtp: L(T('new episode', 'episod nou')) },
+    { kind: L(T('Featured', 'Recomandat')), name: 'Aztec Rush', rtp: L(T('editor pick', 'alegerea redacției')) },
+    { kind: L(T('Live', 'Live')), name: 'City Sessions', rtp: L(T('starts 21:00', 'începe 21:00')) },
+    { kind: L(T('Originals', 'Originale')), name: 'Fruit Vault', rtp: L(T('4.8 ★', '4.8 ★')) },
+    { kind: L(T('Series', 'Seriale')), name: 'Deep Water', rtp: L(T('s2 finale', 'finala s2')) },
+    { kind: L(T('Originals', 'Originale')), name: 'Golden Hour', rtp: L(T('just added', 'adăugat acum')) },
   ]
   return (
     <div style={{ padding: 18 }}>
@@ -50,9 +50,9 @@ function DevhubDemo({ L }) {
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 14px', background: theme.bar, transition: 'background 0.3s ease' }}>
           <span style={{ fontFamily: 'var(--font-heading)', fontWeight: 700, letterSpacing: theme.tracking, color: theme.ink, fontSize: 15 }}>{theme.wordmark}</span>
           <span style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 12, color: theme.ink }}>
-            <span style={{ opacity: 0.7 }}>{L(T('Balance', 'Balanță'))}</span>
+            <span style={{ opacity: 0.7 }}>{L(T('Wallet', 'Portofel'))}</span>
             <b style={{ fontVariantNumeric: 'tabular-nums' }}>{balance.toLocaleString('en-US')} ¤</b>
-            <span style={{ padding: '4px 10px', borderRadius: theme.radius, background: theme.accent, color: theme.onAccent, fontSize: 11, fontWeight: 600 }}>{L(T('Deposit', 'Depune'))}</span>
+            <span style={{ padding: '4px 10px', borderRadius: theme.radius, background: theme.accent, color: theme.onAccent, fontSize: 11, fontWeight: 600 }}>{L(T('Top up', 'Alimentează'))}</span>
           </span>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 8, padding: 12, background: theme.ground, transition: 'background 0.3s ease' }}>
@@ -68,7 +68,7 @@ function DevhubDemo({ L }) {
       <div style={{ display: 'flex', gap: 18, marginTop: 14, flexWrap: 'wrap', fontSize: 11, color: 'var(--color-neutral-500)' }}>
         <span>{L(T('One codebase · tokens swapped at runtime: color, radius, tracking, wordmark.', 'Un singur cod · tokenuri schimbate la runtime: culoare, rotunjire, spațiere, logo.'))}</span>
         <span style={{ marginLeft: 'auto', color: 'var(--color-accent-300)' }}>
-          {tile == null ? L(T('Try a tenant, then a tile →', 'Alege un brand, apoi un joc →')) : L(T('Bet placed on ', 'Pariu plasat pe ')) + tiles[tile].name}
+          {tile == null ? L(T('Try a tenant, then a title →', 'Alege un brand, apoi un titlu →')) : L(T('Now playing: ', 'Acum rulează: ')) + tiles[tile].name}
         </span>
       </div>
     </div>
