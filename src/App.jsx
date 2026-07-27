@@ -8,8 +8,8 @@ import HeroDemo from './HeroDemo.jsx'
 // Every case study re-themes the page — the site is itself white-labelled,
 // which is the thing Sergiu actually builds for a living.
 const FLAVOR = {
-  platform: '#6c4ce8', exadel: '#0e8a7b', mtd: '#2f6de0', she: '#d98a16',
-  be: '#2e7d4f', pulse: '#d6367e', dobby: '#e8641b', luppy: '#4ca84c', horae: '#d93a63',
+  platform: '#8f7bff', exadel: '#35c7ae', mtd: '#5b96ff', she: '#ffb454',
+  be: '#4fce7f', pulse: '#ff6fa5', dobby: '#ff8c4d', luppy: '#7ed957', horae: '#ff5d7e',
 }
 
 const DOMAIN = {
@@ -29,6 +29,7 @@ export default function App() {
   const [filter, setFilter] = useState(null)
   const [node, setNode] = useState(null)
   const [sent, setSent] = useState(false)
+  const [photoOk, setPhotoOk] = useState(true)
 
   const view = caseId ? 'case' : 'home'
   const L = o => (o && typeof o === 'object' && 'en' in o) ? o[lang] : o
@@ -72,7 +73,7 @@ export default function App() {
   // set the page flavor from the open case
   const flavor = caseId ? FLAVOR[caseId] : 'var(--accent)'
   useEffect(() => {
-    document.documentElement.style.setProperty('--flavor', caseId ? FLAVOR[caseId] : '#d6303f')
+    document.documentElement.style.setProperty('--flavor', caseId ? FLAVOR[caseId] : '#ff5d6e')
   }, [caseId])
 
   const t = useMemo(() => ({
@@ -182,7 +183,7 @@ export default function App() {
   return (
     <div style={{ minHeight: '100vh' }}>
       {/* ── header ── */}
-      <header style={{ position: 'sticky', top: 0, zIndex: 20, backdropFilter: 'blur(12px)', background: 'color-mix(in srgb, var(--paper) 88%, transparent)', borderBottom: '1.5px solid var(--line)' }}>
+      <header style={{ position: 'sticky', top: 0, zIndex: 20, backdropFilter: 'blur(12px)', background: 'color-mix(in srgb, var(--bg) 82%, transparent)', borderBottom: '1px solid var(--line)' }}>
         <div className="header-inner" style={{ ...sectionPad, padding: '12px 24px', display: 'flex', alignItems: 'center', gap: 14 }}>
           <button onClick={goHome} style={{ cursor: 'pointer', font: 'inherit', background: 'transparent', border: 0, padding: 0, display: 'flex', alignItems: 'center', gap: 10, color: 'var(--ink)' }}>
             <span aria-hidden style={{ color: flavor, transition: 'color 0.3s ease', display: 'flex' }}><Logo size={24} /></span>
@@ -198,193 +199,128 @@ export default function App() {
               <button key={l} onClick={() => setLang(l)} style={{ cursor: 'pointer', font: 'inherit', fontFamily: 'var(--font-mono)', fontSize: 11, padding: '4px 10px', borderRadius: 999, border: 0, background: lang === l ? 'var(--ink)' : 'transparent', color: lang === l ? 'var(--paper)' : 'var(--muted)' }}>{l.toUpperCase()}</button>
             ))}
           </div>
-          <a className="btn btn-solid" href="/Sergiu_Tigan_CV.pdf" download="Sergiu_Tigan_CV.pdf" style={{ fontSize: 13, padding: '8px 15px', '--flavor': 'var(--accent)' }}>{t.cv}</a>
+          <a className="btn btn-pop" href="/Sergiu_Tigan_CV.pdf" download="Sergiu_Tigan_CV.pdf" style={{ fontSize: 13, padding: '8px 15px' }}>{t.cv}</a>
         </div>
       </header>
 
       {view === 'home' && (
-        <main>
-          {/* ── hero ── */}
-          <section className="hero-wrap">
-            <div className="hero-grid" style={{ ...sectionPad, padding: '58px 24px 30px', display: 'grid', gridTemplateColumns: '1fr auto', gap: 44, alignItems: 'center', position: 'relative', zIndex: 1 }}>
-              <div>
-                <div className="rise" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 18 }}>
-                  <span className="pulse-dot" style={{ width: 8, height: 8, borderRadius: 999, background: 'var(--leaf)' }}></span>
-                  <span className="eyebrow" style={{ color: 'var(--ink-soft)' }}>{t.available}</span>
-                </div>
-                <h1 className="rise rise-1" style={{ fontSize: 'clamp(40px, 6vw, 72px)', fontWeight: 800, maxWidth: '16ch', marginBottom: 18 }}>
-                  {lang === 'en'
-                    ? <>Angular, where a mistake is <em className="hl-swash">expensive</em>.</>
-                    : <>Angular, unde o greșeală <em className="hl-swash">costă mult</em>.</>}
-                </h1>
-                <p className="rise rise-2" style={{ maxWidth: '52ch', fontSize: 17.5, lineHeight: 1.55, color: 'var(--ink-soft)', textWrap: 'pretty', marginBottom: 26 }}>{t.heroBody}</p>
-                <div className="rise rise-3" style={{ display: 'flex', flexWrap: 'wrap', gap: 10, alignItems: 'center' }}>
-                  <button className="btn btn-solid" onClick={() => jump('work')} style={{ '--flavor': 'var(--accent)' }}>{t.ctaWork}</button>
-                  <button className="btn btn-line" onClick={() => jump('contact')}>{t.hire}</button>
-                  <span style={{ display: 'flex', gap: 16, marginLeft: 6, fontSize: 13 }}>
-                    <a href="mailto:sergiu@tigan.dev">sergiu@tigan.dev</a>
-                    <a href="https://github.com/SergiuTigan" target="_blank" rel="noreferrer">GitHub</a>
-                    <a href="https://linkedin.com/in/sergiu-tigan" target="_blank" rel="noreferrer">LinkedIn</a>
-                  </span>
-                </div>
+        <main style={{ ...sectionPad, padding: '30px 24px 60px' }}>
+          <div className="bento">
+
+            {/* intro */}
+            <div className="tile s7 r2 rise" style={{ padding: 'clamp(24px, 3vw, 40px)', display: 'grid', alignContent: 'center', gap: 18, background: 'radial-gradient(120% 130% at 0% 0%, color-mix(in srgb, var(--accent) 13%, transparent), transparent 55%), var(--card)' }}>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+                <span className="pulse-dot" style={{ width: 8, height: 8, borderRadius: 999, background: 'var(--leaf)' }}></span>
+                <span className="eyebrow" style={{ color: 'var(--soft)' }}>{t.available}</span>
               </div>
-              <div className="rise rise-2 hero-logo">
+              <h1 style={{ fontSize: 'clamp(34px, 4.6vw, 58px)', fontWeight: 800, maxWidth: '17ch' }}>
+                {lang === 'en'
+                  ? <>Angular, where a mistake is <em style={{ fontStyle: 'normal', color: 'var(--pop)' }}>expensive</em>.</>
+                  : <>Angular, unde o greșeală <em style={{ fontStyle: 'normal', color: 'var(--pop)' }}>costă mult</em>.</>}
+              </h1>
+              <p style={{ maxWidth: '52ch', fontSize: 16.5, lineHeight: 1.6, color: 'var(--soft)', textWrap: 'pretty' }}>{t.heroBody}</p>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, alignItems: 'center' }}>
+                <button className="btn btn-pop" onClick={() => jump('work')}>{t.ctaWork}</button>
+                <a className="btn btn-line" href="mailto:sergiu@tigan.dev">{t.hire}</a>
+                <span style={{ display: 'flex', gap: 16, marginLeft: 6, fontSize: 13 }}>
+                  <a href="https://github.com/SergiuTigan" target="_blank" rel="noreferrer">GitHub</a>
+                  <a href="https://linkedin.com/in/sergiu-tigan" target="_blank" rel="noreferrer">LinkedIn</a>
+                </span>
+              </div>
+            </div>
+
+            {/* photo */}
+            <div className="tile s5 r2 rise rise-1" style={{ padding: 0, minHeight: 300 }}>
+              {photoOk ? (
+                <img src="/me.jpg" alt="Sergiu Țigan" onError={() => setPhotoOk(false)} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', filter: 'saturate(0.92)' }} />
+              ) : (
+                <div style={{ height: '100%', display: 'grid', placeItems: 'center', background: 'radial-gradient(120% 120% at 80% 0%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 60%), var(--card)', color: 'var(--accent)' }}>
+                  <Logo size={150} detailed ink="var(--ink)" />
+                </div>
+              )}
+              <span style={{ position: 'absolute', left: 14, bottom: 12, padding: '4px 11px', borderRadius: 999, background: 'rgba(14, 15, 19, 0.72)', backdropFilter: 'blur(6px)', fontFamily: 'var(--font-mono)', fontSize: 10.5, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--ink)' }}>Cluj-Napoca · CET</span>
+            </div>
+
+            {/* stats */}
+            {stats.map((st, n) => (
+              <div key={st.label} className={'tile stat-tile rise rise-' + Math.min(n + 1, 4)} style={{ gridColumn: 'span 2', padding: '16px 18px', background: `radial-gradient(130% 140% at 20% -20%, color-mix(in srgb, ${st.color} 14%, transparent), transparent 60%), var(--card)` }}>
+                <div style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 30, letterSpacing: '-0.02em', color: st.color }}>{st.value}</div>
+                <div style={{ fontSize: 12, color: 'var(--soft)', lineHeight: 1.35 }}>{st.label}</div>
+              </div>
+            ))}
+            {/* CV tile */}
+            <a className="tile tile-btn rise rise-4" href="/Sergiu_Tigan_CV.pdf" download="Sergiu_Tigan_CV.pdf" style={{ gridColumn: 'span 2', '--flavor': 'var(--pop)', display: 'grid', alignContent: 'center', justifyItems: 'center', gap: 6, textDecoration: 'none', background: 'var(--pop)', color: 'var(--pop-ink)', border: 0 }}>
+              <span style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 20 }}>CV ↓</span>
+              <span style={{ fontFamily: 'var(--font-mono)', fontSize: 9.5, letterSpacing: '0.1em', textTransform: 'uppercase' }}>PDF</span>
+            </a>
+
+            {/* live demo tile */}
+            <div id="work" className="tile s5 r2 rise rise-2" style={{ display: 'grid', gap: 14, alignContent: 'start' }}>
+              <span className="tile-label">{L(T('Live — what I build', 'Live — ce construiesc'))}</span>
+              <div style={{ justifySelf: 'center' }}>
                 <HeroDemo lang={lang} onOpenCase={() => openCase('platform')} />
               </div>
             </div>
 
-            {/* domain marquee */}
-            <div className="marquee" aria-hidden style={{ position: 'relative', zIndex: 1 }}>
-              <div className="marquee-track">
-                {[0, 1].map(copy => (
-                  <span key={copy} className="marquee-copy">
-                    {['Volkswagen', 'Seat', 'Porsche', 'Cupra', 'Bentley', L(T('Banking', 'Banking')), L(T('Regulatory compliance', 'Conformitate')), L(T('10 consumer brands', '10 branduri')), 'Micro-frontends', 'White-label', 'Nx', 'NgRx', L(T('3 own products', '3 produse proprii'))].map(w => (
-                      <span key={w} className="marquee-item">
-                        <svg viewBox="0 0 12 12" width="7" height="7" style={{ color: 'var(--accent)' }}><path d="M 6 0 L 12 6 L 6 12 L 0 6 Z" fill="currentColor" /></svg>
-                        {w}
-                      </span>
-                    ))}
-                  </span>
-                ))}
+            {/* flagship case: horae */}
+            <button className="tile tile-btn tile-glow s7 r2 rise rise-2" onClick={() => openCase('horae')} style={{ '--flavor': FLAVOR.horae, padding: 'clamp(22px, 2.6vw, 34px)' }}>
+              <span className="eyebrow">{L(CASES.find(c => c.id === 'horae').sector)}</span>
+              <span style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 'clamp(26px, 3vw, 38px)', letterSpacing: '-0.02em' }}>Horae</span>
+              <span style={{ fontSize: 14.5, color: 'var(--soft)', lineHeight: 1.55, maxWidth: '52ch', textWrap: 'pretty' }}>{L(CASES.find(c => c.id === 'horae').oneLiner)}</span>
+              <span style={{ display: 'flex', flexWrap: 'wrap', gap: 5, marginTop: 4 }}>
+                {CASES.find(c => c.id === 'horae').tags.slice(0, 5).map(tg => <span key={tg} className="tagette">{tg}</span>)}
+              </span>
+              <span style={{ display: 'flex', gap: 18, marginTop: 10, alignItems: 'baseline' }}>
+                <span><b style={{ fontFamily: 'var(--font-display)', fontSize: 22, color: 'var(--flavor)' }}>4</b> <span style={{ fontSize: 11.5, color: 'var(--muted)' }}>{L(T('clients, one API', 'clienți, un API'))}</span></span>
+                <span><b style={{ fontFamily: 'var(--font-display)', fontSize: 22, color: 'var(--flavor)' }}>~22</b> <span style={{ fontSize: 11.5, color: 'var(--muted)' }}>{L(T('org-scoped models', 'modele multi-tenant'))}</span></span>
+                <span style={{ marginLeft: 'auto', fontSize: 13, fontWeight: 600, color: 'var(--flavor)' }}>{t.caseStudy} →</span>
+              </span>
+            </button>
+
+            {/* remaining case tiles */}
+            {CASES.filter(c => c.id !== 'horae').map((c, n) => (
+              <button key={c.id} className="tile tile-btn tile-glow s3" onClick={() => openCase(c.id)} style={{ '--flavor': FLAVOR[c.id] }}>
+                <span className="eyebrow">{L(c.sector).split('·')[0].trim()}</span>
+                <span style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 19, letterSpacing: '-0.015em' }}>{c.client}</span>
+                <span style={{ fontSize: 12.5, color: 'var(--soft)', lineHeight: 1.5, textWrap: 'pretty', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{L(c.oneLiner)}</span>
+                <span style={{ fontSize: 12.5, fontWeight: 600, color: 'var(--flavor)', marginTop: 2 }}>{t.caseStudy} →</span>
+              </button>
+            ))}
+
+            {/* about */}
+            <div id="about" className="tile s6" style={{ display: 'grid', gap: 10, alignContent: 'start' }}>
+              <span className="tile-label">{t.aboutTitle}</span>
+              <p style={{ fontSize: 14, lineHeight: 1.65, color: 'var(--soft)', textWrap: 'pretty' }}>{t.aboutBody}</p>
+              <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap', marginTop: 4 }}>
+                <span style={{ fontSize: 12.5, color: 'var(--muted)' }}>B.Sc. Informatics · UPT Timișoara</span>
+                {spoken.map(sp => <span key={sp.name} style={{ fontSize: 12.5, color: 'var(--muted)' }}>{sp.name} — {sp.level}</span>)}
               </div>
             </div>
-          </section>
 
-          {/* ── stats strip ── */}
-          <section style={{ ...sectionPad, padding: '34px 24px 56px' }}>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: 10 }}>
-              {stats.map(s => (
-                <div key={s.label} style={{ padding: '16px 18px', borderRadius: 'var(--r-md)', background: `color-mix(in srgb, ${s.color} 7%, var(--card))`, border: `1.5px solid color-mix(in srgb, ${s.color} 22%, var(--line))` }}>
-                  <div style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 32, letterSpacing: '-0.02em', color: s.color }}>{s.value}</div>
-                  <div style={{ fontSize: 12.5, color: 'var(--ink-soft)', lineHeight: 1.35 }}>{s.label}</div>
+            {/* skills */}
+            <div className="tile s6" style={{ display: 'grid', gap: 9, alignContent: 'start' }}>
+              <span className="tile-label">{t.skillsTitle}</span>
+              {skills.map(sk => (
+                <div key={sk.group} style={{ display: 'grid', gridTemplateColumns: '70px 1fr', gap: 12, alignItems: 'baseline' }}>
+                  <span className="mono" style={{ fontSize: 10.5, color: 'var(--accent)' }}>{sk.group}</span>
+                  <span style={{ fontSize: 13, color: 'var(--soft)', lineHeight: 1.5 }}>{sk.items}</span>
                 </div>
               ))}
             </div>
-          </section>
 
-          {/* ── work ── */}
-          <section id="work" style={{ background: 'var(--paper-deep)', borderTop: '1.5px solid var(--line)', borderBottom: '1.5px solid var(--line)' }}>
-            <div style={{ ...sectionPad, padding: '52px 24px 60px' }}>
-              <div className="eyebrow" style={{ marginBottom: 10, color: 'var(--accent)' }}>{t.workKicker}</div>
-              <h2 style={{ fontSize: 'clamp(26px, 3.6vw, 38px)', maxWidth: '24ch', marginBottom: 6 }}>{t.workTitle}</h2>
-              <p style={{ maxWidth: '58ch', color: 'var(--ink-soft)', fontSize: 15, marginBottom: 22 }}>{t.workBody}</p>
-
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 7, marginBottom: 24 }}>
-                <button className={'chip' + (filter === null ? ' on' : '')} onClick={() => setFilter(null)} style={{ '--flavor': 'var(--ink)' }}>{t.all}</button>
-                {domains.map(d => (
-                  <button key={d} className={'chip' + (filter === d ? ' on' : '')} onClick={() => setFilter(filter === d ? null : d)} style={{ '--flavor': 'var(--ink)' }}>{d}</button>
-                ))}
+            {/* contact */}
+            <div id="contact" className="tile s12" style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 18, padding: 'clamp(22px, 2.6vw, 32px)', background: 'radial-gradient(100% 160% at 100% 0%, color-mix(in srgb, var(--pop) 12%, transparent), transparent 55%), var(--card)' }}>
+              <div style={{ display: 'grid', gap: 4 }}>
+                <h2 style={{ fontSize: 'clamp(22px, 2.6vw, 30px)' }}>{t.contactTitle}</h2>
+                <p style={{ color: 'var(--soft)', fontSize: 14, maxWidth: '52ch' }}>{t.contactBody}</p>
               </div>
-
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: 16 }}>
-                {shown.map(c => (
-                  <button key={c.id} className="case-card" onClick={() => openCase(c.id)} style={{ '--flavor': FLAVOR[c.id] }}>
-                    <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 10 }}>
-                      <span className="eyebrow">{L(c.sector).split('·')[0].trim()}</span>
-                      <span className="mono" style={{ fontSize: 10.5, color: 'var(--muted)' }}>{L(c.period)}</span>
-                    </span>
-                    <span style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 22, letterSpacing: '-0.02em' }}>{c.client}</span>
-                    <span style={{ fontSize: 13.5, color: 'var(--ink-soft)', lineHeight: 1.5, textWrap: 'pretty' }}>{L(c.oneLiner)}</span>
-                    <span style={{ display: 'flex', flexWrap: 'wrap', gap: 4, marginTop: 2 }}>
-                      {c.tags.slice(0, 4).map(tag => <span key={tag} className="tagette">{tag}</span>)}
-                    </span>
-                    <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--flavor)', marginTop: 4 }}>{t.caseStudy} →</span>
-                  </button>
-                ))}
-              </div>
-              {shown.length === 0 && <p style={{ padding: '26px 0', color: 'var(--muted)' }}>{t.noResults}</p>}
-            </div>
-          </section>
-
-          {/* ── earlier ── */}
-          <section style={{ ...sectionPad, padding: '48px 24px' }}>
-            <div className="eyebrow" style={{ marginBottom: 14, color: 'var(--muted)' }}>{t.earlierTitle}</div>
-            <div>
-              {EARLIER.map(e => (
-                <div key={L(e.client)} className="earlier-row" style={{ display: 'grid', gridTemplateColumns: '150px 200px 1fr', gap: 18, padding: '11px 0', borderBottom: '1.5px solid var(--line)', alignItems: 'baseline' }}>
-                  <span className="mono" style={{ fontSize: 11, color: 'var(--muted)' }}>{L(e.period)}</span>
-                  <span style={{ fontWeight: 600, fontSize: 14.5 }}>{L(e.client)}</span>
-                  <span style={{ fontSize: 13.5, color: 'var(--ink-soft)', textWrap: 'pretty' }}>{L(e.note)}</span>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* ── about ── */}
-          <section id="about" className="about-grid" style={{ ...sectionPad, padding: '24px 24px 56px', display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: 40 }}>
-            <div>
-              <h2 style={{ fontSize: 'clamp(24px, 3vw, 32px)', marginBottom: 14 }}>{t.aboutTitle}</h2>
-              <p style={{ maxWidth: '58ch', color: 'var(--ink-soft)', lineHeight: 1.65, textWrap: 'pretty' }}>{t.aboutBody}</p>
-              <div style={{ display: 'flex', gap: 26, marginTop: 22, flexWrap: 'wrap' }}>
-                <div>
-                  <div className="eyebrow" style={{ color: 'var(--muted)', marginBottom: 6 }}>{t.eduTitle}</div>
-                  <div style={{ fontSize: 14, fontWeight: 600 }}>B.Sc. Informatics</div>
-                  <div style={{ fontSize: 12.5, color: 'var(--muted)' }}>UPT Timișoara · 2011—2014</div>
-                </div>
-                <div>
-                  <div className="eyebrow" style={{ color: 'var(--muted)', marginBottom: 6 }}>{t.langTitle}</div>
-                  {spoken.map(s => (
-                    <div key={s.name} style={{ display: 'flex', gap: 10, fontSize: 13, color: 'var(--ink-soft)' }}>
-                      <span style={{ fontWeight: 600 }}>{s.name}</span><span style={{ color: 'var(--muted)' }}>{s.level}</span>
-                    </div>
-                  ))}
-                </div>
+              <div style={{ marginLeft: 'auto', display: 'flex', flexWrap: 'wrap', gap: 10, alignItems: 'center' }}>
+                <a className="btn btn-pop" href="mailto:sergiu@tigan.dev">sergiu@tigan.dev</a>
+                <span style={{ fontSize: 13, color: 'var(--muted)' }}>+40 740 014 666</span>
               </div>
             </div>
-            <div>
-              <div className="eyebrow" style={{ color: 'var(--muted)', marginBottom: 12 }}>{t.skillsTitle}</div>
-              <div style={{ display: 'grid', gap: 10 }}>
-                {skills.map(s => (
-                  <div key={s.group} style={{ display: 'grid', gridTemplateColumns: '72px 1fr', gap: 12, alignItems: 'baseline' }}>
-                    <span className="mono" style={{ fontSize: 11, color: 'var(--accent)' }}>{s.group}</span>
-                    <span style={{ fontSize: 13.5, color: 'var(--ink-soft)', lineHeight: 1.55 }}>{s.items}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
 
-          {/* ── contact ── */}
-          <section id="contact" style={{ ...sectionPad, paddingBottom: 80 }}>
-            <div className="contact-grid" style={{ borderRadius: 'var(--r-lg)', background: 'var(--ink)', color: '#f4efe6', padding: 'clamp(26px, 4vw, 44px)', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 38 }}>
-              <div>
-                <div className="eyebrow" style={{ color: 'var(--sun)', marginBottom: 10 }}>{t.contactKicker}</div>
-                <h2 style={{ fontSize: 'clamp(24px, 3.4vw, 36px)', marginBottom: 12, color: '#fffdf9' }}>{t.contactTitle}</h2>
-                <p style={{ color: '#c9c2b2', maxWidth: '40ch', lineHeight: 1.65, textWrap: 'pretty' }}>{t.contactBody}</p>
-                <div style={{ display: 'grid', gap: 6, marginTop: 20, fontSize: 14 }}>
-                  <a href="mailto:sergiu@tigan.dev" style={{ color: 'var(--sun)' }}>sergiu@tigan.dev</a>
-                  <span style={{ color: '#9a937f' }}>+40 740 014 666</span>
-                  <span style={{ color: '#9a937f' }}>{t.contactLoc}</span>
-                  <a href="/Sergiu_Tigan_CV.pdf" download="Sergiu_Tigan_CV.pdf" style={{ color: 'var(--sun)' }}>{t.cv} (PDF)</a>
-                </div>
-              </div>
-              {!sent ? (
-                <form onSubmit={onSubmit} style={{ display: 'grid', gap: 11, alignContent: 'start' }}>
-                  {[['name', t.fName, t.phName, 'text'], ['email', t.fEmail, 'you@company.com', 'email']].map(([name, label, ph, type]) => (
-                    <label key={name} style={{ display: 'grid', gap: 4, fontSize: 12, color: '#c9c2b2' }}>{label}
-                      <input className="input" name={name} type={type} required placeholder={ph} style={{ background: '#2f2b24', borderColor: '#453f33', color: '#f4efe6' }} />
-                    </label>
-                  ))}
-                  <label style={{ display: 'grid', gap: 4, fontSize: 12, color: '#c9c2b2' }}>{t.fType}
-                    <select className="input" name="engagement" style={{ background: '#2f2b24', borderColor: '#453f33', color: '#f4efe6' }}>
-                      {engagementTypes.map(o => <option key={o}>{o}</option>)}
-                    </select>
-                  </label>
-                  <label style={{ display: 'grid', gap: 4, fontSize: 12, color: '#c9c2b2' }}>{t.fMsg}
-                    <textarea className="input" name="message" rows="3" placeholder={t.phMsg} style={{ background: '#2f2b24', borderColor: '#453f33', color: '#f4efe6' }}></textarea>
-                  </label>
-                  <button className="btn btn-solid" type="submit" style={{ justifySelf: 'start', '--flavor': 'var(--sun)', color: '#221f1a' }}>{t.fSend}</button>
-                </form>
-              ) : (
-                <div style={{ display: 'grid', alignContent: 'center', gap: 8, borderRadius: 'var(--r-md)', padding: 26, background: '#2f2b24', animation: 'rise 0.3s ease' }}>
-                  <span style={{ fontSize: 22, color: 'var(--sun)' }}>✓</span>
-                  <h4 style={{ color: '#fffdf9' }}>{t.sentTitle}</h4>
-                  <p style={{ fontSize: 13, color: '#c9c2b2' }}>{t.sentBody}</p>
-                  <button className="btn btn-ghost" onClick={() => setSent(false)} style={{ justifySelf: 'start', fontSize: 12, '--flavor': 'var(--sun)' }}>{t.sentAgain}</button>
-                </div>
-              )}
-            </div>
-          </section>
+          </div>
         </main>
       )}
 
