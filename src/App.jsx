@@ -2,6 +2,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { T, CASES, EARLIER } from './data.js'
 import Demo from './Demo.jsx'
+import Logo from './Logo.jsx'
 
 // Every case study re-themes the page — the site is itself white-labelled,
 // which is the thing Sergiu actually builds for a living.
@@ -183,7 +184,7 @@ export default function App() {
       <header style={{ position: 'sticky', top: 0, zIndex: 20, backdropFilter: 'blur(12px)', background: 'color-mix(in srgb, var(--paper) 88%, transparent)', borderBottom: '1.5px solid var(--line)' }}>
         <div className="header-inner" style={{ ...sectionPad, padding: '12px 24px', display: 'flex', alignItems: 'center', gap: 14 }}>
           <button onClick={goHome} style={{ cursor: 'pointer', font: 'inherit', background: 'transparent', border: 0, padding: 0, display: 'flex', alignItems: 'center', gap: 10, color: 'var(--ink)' }}>
-            <span aria-hidden style={{ width: 12, height: 12, borderRadius: 3, background: flavor, transition: 'background 0.3s ease', transform: 'rotate(45deg)' }}></span>
+            <span aria-hidden style={{ color: flavor, transition: 'color 0.3s ease', display: 'flex' }}><Logo size={24} /></span>
             <span style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 17, letterSpacing: '-0.02em' }}>Sergiu Țigan</span>
           </button>
           <nav style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 2 }}>
@@ -203,7 +204,8 @@ export default function App() {
       {view === 'home' && (
         <main>
           {/* ── hero ── */}
-          <section style={{ ...sectionPad, padding: '64px 24px 36px' }}>
+          <section className="hero-grid" style={{ ...sectionPad, padding: '64px 24px 36px', display: 'grid', gridTemplateColumns: '1fr auto', gap: 30, alignItems: 'center' }}>
+            <div>
             <div className="rise" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 18 }}>
               <span style={{ width: 8, height: 8, borderRadius: 999, background: 'var(--leaf)' }}></span>
               <span className="eyebrow" style={{ color: 'var(--ink-soft)' }}>{t.available}</span>
@@ -222,6 +224,10 @@ export default function App() {
                 <a href="https://github.com/SergiuTigan" target="_blank" rel="noreferrer">GitHub</a>
                 <a href="https://linkedin.com/in/sergiu-tigan" target="_blank" rel="noreferrer">LinkedIn</a>
               </span>
+            </div>
+            </div>
+            <div className="rise rise-2 hero-logo" style={{ color: 'var(--accent)', paddingRight: 18 }}>
+              <Logo size={190} detailed />
             </div>
           </section>
 
@@ -516,7 +522,7 @@ export default function App() {
 
       <footer style={{ borderTop: '1.5px solid var(--line)' }}>
         <div style={{ ...sectionPad, padding: '20px 24px', display: 'flex', gap: 12, flexWrap: 'wrap', alignItems: 'center', fontSize: 12, color: 'var(--muted)' }}>
-          <span aria-hidden style={{ width: 8, height: 8, borderRadius: 2, background: flavor, transform: 'rotate(45deg)' }}></span>
+          <span aria-hidden style={{ color: flavor, display: 'flex' }}><Logo size={18} ink="var(--muted)" /></span>
           <span>© 2026 Sergiu-Marian Țigan · Next Level Tech SRL</span>
         </div>
       </footer>

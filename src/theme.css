@@ -204,6 +204,8 @@ textarea.input { min-height: 88px; resize: vertical; }
 /* ── responsive ── */
 @media (max-width: 860px) {
   .grid-2col, .about-grid, .contact-grid, .pn-grid, .case-head { grid-template-columns: 1fr !important; }
+  .hero-grid { grid-template-columns: 1fr !important; }
+  .hero-logo { display: none; }
   .header-inner { flex-wrap: wrap; gap: 8px !important; }
   .header-inner nav { order: 3; width: 100%; margin-left: 0 !important; overflow-x: auto; }
   .earlier-row { grid-template-columns: 1fr !important; gap: 2px !important; }
