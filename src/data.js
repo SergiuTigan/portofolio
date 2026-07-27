@@ -3,7 +3,7 @@ const T = (en, ro) => ({ en, ro });
 
 const CASES = [
   {
-    id: 'devhub', client: 'DevHub', demo: 'devhub',
+    id: 'platform', client: 'Platform Operator', demo: 'platform',
     sector: T('Regulated B2C · white-label platform', 'B2C reglementat · platformă white-label'),
     period: T('Jun 2025 — present', 'Iun 2025 — prezent'),
     tags: ['Angular', 'NgRx', 'Micro-frontends', 'Design systems', 'PWA'],

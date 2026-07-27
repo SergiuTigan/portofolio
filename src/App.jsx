@@ -6,12 +6,12 @@ import Demo from './Demo.jsx'
 // Every case study re-themes the page — the site is itself white-labelled,
 // which is the thing Sergiu actually builds for a living.
 const FLAVOR = {
-  devhub: '#6c4ce8', exadel: '#0e8a7b', mtd: '#2f6de0', she: '#d98a16',
+  platform: '#6c4ce8', exadel: '#0e8a7b', mtd: '#2f6de0', she: '#d98a16',
   be: '#2e7d4f', pulse: '#d6367e', dobby: '#e8641b', luppy: '#4ca84c', horae: '#d93a63',
 }
 
 const DOMAIN = {
-  devhub: 'Regulated B2C', exadel: 'Compliance', mtd: 'Automotive', she: 'Banking & finance',
+  platform: 'Regulated B2C', exadel: 'Compliance', mtd: 'Automotive', she: 'Banking & finance',
   be: 'Banking & finance', pulse: 'Fitness', dobby: 'Food & hospitality',
   luppy: 'Health', horae: 'Food & hospitality',
 }

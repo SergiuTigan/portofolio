@@ -716,7 +716,7 @@ function HoraeDemo({ L }) {
 
 /* ── frame ──────────────────────────────────────────────────────────── */
 const KINDS = {
-  devhub: DevhubDemo, exadel: ExadelDemo, mtd: MtdDemo, she: SheDemo,
+  platform: DevhubDemo, exadel: ExadelDemo, mtd: MtdDemo, she: SheDemo,
   be: BeDemo, pulse: PulseDemo, dobby: DobbyDemo, luppy: LuppyDemo, horae: HoraeDemo,
 }
 
