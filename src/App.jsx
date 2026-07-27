@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { T, CASES, EARLIER } from './data.js'
 import Demo from './Demo.jsx'
 import Logo from './Logo.jsx'
+import HeroDemo from './HeroDemo.jsx'
 
 // Every case study re-themes the page — the site is itself white-labelled,
 // which is the thing Sergiu actually builds for a living.
@@ -204,40 +205,58 @@ export default function App() {
       {view === 'home' && (
         <main>
           {/* ── hero ── */}
-          <section className="hero-grid" style={{ ...sectionPad, padding: '64px 24px 36px', display: 'grid', gridTemplateColumns: '1fr auto', gap: 30, alignItems: 'center' }}>
-            <div>
-            <div className="rise" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 18 }}>
-              <span style={{ width: 8, height: 8, borderRadius: 999, background: 'var(--leaf)' }}></span>
-              <span className="eyebrow" style={{ color: 'var(--ink-soft)' }}>{t.available}</span>
+          <section className="hero-wrap">
+            <div className="hero-grid" style={{ ...sectionPad, padding: '58px 24px 30px', display: 'grid', gridTemplateColumns: '1fr auto', gap: 44, alignItems: 'center', position: 'relative', zIndex: 1 }}>
+              <div>
+                <div className="rise" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 18 }}>
+                  <span className="pulse-dot" style={{ width: 8, height: 8, borderRadius: 999, background: 'var(--leaf)' }}></span>
+                  <span className="eyebrow" style={{ color: 'var(--ink-soft)' }}>{t.available}</span>
+                </div>
+                <h1 className="rise rise-1" style={{ fontSize: 'clamp(40px, 6vw, 72px)', fontWeight: 800, maxWidth: '16ch', marginBottom: 18 }}>
+                  {lang === 'en'
+                    ? <>Angular, where a mistake is <em className="hl-swash">expensive</em>.</>
+                    : <>Angular, unde o greșeală <em className="hl-swash">costă mult</em>.</>}
+                </h1>
+                <p className="rise rise-2" style={{ maxWidth: '52ch', fontSize: 17.5, lineHeight: 1.55, color: 'var(--ink-soft)', textWrap: 'pretty', marginBottom: 26 }}>{t.heroBody}</p>
+                <div className="rise rise-3" style={{ display: 'flex', flexWrap: 'wrap', gap: 10, alignItems: 'center' }}>
+                  <button className="btn btn-solid" onClick={() => jump('work')} style={{ '--flavor': 'var(--accent)' }}>{t.ctaWork}</button>
+                  <button className="btn btn-line" onClick={() => jump('contact')}>{t.hire}</button>
+                  <span style={{ display: 'flex', gap: 16, marginLeft: 6, fontSize: 13 }}>
+                    <a href="mailto:sergiu@tigan.dev">sergiu@tigan.dev</a>
+                    <a href="https://github.com/SergiuTigan" target="_blank" rel="noreferrer">GitHub</a>
+                    <a href="https://linkedin.com/in/sergiu-tigan" target="_blank" rel="noreferrer">LinkedIn</a>
+                  </span>
+                </div>
+              </div>
+              <div className="rise rise-2 hero-logo">
+                <HeroDemo lang={lang} onOpenCase={() => openCase('platform')} />
+              </div>
             </div>
-            <h1 className="rise rise-1" style={{ fontSize: 'clamp(40px, 6.4vw, 76px)', fontWeight: 800, maxWidth: '16ch', marginBottom: 18 }}>
-              {lang === 'en'
-                ? <>Angular, where a mistake is <em style={{ fontStyle: 'normal', color: 'var(--accent)' }}>expensive</em>.</>
-                : <>Angular, unde o greșeală <em style={{ fontStyle: 'normal', color: 'var(--accent)' }}>costă mult</em>.</>}
-            </h1>
-            <p className="rise rise-2" style={{ maxWidth: '52ch', fontSize: 17.5, lineHeight: 1.55, color: 'var(--ink-soft)', textWrap: 'pretty', marginBottom: 26 }}>{t.heroBody}</p>
-            <div className="rise rise-3" style={{ display: 'flex', flexWrap: 'wrap', gap: 10, alignItems: 'center' }}>
-              <button className="btn btn-solid" onClick={() => jump('work')} style={{ '--flavor': 'var(--accent)' }}>{t.ctaWork}</button>
-              <button className="btn btn-line" onClick={() => jump('contact')}>{t.hire}</button>
-              <span style={{ display: 'flex', gap: 16, marginLeft: 6, fontSize: 13 }}>
-                <a href="mailto:sergiu@tigan.dev">sergiu@tigan.dev</a>
-                <a href="https://github.com/SergiuTigan" target="_blank" rel="noreferrer">GitHub</a>
-                <a href="https://linkedin.com/in/sergiu-tigan" target="_blank" rel="noreferrer">LinkedIn</a>
-              </span>
-            </div>
-            </div>
-            <div className="rise rise-2 hero-logo" style={{ color: 'var(--accent)', paddingRight: 18 }}>
-              <Logo size={190} detailed />
+
+            {/* domain marquee */}
+            <div className="marquee" aria-hidden style={{ position: 'relative', zIndex: 1 }}>
+              <div className="marquee-track">
+                {[0, 1].map(copy => (
+                  <span key={copy} className="marquee-copy">
+                    {['Volkswagen', 'Seat', 'Porsche', 'Cupra', 'Bentley', L(T('Banking', 'Banking')), L(T('Regulatory compliance', 'Conformitate')), L(T('10 consumer brands', '10 branduri')), 'Micro-frontends', 'White-label', 'Nx', 'NgRx', L(T('3 own products', '3 produse proprii'))].map(w => (
+                      <span key={w} className="marquee-item">
+                        <svg viewBox="0 0 12 12" width="7" height="7" style={{ color: 'var(--accent)' }}><path d="M 6 0 L 12 6 L 6 12 L 0 6 Z" fill="currentColor" /></svg>
+                        {w}
+                      </span>
+                    ))}
+                  </span>
+                ))}
+              </div>
             </div>
           </section>
 
           {/* ── stats strip ── */}
-          <section style={{ ...sectionPad, paddingBottom: 56 }}>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', border: '1.5px solid var(--line)', borderRadius: 'var(--r-lg)', overflow: 'hidden', background: 'var(--card)' }}>
+          <section style={{ ...sectionPad, padding: '34px 24px 56px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: 10 }}>
               {stats.map(s => (
-                <div key={s.label} style={{ padding: '18px 20px', borderLeft: '1.5px solid var(--line)', marginLeft: -1.5 }}>
-                  <div style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 30, letterSpacing: '-0.02em', color: s.color }}>{s.value}</div>
-                  <div style={{ fontSize: 12.5, color: 'var(--muted)', lineHeight: 1.35 }}>{s.label}</div>
+                <div key={s.label} style={{ padding: '16px 18px', borderRadius: 'var(--r-md)', background: `color-mix(in srgb, ${s.color} 7%, var(--card))`, border: `1.5px solid color-mix(in srgb, ${s.color} 22%, var(--line))` }}>
+                  <div style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 32, letterSpacing: '-0.02em', color: s.color }}>{s.value}</div>
+                  <div style={{ fontSize: 12.5, color: 'var(--ink-soft)', lineHeight: 1.35 }}>{s.label}</div>
                 </div>
               ))}
             </div>

@@ -211,3 +211,54 @@ textarea.input { min-height: 88px; resize: vertical; }
   .earlier-row { grid-template-columns: 1fr !important; gap: 2px !important; }
   .demo-2col, .demo-sidebar { grid-template-columns: 1fr !important; }
 }
+
+/* ── hero: layered depth ── */
+.hero-wrap {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(560px 380px at 12% -10%, color-mix(in srgb, var(--accent) 9%, transparent), transparent 70%),
+    radial-gradient(640px 420px at 88% 10%, color-mix(in srgb, var(--sun) 14%, transparent), transparent 72%),
+    radial-gradient(420px 300px at 70% 90%, color-mix(in srgb, #6c4ce8 6%, transparent), transparent 70%),
+    var(--paper);
+}
+.hero-wrap::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: radial-gradient(color-mix(in srgb, var(--ink) 14%, transparent) 1px, transparent 1px);
+  background-size: 26px 26px;
+  mask-image: radial-gradient(720px 480px at 30% 20%, #000 20%, transparent 75%);
+  pointer-events: none;
+}
+.hl-swash {
+  font-style: normal;
+  color: var(--accent);
+  background: linear-gradient(180deg, transparent 62%, color-mix(in srgb, var(--sun) 42%, transparent) 62%);
+  border-radius: 4px;
+  padding: 0 4px;
+}
+@keyframes pulseDot { 0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--leaf) 45%, transparent) } 60% { box-shadow: 0 0 0 7px transparent } }
+.pulse-dot { animation: pulseDot 2.2s ease-out infinite; }
+
+/* ── marquee ── */
+.marquee {
+  overflow: hidden;
+  border-top: 1.5px solid var(--line);
+  border-bottom: 1.5px solid var(--line);
+  background: color-mix(in srgb, var(--card) 65%, transparent);
+  backdrop-filter: blur(4px);
+}
+.marquee-track { display: flex; width: max-content; animation: marquee 36s linear infinite; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+.marquee-copy { display: flex; }
+.marquee-item {
+  display: inline-flex; align-items: center; gap: 9px;
+  padding: 11px 0 11px 26px;
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--ink-soft); white-space: nowrap;
+}
+@keyframes marquee { from { transform: translateX(0) } to { transform: translateX(-50%) } }
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}
+
