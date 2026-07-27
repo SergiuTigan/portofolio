@@ -232,7 +232,7 @@ export default function App() {
             {/* photo */}
             <div className="tile s5 r2 rise rise-1" style={{ padding: 0, minHeight: 300 }}>
               {photoOk ? (
-                <img src="/me.jpg" alt="Sergiu Țigan" onError={() => setPhotoOk(false)} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', filter: 'saturate(0.92)' }} />
+                <img src="/me.jpg" alt="Sergiu Țigan" onError={() => setPhotoOk(false)} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: '50% 22%', display: 'block', filter: 'saturate(0.94) contrast(1.02)' }} />
               ) : (
                 <div style={{ height: '100%', display: 'grid', placeItems: 'center', background: 'radial-gradient(120% 120% at 80% 0%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 60%), var(--card)', color: 'var(--accent)' }}>
                   <Logo size={150} detailed ink="var(--ink)" />
