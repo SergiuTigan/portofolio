@@ -264,8 +264,8 @@ export default function App() {
               </div>
             ))}
             {/* CV tile */}
-            <a className="tile tile-btn rise rise-4" href="/Sergiu_Tigan_CV.pdf" download="Sergiu_Tigan_CV.pdf" style={{ gridColumn: 'span 2', '--flavor': 'var(--pop)', display: 'grid', alignContent: 'center', justifyItems: 'center', gap: 6, textDecoration: 'none', background: 'var(--pop)', color: 'var(--pop-ink)', border: 0 }}>
-              <span style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 20 }}>CV ↓</span>
+            <a className="tile tile-btn cv-tile rise rise-4" href="/Sergiu_Tigan_CV.pdf" download="Sergiu_Tigan_CV.pdf" style={{ '--flavor': 'var(--pop)', textDecoration: 'none', background: 'var(--pop)', color: 'var(--pop-ink)', border: 0 }}>
+              <span style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 20 }}>{lang === 'en' ? 'Download CV' : 'Descarcă CV'} ↓</span>
               <span style={{ fontFamily: 'var(--font-mono)', fontSize: 9.5, letterSpacing: '0.1em', textTransform: 'uppercase' }}>PDF</span>
             </a>
 
@@ -285,10 +285,10 @@ export default function App() {
               <span style={{ display: 'flex', flexWrap: 'wrap', gap: 5, marginTop: 4 }}>
                 {CASES.find(c => c.id === 'horae').tags.slice(0, 5).map(tg => <span key={tg} className="tagette">{tg}</span>)}
               </span>
-              <span style={{ display: 'flex', gap: 18, marginTop: 10, alignItems: 'baseline' }}>
-                <span><b style={{ fontFamily: 'var(--font-display)', fontSize: 22, color: 'var(--flavor)' }}>4</b> <span style={{ fontSize: 11.5, color: 'var(--muted)' }}>{L(T('clients, one API', 'clienți, un API'))}</span></span>
-                <span><b style={{ fontFamily: 'var(--font-display)', fontSize: 22, color: 'var(--flavor)' }}>~22</b> <span style={{ fontSize: 11.5, color: 'var(--muted)' }}>{L(T('org-scoped models', 'modele multi-tenant'))}</span></span>
-                <span style={{ marginLeft: 'auto', fontSize: 13, fontWeight: 600, color: 'var(--flavor)' }}>{t.caseStudy} →</span>
+              <span style={{ display: 'flex', flexWrap: 'wrap', gap: '8px 18px', marginTop: 10, alignItems: 'baseline' }}>
+                <span style={{ whiteSpace: 'nowrap' }}><b style={{ fontFamily: 'var(--font-display)', fontSize: 22, color: 'var(--flavor)' }}>4</b> <span style={{ fontSize: 11.5, color: 'var(--muted)' }}>{L(T('clients, one API', 'clienți, un API'))}</span></span>
+                <span style={{ whiteSpace: 'nowrap' }}><b style={{ fontFamily: 'var(--font-display)', fontSize: 22, color: 'var(--flavor)' }}>~22</b> <span style={{ fontSize: 11.5, color: 'var(--muted)' }}>{L(T('org-scoped models', 'modele multi-tenant'))}</span></span>
+                <span style={{ marginLeft: 'auto', whiteSpace: 'nowrap', fontSize: 13, fontWeight: 600, color: 'var(--flavor)' }}>{t.caseStudy} →</span>
               </span>
             </button>
 

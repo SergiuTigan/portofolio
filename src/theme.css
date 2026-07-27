@@ -170,6 +170,11 @@ textarea.input { min-height: 88px; resize: vertical; }
   text-transform: uppercase; color: var(--muted);
 }
 
+.cv-tile {
+  grid-column: span 2;
+  display: grid; align-content: center; justify-items: center; gap: 6px;
+}
+
 /* responsive spans */
 .s12 { grid-column: span 12; }
 .s8 { grid-column: span 8; }
@@ -187,10 +192,19 @@ textarea.input { min-height: 88px; resize: vertical; }
   .s3 { grid-column: span 6; }
   .s6 { grid-column: span 12; }
 }
+@media (max-width: 1080px) and (min-width: 641px) {
+  .cv-tile { grid-column: span 4; }
+}
 @media (max-width: 640px) {
   .bento { gap: 10px; }
   .s3, .s4, .s5, .s6 { grid-column: span 12; }
   .stat-tile { grid-column: span 6 !important; }
+  .cv-tile {
+    grid-column: span 12;
+    display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 10px;
+    padding: 16px;
+  }
+  .tile { padding: 16px; }
 }
 
 /* ── accordion (case pages) ── */

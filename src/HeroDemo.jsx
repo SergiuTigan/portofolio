@@ -36,7 +36,7 @@ export default function HeroDemo({ lang, onOpenCase }) {
   const pick = n => { idleRef.current = Date.now(); setI(n) }
 
   return (
-    <div style={{ display: 'grid', gap: 10, width: 340 }}>
+    <div style={{ display: 'grid', gap: 10, width: 'min(340px, 100%)' }}>
       <div style={{ borderRadius: 16, overflow: 'hidden', background: '#14161f', boxShadow: '0 24px 60px -20px rgba(24, 20, 14, 0.45), 0 0 0 1px rgba(24,20,14,0.08)' }}>
         {/* window chrome */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '9px 13px', background: '#14161f' }}>
