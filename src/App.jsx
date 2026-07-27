@@ -465,7 +465,7 @@ export default function App() {
               </div>
             </details>
 
-            <details className="acc">
+            <details className="acc" open>
               <summary>{t.storyTitle}</summary>
               <div className="acc-body">
                 {[...cv.c.context, ...cv.c.challenge].map((p, i) => (
@@ -474,7 +474,7 @@ export default function App() {
               </div>
             </details>
 
-            <details className="acc">
+            <details className="acc" open>
               <summary>{t.archTitle}</summary>
               <div className="acc-body">
                 <div style={{ display: 'grid', gap: 10 }}>
@@ -499,7 +499,7 @@ export default function App() {
               </div>
             </details>
 
-            <details className="acc">
+            <details className="acc" open>
               <summary>{t.lessonsTitle}</summary>
               <div className="acc-body" style={{ display: 'grid', gap: 12 }}>
                 {cv.c.lessons.map(l => (
