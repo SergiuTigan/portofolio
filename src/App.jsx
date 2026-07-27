@@ -81,7 +81,7 @@ export default function App() {
     hire: L(T('Work with me', 'Hai să lucrăm')),
     cv: L(T('Download CV', 'Descarcă CV')),
     available: L(T('Available for contract · remote', 'Disponibil pentru contract · remote')),
-    heroBody: L(T('Eight years of frontend for regulated consumer platforms, car makers, banks and compliance teams — plus three products of my own, designed, shipped and still running.', 'Opt ani de frontend pentru platforme de consum reglementate, producători auto, bănci și echipe de conformitate — plus trei produse proprii, proiectate, lansate și încă în funcțiune.')),
+    heroBody: L(T('8+ years shipping production Angular apps across regulated, high-stakes industries — automotive, banking, compliance, and high-traffic consumer platforms. I architect multi-brand and micro-frontend platforms, and run three SaaS products of my own.', '8+ ani de aplicații Angular în producție, în industrii reglementate cu miză mare — automotive, banking, conformitate și platforme de consum cu trafic intens. Proiectez platforme multi-brand și micro-frontend și operez trei produse SaaS proprii.')),
     ctaWork: L(T('See the work', 'Vezi proiectele')),
     workKicker: L(T('Case studies', 'Studii de caz')),
     workTitle: L(T('Nine projects, each in its own colors', 'Nouă proiecte, fiecare în culorile lui')),
@@ -229,10 +229,9 @@ export default function App() {
                 <span className="pulse-dot" style={{ width: 8, height: 8, borderRadius: 999, background: 'var(--leaf)' }}></span>
                 <span className="eyebrow" style={{ color: 'var(--soft)' }}>{t.available}</span>
               </div>
-              <h1 style={{ fontSize: 'clamp(34px, 4.6vw, 58px)', fontWeight: 800, maxWidth: '17ch' }}>
-                {lang === 'en'
-                  ? <>Angular, where a mistake is <em style={{ fontStyle: 'normal', color: 'var(--pop)' }}>expensive</em>.</>
-                  : <>Angular, unde o greșeală <em style={{ fontStyle: 'normal', color: 'var(--pop)' }}>costă mult</em>.</>}
+              <h1 style={{ fontSize: 'clamp(32px, 4.2vw, 54px)', fontWeight: 800, maxWidth: '18ch' }}>
+                Senior Frontend Engineer<span style={{ color: 'var(--pop)' }}>.</span>
+                <span style={{ display: 'block', fontSize: '0.48em', fontWeight: 600, color: 'var(--soft)', marginTop: 10, letterSpacing: '-0.01em' }}>Angular · TypeScript · {lang === 'en' ? 'multi-brand platforms' : 'platforme multi-brand'}</span>
               </h1>
               <p style={{ maxWidth: '52ch', fontSize: 16.5, lineHeight: 1.6, color: 'var(--soft)', textWrap: 'pretty' }}>{t.heroBody}</p>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, alignItems: 'center' }}>
