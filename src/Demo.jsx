@@ -641,14 +641,26 @@ function DobbyDemo({ L }) {
 function LuppyDemo({ L }) {
   const [role, setRole] = useState(0)
   const [log, setLog] = useState([])
-  const roles = [T('Owner', 'Proprietar'), T('Vet', 'Veterinar'), T('Clinic admin', 'Admin clinică')]
-  const recs = [
-    { label: L(T('Rabies vaccine', 'Vaccin antirabic')), detail: L(T('valid to 03 / 2027', 'valabil până 03 / 2027')), tag: L(T('shared', 'partajat')), roles: [0, 1, 2] },
-    { label: L(T('Deworming', 'Deparazitare')), detail: L(T('last: 12 May 2026', 'ultima: 12 mai 2026')), tag: L(T('shared', 'partajat')), roles: [0, 1, 2] },
+  const [extras, setExtras] = useState([])
+  const roles = [T('Owner', 'Proprietar'), T('Vet', 'Veterinar'), T('Clinic', 'Clinică')]
+  const baseRecs = [
+    { label: L(T('Rabies vaccine', 'Vaccin antirabic')), detail: L(T('valid to 03 / 2027', 'valabil până 03 / 2027')), tag: L(T('record', 'fișă')), roles: [0, 1, 2] },
+    { label: L(T('Blood panel', 'Hemoleucogramă')), detail: L(T('owner sees the summary; the vet sees full values', 'proprietarul vede sumarul; veterinarul, valorile complete')), tag: L(T('lab', 'analize')), roles: [0, 1, 2] },
     { label: L(T('Clinical notes', 'Note clinice')), detail: L(T('dermatitis follow-up', 'control dermatită')), tag: L(T('vet only', 'doar veterinar')), roles: [1, 2] },
-    { label: L(T('Prescription history', 'Istoric rețete')), detail: L(T('3 active items', '3 elemente active')), tag: L(T('vet only', 'doar veterinar')), roles: [1] },
+    { label: L(T('Appointment — Thu 14:30', 'Programare — joi 14:30')), detail: L(T('check-up · Dr. Pop', 'control · Dr. Pop')), tag: L(T('schedule', 'program')), roles: [0, 1, 2] },
     { label: L(T('Billing & consent', 'Facturare și consimțământ')), detail: L(T('2 documents on file', '2 documente la dosar')), tag: L(T('clinic', 'clinică')), roles: [2] },
   ]
+  const recs = [...baseRecs, ...extras]
+  const actions = [
+    { label: L(T('Request appointment', 'Cere programare')), rec: { label: L(T('Appointment — pending', 'Programare — în așteptare')), detail: L(T('requested by owner · awaiting clinic', 'cerută de proprietar · așteaptă clinica')), tag: L(T('schedule', 'program')), roles: [0, 1, 2] }, msg: L(T('Owner requested a visit — the clinic sees it instantly', 'Proprietarul a cerut o vizită — clinica o vede instant')) },
+    { label: L(T('Attach lab result', 'Atașează analiză')), rec: { label: L(T('Urinalysis — new', 'Sumar de urină — nou')), detail: L(T('full values for the vet, summary for the owner', 'valori complete pentru veterinar, sumar pentru proprietar')), tag: L(T('lab', 'analize')), roles: [0, 1, 2] }, msg: L(T('Vet attached a result — the owner gets the readable summary', 'Veterinarul a atașat un rezultat — proprietarul primește sumarul lizibil')) },
+    { label: L(T('Confirm appointment', 'Confirmă programarea')), rec: { label: L(T('Appointment — confirmed', 'Programare — confirmată')), detail: L(T('Thu 14:30 · Dr. Pop', 'joi 14:30 · Dr. Pop')), tag: L(T('schedule', 'program')), roles: [0, 1, 2] }, msg: L(T('Clinic confirmed — the owner is notified', 'Clinica a confirmat — proprietarul e notificat')) },
+  ]
+  const act = () => {
+    const a = actions[role]
+    setExtras(x => [...x, a.rec].slice(-2))
+    setLog(l => [{ t: stamp(), msg: a.msg }, ...l].slice(0, 4))
+  }
   return (
     <div className="demo-2col" style={{ padding: 18, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, alignItems: 'start' }}>
       <div>
@@ -660,17 +672,17 @@ function LuppyDemo({ L }) {
         <div style={{ border: '1px solid var(--color-accent-800)', borderRadius: 'var(--radius-lg)', background: 'radial-gradient(120% 90% at 20% 0%, #2b2741, #14161f)', padding: 16, boxShadow: 'var(--shadow-md)' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start' }}>
             <div>
-              <div style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--color-accent-400)' }}>{L(T('Digital pet passport', 'Pașaport digital'))}</div>
+              <div style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--color-accent-400)' }}>{L(T('Digital health record', 'Carnet de sănătate digital'))}</div>
               <h4 style={{ margin: '4px 0 0', fontSize: 20 }}>Mika</h4>
-              <div style={{ fontSize: 11, color: 'var(--color-neutral-400)' }}>{L(T('Shorthair · 4 y · chip 941…0072', 'Europeană · 4 ani · chip 941…0072'))}</div>
+              <div style={{ fontSize: 11, color: 'var(--color-neutral-400)' }}>{L(T('Shorthair · 4 y · chip 941…0072', 'Europeană · 4 ani · cip 941…0072'))}</div>
             </div>
-            <div style={{ width: 46, height: 46, borderRadius: 'var(--radius-md)', border: '1px solid var(--color-neutral-800)', display: 'grid', placeItems: 'center', fontSize: 9, color: 'var(--color-neutral-500)', textAlign: 'center', lineHeight: 1.2 }}>NFC / QR</div>
+            <div style={{ width: 46, height: 46, borderRadius: 'var(--radius-md)', border: '1px solid var(--color-neutral-800)', display: 'grid', placeItems: 'center', fontSize: 9, color: 'var(--color-neutral-500)', textAlign: 'center', lineHeight: 1.2 }}>{L(T('share', 'partajare'))} QR</div>
           </div>
           <div style={{ display: 'grid', gap: 5, marginTop: 14 }}>
-            {recs.map(r => {
+            {recs.map((r, ri) => {
               const on = r.roles.includes(role)
               return (
-                <div key={r.label} style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: 8, alignItems: 'center', padding: '7px 9px', borderRadius: 'var(--radius-sm)', background: on ? 'color-mix(in srgb, #e9e9ed 4%, transparent)' : 'transparent', border: `1px solid ${on ? 'var(--color-neutral-800)' : 'transparent'}`, fontSize: 11 }}>
+                <div key={ri} style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: 8, alignItems: 'center', padding: '7px 9px', borderRadius: 'var(--radius-sm)', background: on ? 'color-mix(in srgb, #e9e9ed 4%, transparent)' : 'transparent', border: `1px solid ${on ? 'var(--color-neutral-800)' : 'transparent'}`, fontSize: 11, animation: ri >= baseRecs.length ? 'demoRise 0.3s ease' : 'none' }}>
                   <span style={{ display: 'grid', gap: 1 }}>
                     <span>{r.label}</span>
                     <span style={{ fontSize: 10, color: 'var(--color-neutral-500)' }}>{on ? r.detail : L(T('hidden for this role', 'ascuns pentru acest rol'))}</span>
@@ -683,9 +695,7 @@ function LuppyDemo({ L }) {
         </div>
       </div>
       <div>
-        <button className="btn btn-primary" onClick={() => setLog(l => [{ t: stamp(), msg: L(T('Tag read · record opened as ', 'Tag citit · dosar deschis ca ')) + L(roles[role]) }, ...l].slice(0, 5))} style={{ width: '100%' }}>
-          {L(T('Simulate NFC tap', 'Simulează atingere NFC'))}
-        </button>
+        <button className="btn btn-primary" onClick={act} style={{ width: '100%' }}>{actions[role].label}</button>
         <div style={{ marginTop: 12, display: 'grid', gap: 6 }}>
           {log.map((l, i) => (
             <div key={i} style={{ fontSize: 11, display: 'flex', gap: 8, color: 'var(--color-neutral-400)', animation: 'demoRise 0.25s ease' }}>
@@ -695,7 +705,7 @@ function LuppyDemo({ L }) {
           ))}
         </div>
         <p style={{ marginTop: 14, fontSize: 11, color: 'var(--color-neutral-500)' }}>
-          {L(T('One record, three role-based views — the same NFC tag resolves to what that role is allowed to see.', 'Un singur dosar, trei vederi pe rol — același tag NFC arată doar ce are dreptul să vadă rolul respectiv.'))}
+          {L(T('One record, two portals: each role sees its own projection and acts on the same data — the owner books, the vet documents, the clinic runs the day.', 'O singură fișă, două portaluri: fiecare rol își vede propria proiecție și acționează pe aceleași date — proprietarul programează, veterinarul documentează, clinica organizează ziua.'))}
         </p>
       </div>
     </div>

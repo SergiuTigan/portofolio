@@ -324,43 +324,49 @@ const CASES = [
   },
   {
     id: 'luppy', client: 'Luppy', demo: 'luppy', own: true,
-    sector: T('Own product · digital pet passport', 'Produs propriu · pașaport digital pentru animale'),
-    period: 'luppy.tigan.dev',
-    tags: ['Next.js', 'Firebase', 'NFC / QR', 'RBAC'],
-    stack: ['Next.js', 'Firebase', 'NFC / QR', 'Role-based dashboards'],
-    oneLiner: T('NFC/QR health records for pets, with role-based dashboards for owners, vets and clinics.', 'Fișe medicale NFC/QR pentru animale, cu dashboarduri pe rol pentru proprietari, veterinari și clinici.'),
+    sector: T('Own product · digital pet health platform', 'Produs propriu · platformă digitală de sănătate veterinară'),
+    period: '2025',
+    tags: ['Next.js', 'Firebase', 'RBAC', 'Scheduling'],
+    stack: ['Next.js', 'Firebase', 'Role-based dashboards', 'Scheduling', 'Messaging'],
+    oneLiner: T('The pet health booklet, digitised — one medical record, two portals: the clinic runs administration, lab results and appointments; the owner follows their pet\'s health, books visits and messages the vet.', 'Carnetul de sănătate al animalului, digitalizat — o singură fișă medicală, două portaluri: clinica gestionează administrarea, analizele și programările; proprietarul urmărește sănătatea animalului, face programări și comunică cu veterinarul.'),
     context: [
-      T('Luppy puts a pet\'s health record behind an NFC tag or QR code, and shows a different view of it depending on who is holding the phone: owner, vet, or clinic administrator.', 'Luppy pune fișa medicală a animalului în spatele unui tag NFC sau cod QR și arată o vedere diferită, în funcție de cine ține telefonul: proprietar, veterinar sau administrator de clinică.'),
+      T('Luppy replaces the paper health booklet with a living medical record. On one side, a portal for veterinarians and clinics: patient administration, consultations, treatments, lab results and the clinic\'s appointment calendar. On the other, an app for the owner: the pet\'s profile and history, upcoming appointments, and a direct line to the clinic.', 'Luppy înlocuiește carnetul de sănătate pe hârtie cu o fișă medicală vie. Pe o parte, un portal pentru veterinari și clinici: administrarea pacienților, consultații, tratamente, analize și calendarul de programări al clinicii. Pe cealaltă, o aplicație pentru proprietar: profilul și istoricul animalului, programările următoare și o linie directă de comunicare cu clinica.'),
     ],
     challenge: [
-      T('One record, three audiences with genuinely different rights. Clinical notes are not the owner\'s to browse; billing is not the vet\'s concern. Role-based access has to be part of the data model, not a UI filter.', 'O singură fișă, trei audiențe cu drepturi cu adevărat diferite. Notele clinice nu sunt de citit de către proprietar; facturarea nu e treaba veterinarului. Accesul pe rol trebuie să fie parte din modelul de date, nu un filtru de UI.'),
+      T('One medical record, two very different readers. The vet needs clinical depth — values, dosages, differential notes; the owner needs clarity and reassurance. Both look at the same data, so the projection per role has to live in the data model, not in the UI.', 'O singură fișă medicală, doi cititori foarte diferiți. Veterinarul are nevoie de profunzime clinică — valori, dozaje, note diferențiale; proprietarul are nevoie de claritate și liniște. Amândoi se uită la aceleași date, deci proiecția pe rol trebuie să stea în modelul de date, nu în UI.'),
+      T('Scheduling and communication cut across both sides: a booking has to respect the clinic\'s real capacity, and a message thread has to connect owner and clinic without leaking clinical internals.', 'Programările și comunicarea traversează ambele părți: o programare trebuie să respecte capacitatea reală a clinicii, iar un fir de mesaje trebuie să lege proprietarul de clinică fără să scurgă detalii clinice interne.'),
     ],
     built: [
-      { title: T('NFC / QR record access', 'Acces la fișă prin NFC / QR'), body: T('Tap or scan resolves straight to the pet\'s record.', 'O atingere sau o scanare duce direct la fișa animalului.') },
-      { title: T('Role-based dashboards', 'Dashboarduri pe rol'), body: T('Owners, vets and clinics each get their own view of the same record.', 'Proprietarii, veterinarii și clinicile au fiecare propria vedere a aceleiași fișe.') },
-      { title: T('Health record timeline', 'Cronologia fișei medicale'), body: T('Vaccinations, treatments and documents in one place.', 'Vaccinări, tratamente și documente într-un singur loc.') },
+      { title: T('Clinic portal — patient administration', 'Portal de clinică — administrarea pacienților'), body: T('Records, consultations and treatments, managed by vets and clinic staff with role-appropriate access.', 'Fișe, consultații și tratamente, gestionate de veterinari și personalul clinicii, cu acces potrivit rolului.') },
+      { title: T('Lab results on the record', 'Analize atașate fișei'), body: T('Results attach to the medical record as they arrive — full values for the vet, a readable summary for the owner.', 'Rezultatele se atașează fișei pe măsură ce sosesc — valori complete pentru veterinar, un sumar lizibil pentru proprietar.') },
+      { title: T('Appointments', 'Programări'), body: T('Owners book online against the clinic\'s calendar; the clinic confirms, reschedules and keeps the day legible.', 'Proprietarii se programează online în calendarul clinicii; clinica confirmă, reprogramează și își ține ziua lizibilă.') },
+      { title: T('Owner–clinic messaging', 'Mesagerie proprietar–clinică'), body: T('A conversation thread anchored to the pet\'s record, so context never gets lost between visits.', 'Un fir de conversație ancorat în fișa animalului, ca între vizite contextul să nu se piardă.') },
+      { title: T('Role-based views of one record', 'Vederi pe rol ale aceleiași fișe'), body: T('Owner, vet and clinic administrator each get their own projection — what a role cannot see, it does not receive.', 'Proprietarul, veterinarul și administratorul clinicii au fiecare propria proiecție — ce nu are voie să vadă un rol, nici nu primește.') },
     ],
     metrics: [
-      { label: T('Roles supported', 'Roluri suportate'), before: '—', after: '3', note: T('Owner, vet, clinic administrator.', 'Proprietar, veterinar, administrator de clinică.') },
-      { label: T('Record access', 'Acces la fișă'), before: T('paper booklet', 'carnet de hârtie'), after: T('NFC / QR tap', 'atingere NFC / QR'), note: T('The record travels with the animal.', 'Fișa călătorește cu animalul.') },
-      { label: T('Permissions', 'Permisiuni'), before: T('UI filtering', 'filtrare în UI'), after: T('data model', 'model de date'), note: T('What a role cannot see, it does not receive.', 'Ce nu are dreptul să vadă un rol, nici nu îi ajunge.') },
+      { label: T('Health record', 'Carnetul de sănătate'), before: T('paper booklet', 'carnet de hârtie'), after: T('living record', 'fișă vie'), note: T('History, results and treatments in one place, for both sides.', 'Istoric, analize și tratamente într-un singur loc, pentru ambele părți.') },
+      { label: T('Booking', 'Programarea'), before: T('phone calls', 'telefoane'), after: T('online', 'online'), note: T('Owners book against real clinic capacity.', 'Proprietarii se programează pe capacitatea reală a clinicii.') },
+      { label: T('Roles served', 'Roluri deservite'), before: '—', after: '3', note: T('Owner, veterinarian, clinic administrator — one record each way.', 'Proprietar, veterinar, administrator de clinică — aceeași fișă, trei vederi.') },
     ],
     lessons: [
-      { title: T('Permissions are a product decision', 'Permisiunile sunt o decizie de produs'), body: T('Deciding what a vet may see about someone else\'s pet was harder — and more valuable — than any part of the implementation.', 'Decizia despre ce poate vedea un veterinar despre animalul altcuiva a fost mai grea — și mai valoroasă — decât orice parte din implementare.') },
+      { title: T('Permissions are a product decision', 'Permisiunile sunt o decizie de produs'), body: T('Deciding what an owner should see of a clinical note was harder — and more valuable — than any part of the implementation.', 'Decizia despre ce vede proprietarul dintr-o notă clinică a fost mai grea — și mai valoroasă — decât orice parte din implementare.') },
+      { title: T('Two audiences, one truth', 'Două audiențe, un singur adevăr'), body: T('Write the record clinically once, render it differently per reader. Duplicating it per audience is how records drift apart.', 'Scrii fișa clinic o singură dată și o randezi diferit pe cititor. Duplicarea pe audiențe e felul în care fișele ajung să se contrazică.') },
     ],
     arch: [
-      { title: T('Entry', 'Intrare'), nodes: [
-        { label: T('NFC tag / QR', 'Tag NFC / QR'), note: T('The physical entry point. Same tag, different resolved view per authenticated role.', 'Punctul fizic de intrare. Același tag, vedere diferită în funcție de rolul autentificat.') },
+      { title: T('Portals', 'Portaluri'), nodes: [
+        { label: T('Clinic portal', 'Portal clinică'), note: T('The working surface for vets and staff: patients, consultations, results, the day\'s calendar.', 'Suprafața de lucru pentru veterinari și personal: pacienți, consultații, rezultate, calendarul zilei.') },
+        { label: T('Owner app', 'Aplicația proprietarului'), note: T('The pet\'s health at a glance: history, upcoming visits, messages — clinical detail translated into clarity.', 'Sănătatea animalului dintr-o privire: istoric, vizite următoare, mesaje — detaliul clinic tradus în claritate.') },
       ] },
-      { title: T('App', 'Aplicație'), nodes: [
-        { label: T('Role dashboards', 'Dashboarduri pe rol'), note: T('Owner, vet and clinic surfaces built from the same record with different projections.', 'Interfețe pentru proprietar, veterinar și clinică, construite din aceeași fișă cu proiecții diferite.') },
-        { label: T('Record timeline', 'Cronologia fișei'), note: T('Vaccinations, treatments, documents — ordered, filterable, exportable.', 'Vaccinări, tratamente, documente — ordonate, filtrabile, exportabile.') },
+      { title: T('Core', 'Nucleu'), nodes: [
+        { label: T('Medical record', 'Fișa medicală'), note: T('The single source of truth: consultations, treatments, lab results, documents — ordered and filterable.', 'Singura sursă de adevăr: consultații, tratamente, analize, documente — ordonate și filtrabile.') },
+        { label: T('Scheduling', 'Programări'), note: T('Bookings against clinic capacity, confirmations and rescheduling on both sides.', 'Programări pe capacitatea clinicii, confirmări și reprogramări pe ambele părți.') },
+        { label: T('Messaging', 'Mesagerie'), note: T('Owner–clinic threads anchored to the record, so a question always carries its context.', 'Fire proprietar–clinică ancorate în fișă, ca o întrebare să-și poarte mereu contextul.') },
       ] },
       { title: T('Platform', 'Platformă'), nodes: [
         { label: 'Firebase + RBAC', note: T('Access rules live with the data, so a role never receives what it is not allowed to see.', 'Regulile de acces stau lângă date, deci un rol nu primește niciodată ce nu are dreptul să vadă.') },
       ] },
     ],
-    demoNote: T('Switch role and watch the record change shape — then simulate an NFC tap to see what that role resolves to.', 'Schimbă rolul și vezi cum se schimbă fișa — apoi simulează o atingere NFC ca să vezi la ce ajunge acel rol.'),
+    demoNote: T('Switch role and watch the same record change shape — then act as that role: the owner books a visit, the vet attaches a lab result, the clinic confirms the day.', 'Schimbă rolul și vezi cum aceeași fișă își schimbă forma — apoi acționează ca rolul respectiv: proprietarul cere o programare, veterinarul atașează o analiză, clinica confirmă ziua.'),
   },
   {
     id: 'horae', client: 'Horae', demo: 'horae', own: true,
