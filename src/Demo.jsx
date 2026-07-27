@@ -16,61 +16,165 @@ function stamp() {
   return String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0')
 }
 
-/* ── devhub ─────────────────────────────────────────────────────────── */
-function DevhubDemo({ L }) {
-  const [brand, setBrand] = useState(0)
-  const [tile, setTile] = useState(null)
-  const [balance, setBalance] = useState(1240)
-  const themes = [
-    { name: 'Brand A', accent: '#9184d9', onAccent: '#161826', bar: '#1f2136', ground: '#191b28', ink: '#e9e9ed', radius: '8px', tracking: '-0.01em', wordmark: 'AURELIS' },
-    { name: 'Brand B', accent: '#e0a54d', onAccent: '#1a1408', bar: '#231b0f', ground: '#1c1710', ink: '#f3ead9', radius: '2px', tracking: '0.14em', wordmark: 'GOLDLINE' },
-    { name: 'Brand C', accent: '#4fb8a0', onAccent: '#08201b', bar: '#0f2420', ground: '#0f1e1b', ink: '#dcefe9', radius: '14px', tracking: '-0.02em', wordmark: 'tidalwave' },
-    { name: 'Brand D', accent: '#d96a8a', onAccent: '#25101a', bar: '#2a1520', ground: '#221219', ink: '#f6e3ea', radius: '999px', tracking: '0.04em', wordmark: 'ROSA&CO' },
+/* ── platform — white-label brand configurator ──────────────────────── */
+function PlatformDemo({ L }) {
+  const BASE = [
+    { name: 'Aurelis', hue: 252, radius: 10, tracking: '-0.01em', wordmark: 'AURELIS', caps: false },
+    { name: 'Goldline', hue: 38, radius: 2, tracking: '0.16em', wordmark: 'GOLDLINE', caps: true },
+    { name: 'Tidalwave', hue: 168, radius: 16, tracking: '-0.02em', wordmark: 'tidalwave', caps: false },
+    { name: 'Rosa', hue: 340, radius: 22, tracking: '0.05em', wordmark: 'ROSA&CO', caps: true },
   ]
-  const theme = themes[brand]
-  const tiles = [
-    { kind: L(T('Featured', 'Recomandat')), name: 'Neon Nights', rtp: L(T('trending #1', 'trending #1')) },
-    { kind: L(T('Live', 'Live')), name: 'Arena Finals', rtp: L(T('12.4k watching', '12.4k urmăresc')) },
-    { kind: L(T('Series', 'Seriale')), name: 'Skyfall', rtp: L(T('new episode', 'episod nou')) },
-    { kind: L(T('Featured', 'Recomandat')), name: 'Aztec Rush', rtp: L(T('editor pick', 'alegerea redacției')) },
-    { kind: L(T('Live', 'Live')), name: 'City Sessions', rtp: L(T('starts 21:00', 'începe 21:00')) },
-    { kind: L(T('Originals', 'Originale')), name: 'Fruit Vault', rtp: L(T('4.8 ★', '4.8 ★')) },
-    { kind: L(T('Series', 'Seriale')), name: 'Deep Water', rtp: L(T('s2 finale', 'finala s2')) },
-    { kind: L(T('Originals', 'Originale')), name: 'Golden Hour', rtp: L(T('just added', 'adăugat acum')) },
-  ]
+  const [brands, setBrands] = useState(BASE)
+  const [bi, setBi] = useState(0)
+  const [mods, setMods] = useState({ live: true, rewards: true, referral: false })
+  const [market, setMarket] = useState('EN')
+
+  const b = brands[bi]
+  const accent = `hsl(${b.hue} 75% 64%)`
+  const accentDim = `hsl(${b.hue} 45% 22%)`
+  const bar = `hsl(${b.hue} 30% 13%)`
+  const ground = `hsl(${b.hue} 24% 9%)`
+  const inkOn = `hsl(${b.hue} 30% 92%)`
+  const r = x => Math.min(b.radius, x)
+
+  const generate = () => {
+    const syll = ['ve', 'lu', 'no', 'ra', 'ki', 'sol', 'mar', 'zen', 'ora', 'lyn']
+    const name = (syll[Math.floor(Math.random() * 10)] + syll[Math.floor(Math.random() * 10)] + syll[Math.floor(Math.random() * 10)])
+    const caps = Math.random() > 0.5
+    const nb = {
+      name: name[0].toUpperCase() + name.slice(1),
+      hue: Math.floor(Math.random() * 360),
+      radius: [2, 8, 14, 22][Math.floor(Math.random() * 4)],
+      tracking: ['-0.02em', '0', '0.1em', '0.16em'][Math.floor(Math.random() * 4)],
+      wordmark: caps ? name.toUpperCase() : name,
+      caps,
+      generated: true,
+    }
+    setBrands(bs => [...bs.filter(x => !x.generated), nb])
+    setBi(brands.filter(x => !x.generated).length)
+  }
+
+  const MARKETS = { EN: 'en-GB', RO: 'ro-RO', DE: 'de-DE' }
+  const COPY = {
+    EN: { promoKicker: 'Season finale', promo: 'Double rewards weekend', cta: 'Explore', nav: ['Home', 'Live', 'Rewards', 'Referral'], reg: 'Regulated service — terms apply · v4.12.1', tiles: [['Featured', 'Neon Nights'], ['Live', 'Arena Finals'], ['Series', 'Deep Water'], ['Originals', 'Golden Hour']], missions: [['Weekly streak', 4, 7], ['Referral tier', 2, 5]], wallet: 'Wallet', topup: 'Top up' },
+    RO: { promoKicker: 'Finalul sezonului', promo: 'Weekend cu recompense duble', cta: 'Explorează', nav: ['Acasă', 'Live', 'Recompense', 'Recomandă'], reg: 'Serviciu reglementat — se aplică termenii · v4.12.1', tiles: [['Recomandat', 'Neon Nights'], ['Live', 'Arena Finals'], ['Seriale', 'Deep Water'], ['Originale', 'Golden Hour']], missions: [['Serie săptămânală', 4, 7], ['Nivel recomandări', 2, 5]], wallet: 'Portofel', topup: 'Alimentează' },
+    DE: { promoKicker: 'Saisonfinale', promo: 'Wochenende mit doppelten Prämien', cta: 'Entdecken', nav: ['Start', 'Live', 'Prämien', 'Empfehlen'], reg: 'Regulierter Dienst — es gelten AGB · v4.12.1', tiles: [['Empfohlen', 'Neon Nights'], ['Live', 'Arena Finals'], ['Serien', 'Deep Water'], ['Originale', 'Golden Hour']], missions: [['Wochenserie', 4, 7], ['Empfehlungsstufe', 2, 5]], wallet: 'Konto', topup: 'Aufladen' },
+  }
+  const c = COPY[market]
+  const navItems = [c.nav[0], mods.live && c.nav[1], mods.rewards && c.nav[2], mods.referral && c.nav[3]].filter(Boolean)
+
+  const toggleRow = (key, label) => (
+    <button key={key} onClick={() => setMods(m => ({ ...m, [key]: !m[key] }))} style={{ cursor: 'pointer', font: 'inherit', display: 'flex', alignItems: 'center', gap: 8, background: 'transparent', border: 0, padding: '3px 0', color: mods[key] ? 'var(--color-text)' : 'var(--color-neutral-600)', fontSize: 11.5 }}>
+      <span style={{ width: 26, height: 15, borderRadius: 99, background: mods[key] ? accent : 'var(--color-neutral-800)', position: 'relative', transition: 'background 0.25s ease', flex: 'none' }}>
+        <span style={{ position: 'absolute', top: 2, left: mods[key] ? 13 : 2, width: 11, height: 11, borderRadius: 99, background: '#fff', transition: 'left 0.25s ease' }}></span>
+      </span>
+      {label}
+    </button>
+  )
+
   return (
-    <div style={{ padding: 18 }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap', marginBottom: 16 }}>
-        <span style={{ fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--color-neutral-500)', marginRight: 4 }}>{L(T('Tenant', 'Brand'))}</span>
-        {themes.map((t, i) => (
-          <button key={t.name} onClick={() => setBrand(i)} style={{ ...chipBtn, background: i === brand ? `color-mix(in srgb, ${t.accent} 22%, transparent)` : 'transparent', borderColor: i === brand ? t.accent : 'var(--color-neutral-800)', color: i === brand ? t.accent : 'var(--color-neutral-400)' }}>{t.name}</button>
+    <div style={{ padding: 16 }}>
+      {/* brand row */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap', marginBottom: 12 }}>
+        <span style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--color-neutral-600)', marginRight: 2 }}>{L(T('Brand', 'Brand'))}</span>
+        {brands.map((br, n) => (
+          <button key={br.name} onClick={() => setBi(n)} style={{ cursor: 'pointer', font: 'inherit', fontSize: 11.5, padding: '4px 11px', borderRadius: 999, borderWidth: 1, borderStyle: 'solid', display: 'inline-flex', alignItems: 'center', gap: 6, background: n === bi ? `hsl(${br.hue} 60% 60% / 0.18)` : 'transparent', borderColor: n === bi ? `hsl(${br.hue} 70% 62%)` : 'var(--color-neutral-800)', color: n === bi ? `hsl(${br.hue} 80% 74%)` : 'var(--color-neutral-400)' }}>
+            <span style={{ width: 7, height: 7, borderRadius: 99, background: `hsl(${br.hue} 75% 62%)` }}></span>
+            {br.name}
+          </button>
         ))}
+        <button onClick={generate} style={{ cursor: 'pointer', font: 'inherit', fontSize: 11.5, padding: '4px 11px', borderRadius: 999, border: '1px dashed var(--color-neutral-600)', background: 'transparent', color: 'var(--color-accent-300)' }}>
+          ✦ {L(T('Generate a brand', 'Generează un brand'))}
+        </button>
       </div>
-      <div style={{ borderRadius: theme.radius, overflow: 'hidden', border: '1px solid var(--color-neutral-800)', transition: 'border-radius 0.3s ease' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 14px', background: theme.bar, transition: 'background 0.3s ease' }}>
-          <span style={{ fontFamily: 'var(--font-heading)', fontWeight: 700, letterSpacing: theme.tracking, color: theme.ink, fontSize: 15 }}>{theme.wordmark}</span>
-          <span style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 12, color: theme.ink }}>
-            <span style={{ opacity: 0.7 }}>{L(T('Wallet', 'Portofel'))}</span>
-            <b style={{ fontVariantNumeric: 'tabular-nums' }}>{balance.toLocaleString('en-US')} ¤</b>
-            <span style={{ padding: '4px 10px', borderRadius: theme.radius, background: theme.accent, color: theme.onAccent, fontSize: 11, fontWeight: 600 }}>{L(T('Top up', 'Alimentează'))}</span>
-          </span>
+
+      <div className="demo-sidebar" style={{ display: 'grid', gridTemplateColumns: '190px 1fr', gap: 12 }}>
+        {/* config panel */}
+        <div style={{ border: '1px solid var(--color-neutral-800)', borderRadius: 10, background: '#12141c', padding: 12, display: 'grid', gap: 11, alignContent: 'start', fontFamily: 'var(--font-mono, monospace)' }}>
+          <div>
+            <div style={{ fontSize: 9, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--color-neutral-600)', marginBottom: 5 }}>{L(T('tokens', 'tokenuri'))}</div>
+            <div style={{ display: 'grid', gap: 3, fontSize: 10.5, color: 'var(--color-neutral-400)' }}>
+              <span style={{ display: 'flex', alignItems: 'center', gap: 6 }}>accent <span style={{ marginLeft: 'auto', width: 12, height: 12, borderRadius: 3, background: accent, transition: 'background 0.4s ease' }}></span></span>
+              <span style={{ display: 'flex' }}>radius <b style={{ marginLeft: 'auto', color: 'var(--color-text)' }}>{b.radius}px</b></span>
+              <span style={{ display: 'flex' }}>tracking <b style={{ marginLeft: 'auto', color: 'var(--color-text)' }}>{b.tracking}</b></span>
+              <span style={{ display: 'flex' }}>case <b style={{ marginLeft: 'auto', color: 'var(--color-text)' }}>{b.caps ? 'upper' : 'mixed'}</b></span>
+            </div>
+          </div>
+          <div>
+            <div style={{ fontSize: 9, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--color-neutral-600)', marginBottom: 5 }}>{L(T('modules', 'module'))}</div>
+            <div style={{ display: 'grid', gap: 2 }}>
+              {toggleRow('live', 'Live')}
+              {toggleRow('rewards', L(T('Rewards', 'Recompense')))}
+              {toggleRow('referral', L(T('Referral', 'Recomandări')))}
+            </div>
+          </div>
+          <div>
+            <div style={{ fontSize: 9, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--color-neutral-600)', marginBottom: 5 }}>{L(T('market', 'piață'))}</div>
+            <div style={{ display: 'flex', gap: 4 }}>
+              {Object.keys(MARKETS).map(m => (
+                <button key={m} onClick={() => setMarket(m)} style={{ cursor: 'pointer', font: 'inherit', fontSize: 10.5, padding: '3px 9px', borderRadius: 6, border: '1px solid', borderColor: market === m ? accent : 'var(--color-neutral-800)', background: market === m ? accentDim : 'transparent', color: market === m ? 'var(--color-text)' : 'var(--color-neutral-500)', transition: 'all 0.25s ease' }}>{m}</button>
+              ))}
+            </div>
+            <div style={{ fontSize: 9.5, color: 'var(--color-neutral-600)', marginTop: 5 }}>{MARKETS[market]}</div>
+          </div>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 8, padding: 12, background: theme.ground, transition: 'background 0.3s ease' }}>
-          {tiles.map((t, i) => (
-            <button key={t.name} onClick={() => { setTile(i); setBalance(b => b - 10) }} style={{ cursor: 'pointer', font: 'inherit', textAlign: 'left', padding: 10, border: `1px solid ${i === tile ? theme.accent : 'color-mix(in srgb, #e9e9ed 10%, transparent)'}`, background: i === tile ? `color-mix(in srgb, ${theme.accent} 14%, transparent)` : 'color-mix(in srgb, #e9e9ed 4%, transparent)', borderRadius: theme.radius, color: theme.ink, display: 'grid', gap: 4 }}>
-              <span style={{ fontSize: 11, opacity: 0.6 }}>{t.kind}</span>
-              <span style={{ fontSize: 12, fontWeight: 600 }}>{t.name}</span>
-              <span style={{ fontSize: 10, color: theme.accent }}>{t.rtp}</span>
-            </button>
-          ))}
+
+        {/* rendered product */}
+        <div style={{ borderRadius: r(14), overflow: 'hidden', border: '1px solid var(--color-neutral-800)', background: ground, transition: 'background 0.5s ease, border-radius 0.4s ease' }}>
+          {/* nav */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '9px 13px', background: bar, transition: 'background 0.5s ease' }}>
+            <span style={{ fontFamily: 'var(--font-heading)', fontWeight: 700, letterSpacing: b.tracking, color: inkOn, fontSize: 13, transition: 'color 0.5s ease' }}>{b.wordmark}</span>
+            <span style={{ display: 'flex', gap: 9, marginLeft: 4 }}>
+              {navItems.map((n, idx) => (
+                <span key={n} style={{ fontSize: 10, color: idx === 0 ? accent : `${inkOn}99`, borderBottom: idx === 0 ? `2px solid ${accent}` : '2px solid transparent', paddingBottom: 1, transition: 'color 0.4s ease', animation: 'demoRise 0.3s ease' }}>{n}</span>
+              ))}
+            </span>
+            <span style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 7, fontSize: 10.5, color: inkOn }}>
+              <span style={{ opacity: 0.65 }}>{c.wallet}</span>
+              <b style={{ fontVariantNumeric: 'tabular-nums' }}>1,240 ¤</b>
+              <span style={{ padding: '3px 9px', borderRadius: r(999), background: accent, color: '#101210', fontSize: 9.5, fontWeight: 700, transition: 'background 0.5s ease' }}>{c.topup}</span>
+            </span>
+          </div>
+          {/* promo banner */}
+          <div style={{ margin: 9, marginBottom: 0, padding: '11px 14px', borderRadius: r(12), background: `linear-gradient(100deg, ${accentDim}, transparent 75%)`, border: `1px solid ${accent}44`, display: 'flex', alignItems: 'center', gap: 12, transition: 'all 0.5s ease' }}>
+            <div style={{ display: 'grid', gap: 1 }}>
+              <span style={{ fontSize: 8.5, letterSpacing: '0.12em', textTransform: 'uppercase', color: accent }}>{c.promoKicker}</span>
+              <span style={{ fontSize: 13, fontWeight: 600, color: inkOn }}>{c.promo}</span>
+            </div>
+            <span style={{ marginLeft: 'auto', fontSize: 10, fontWeight: 700, padding: '4px 11px', borderRadius: r(999), border: `1px solid ${accent}`, color: accent }}>{c.cta}</span>
+          </div>
+          {/* content + rewards */}
+          <div style={{ display: 'grid', gridTemplateColumns: mods.rewards ? '1.5fr 1fr' : '1fr', gap: 9, padding: 9 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 7 }}>
+              {c.tiles.map(([kind, name]) => (
+                <div key={name} style={{ padding: '8px 10px', background: `${inkOn}0d`, border: `1px solid ${inkOn}14`, borderRadius: r(10), display: 'grid', gap: 2, transition: 'border-radius 0.4s ease' }}>
+                  <span style={{ fontSize: 8, textTransform: 'uppercase', letterSpacing: '0.08em', color: accent, transition: 'color 0.4s ease' }}>{kind}</span>
+                  <span style={{ fontSize: 11, fontWeight: 600, color: inkOn }}>{name}</span>
+                </div>
+              ))}
+            </div>
+            {mods.rewards && (
+              <div style={{ border: `1px solid ${inkOn}14`, borderRadius: r(10), padding: '9px 11px', display: 'grid', gap: 8, alignContent: 'start', animation: 'demoRise 0.3s ease' }}>
+                <span style={{ fontSize: 8.5, letterSpacing: '0.1em', textTransform: 'uppercase', color: `${inkOn}88` }}>{c.nav[2]}</span>
+                {c.missions.map(([mLabel, done, total]) => (
+                  <div key={mLabel} style={{ display: 'grid', gap: 3 }}>
+                    <span style={{ display: 'flex', fontSize: 9.5, color: inkOn }}>{mLabel}<b style={{ marginLeft: 'auto', fontVariantNumeric: 'tabular-nums' }}>{done}/{total}</b></span>
+                    <span style={{ height: 4, borderRadius: 99, background: `${inkOn}18`, overflow: 'hidden' }}>
+                      <span style={{ display: 'block', height: 4, width: (done / total * 100) + '%', background: accent, transition: 'background 0.5s ease, width 0.5s ease' }}></span>
+                    </span>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+          {/* regulatory footer */}
+          <div style={{ padding: '6px 13px 9px', fontSize: 8.5, color: `${inkOn}66`, borderTop: `1px solid ${inkOn}11` }}>{c.reg}</div>
         </div>
       </div>
-      <div style={{ display: 'flex', gap: 18, marginTop: 14, flexWrap: 'wrap', fontSize: 11, color: 'var(--color-neutral-500)' }}>
-        <span>{L(T('One codebase · tokens swapped at runtime: color, radius, tracking, wordmark.', 'Un singur cod · tokenuri schimbate la runtime: culoare, rotunjire, spațiere, logo.'))}</span>
-        <span style={{ marginLeft: 'auto', color: 'var(--color-accent-300)' }}>
-          {tile == null ? L(T('Try a tenant, then a title →', 'Alege un brand, apoi un titlu →')) : L(T('Now playing: ', 'Acum rulează: ')) + tiles[tile].name}
-        </span>
-      </div>
+
+      <p style={{ marginTop: 11, fontSize: 11, color: 'var(--color-neutral-500)' }}>
+        {L(T('Everything on the right is driven by the config on the left — tokens, entitled modules, market copy. A new brand is a config file, not a fork.', 'Tot ce e în dreapta e condus de configurarea din stânga — tokenuri, module activate, texte pe piață. Un brand nou e un fișier de configurare, nu un fork.'))}
+      </p>
     </div>
   )
 }
@@ -716,13 +820,13 @@ function HoraeDemo({ L }) {
 
 /* ── frame ──────────────────────────────────────────────────────────── */
 const KINDS = {
-  platform: DevhubDemo, exadel: ExadelDemo, mtd: MtdDemo, she: SheDemo,
+  platform: PlatformDemo, exadel: ExadelDemo, mtd: MtdDemo, she: SheDemo,
   be: BeDemo, pulse: PulseDemo, dobby: DobbyDemo, luppy: LuppyDemo, horae: HoraeDemo,
 }
 
 export default function Demo({ kind, lang, chrome }) {
   const L = o => (o && typeof o === 'object' && 'en' in o) ? o[lang === 'ro' ? 'ro' : 'en'] : o
-  const Body = KINDS[kind] || DevhubDemo
+  const Body = KINDS[kind] || PlatformDemo
   return (
     <div className="demo-scope" style={{ border: '1px solid var(--color-neutral-800)', borderRadius: 'var(--radius-lg)', background: 'linear-gradient(180deg, #1b1d2c, #161826)', overflow: 'hidden', boxShadow: '0 18px 44px -18px rgba(24, 20, 14, 0.45)' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 14px', borderBottom: '1px solid var(--color-neutral-900)', background: '#14161f' }}>

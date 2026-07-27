@@ -53,7 +53,7 @@ const CASES = [
         { label: T('Shared UI lib', 'Librărie UI comună'), note: T('The component layer every brand consumes — the reason a fix lands once and appears everywhere.', 'Stratul de componente pe care îl consumă toate brandurile — motivul pentru care o corecție se face o dată și apare peste tot.') },
       ] },
     ],
-    demoNote: T('A tenant switcher over an anonymised storefront: pick a brand and watch color, radius, typography and wordmark change while the markup stays the same.', 'Un switcher de brand peste un storefront anonimizat: alege un brand și vezi cum se schimbă culoarea, rotunjirea, tipografia și logoul, în timp ce markupul rămâne același.'),
+    demoNote: T('A brand configurator over the anonymised product: tokens, entitled modules and market copy on the left drive the whole surface on the right — flip a module and its nav item appears, switch market and the regulatory footer follows, or generate a brand from scratch in one click.', 'Un configurator de brand peste produsul anonimizat: tokenurile, modulele activate și textele de piață din stânga conduc toată interfața din dreapta — activezi un modul și îi apare intrarea în meniu, schimbi piața și footerul de reglementare se schimbă, sau generezi un brand de la zero într-un click.'),
   },
   {
     id: 'exadel', client: 'Exadel — Compliance Cockpit', demo: 'exadel',
