@@ -28,7 +28,7 @@ export default function App() {
   const [caseId, setCaseId] = useState(() => caseFromHash())
   const [filter, setFilter] = useState(null)
   const [node, setNode] = useState(null)
-  const [sent, setSent] = useState(false)
+  const [formState, setFormState] = useState('idle') // idle | sending | sent | error
   const [photoOk, setPhotoOk] = useState(true)
 
   const view = caseId ? 'case' : 'home'
@@ -104,9 +104,11 @@ export default function App() {
     fType: L(T('Engagement', 'Tip de colaborare')),
     fMsg: L(T("What's the project?", 'Despre ce e proiectul?')),
     phMsg: L(T('A few lines are enough.', 'Câteva rânduri sunt de ajuns.')),
-    fSend: L(T('Send', 'Trimite')),
+    fSend: L(T('Send message', 'Trimite mesajul')),
+    fSending: L(T('Sending…', 'Se trimite…')),
+    fError: L(T('Could not send — email me directly at sergiu@tigan.dev', 'Nu s-a trimis — scrie-mi direct la sergiu@tigan.dev')),
     sentTitle: L(T('Message sent', 'Mesaj trimis')),
-    sentBody: L(T('Thanks — your message opened in your email client. If it did not, write to sergiu@tigan.dev directly.', 'Mulțumesc — mesajul s-a deschis în clientul tău de email. Dacă nu, scrie direct la sergiu@tigan.dev.')),
+    sentBody: L(T('Thanks — it landed in my inbox. I answer within a day.', 'Mulțumesc — a ajuns în inboxul meu. Răspund într-o zi.')),
     sentAgain: L(T('Send another', 'Trimite altul')),
     backAll: L(T('All work', 'Toate proiectele')),
     prev: L(T('Previous', 'Anterior')), next: L(T('Next', 'Următor')),
@@ -154,13 +156,27 @@ export default function App() {
   const domains = [...new Set(Object.values(DOMAIN))]
   const shown = filter ? CASES.filter(c => DOMAIN[c.id] === filter) : CASES
 
-  const onSubmit = e => {
+  const onSubmit = async e => {
     e.preventDefault()
     const f = e.target
-    const subject = encodeURIComponent('Portfolio contact — ' + (f.elements.name.value || 'someone'))
-    const body = encodeURIComponent(`${f.elements.name.value} <${f.elements.email.value}>\n${f.elements.engagement.value}\n\n${f.elements.message.value}`)
-    window.location.href = `mailto:sergiu@tigan.dev?subject=${subject}&body=${body}`
-    setSent(true)
+    setFormState('sending')
+    try {
+      const r = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: f.elements.name.value,
+          email: f.elements.email.value,
+          engagement: f.elements.engagement.value,
+          message: f.elements.message.value,
+          website: f.elements.website.value,
+        }),
+      })
+      if (!r.ok) throw new Error('send_failed')
+      setFormState('sent')
+    } catch {
+      setFormState('error')
+    }
   }
 
   let cv = null
@@ -309,15 +325,52 @@ export default function App() {
             </div>
 
             {/* contact */}
-            <div id="contact" className="tile s12" style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 18, padding: 'clamp(22px, 2.6vw, 32px)', background: 'radial-gradient(100% 160% at 100% 0%, color-mix(in srgb, var(--pop) 12%, transparent), transparent 55%), var(--card)' }}>
-              <div style={{ display: 'grid', gap: 4 }}>
+            <div id="contact" className="tile s12 contact-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1.1fr', gap: 30, padding: 'clamp(22px, 2.6vw, 34px)', background: 'radial-gradient(100% 160% at 100% 0%, color-mix(in srgb, var(--pop) 10%, transparent), transparent 55%), var(--card)' }}>
+              <div style={{ display: 'grid', gap: 8, alignContent: 'start' }}>
                 <h2 style={{ fontSize: 'clamp(22px, 2.6vw, 30px)' }}>{t.contactTitle}</h2>
-                <p style={{ color: 'var(--soft)', fontSize: 14, maxWidth: '52ch' }}>{t.contactBody}</p>
+                <p style={{ color: 'var(--soft)', fontSize: 14.5, maxWidth: '46ch', textWrap: 'pretty' }}>{t.contactBody}</p>
+                <div style={{ display: 'grid', gap: 5, marginTop: 8, fontSize: 13.5 }}>
+                  <a href="mailto:sergiu@tigan.dev">sergiu@tigan.dev</a>
+                  <span style={{ color: 'var(--muted)' }}>+40 740 014 666</span>
+                  <span style={{ color: 'var(--muted)' }}>{t.contactLoc}</span>
+                </div>
               </div>
-              <div style={{ marginLeft: 'auto', display: 'flex', flexWrap: 'wrap', gap: 10, alignItems: 'center' }}>
-                <a className="btn btn-pop" href="mailto:sergiu@tigan.dev">sergiu@tigan.dev</a>
-                <span style={{ fontSize: 13, color: 'var(--muted)' }}>+40 740 014 666</span>
-              </div>
+              {formState !== 'sent' ? (
+                <form onSubmit={onSubmit} style={{ display: 'grid', gap: 10, alignContent: 'start' }}>
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
+                    <label style={{ display: 'grid', gap: 4, fontSize: 12, color: 'var(--soft)' }}>{t.fName}
+                      <input className="input" name="name" required maxLength={120} placeholder={t.phName} />
+                    </label>
+                    <label style={{ display: 'grid', gap: 4, fontSize: 12, color: 'var(--soft)' }}>{t.fEmail}
+                      <input className="input" name="email" type="email" required maxLength={200} placeholder="you@company.com" />
+                    </label>
+                  </div>
+                  <label style={{ display: 'grid', gap: 4, fontSize: 12, color: 'var(--soft)' }}>{t.fType}
+                    <select className="input" name="engagement">
+                      {engagementTypes.map(o => <option key={o}>{o}</option>)}
+                    </select>
+                  </label>
+                  <label style={{ display: 'grid', gap: 4, fontSize: 12, color: 'var(--soft)' }}>{t.fMsg}
+                    <textarea className="input" name="message" rows="3" required maxLength={4000} placeholder={t.phMsg}></textarea>
+                  </label>
+                  <input name="website" type="text" tabIndex={-1} autoComplete="off" style={{ position: 'absolute', left: -9999, width: 1, height: 1, opacity: 0 }} aria-hidden="true" />
+                  <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+                    <button className="btn btn-pop" type="submit" disabled={formState === 'sending'}>
+                      {formState === 'sending' ? t.fSending : t.fSend}
+                    </button>
+                    {formState === 'error' && (
+                      <span style={{ fontSize: 12.5, color: 'var(--accent)' }}>{t.fError}</span>
+                    )}
+                  </div>
+                </form>
+              ) : (
+                <div style={{ display: 'grid', alignContent: 'center', justifyItems: 'start', gap: 8, borderRadius: 'var(--r-sm)', padding: 24, background: 'color-mix(in srgb, var(--pop) 8%, transparent)', border: '1px solid color-mix(in srgb, var(--pop) 30%, transparent)' }}>
+                  <span style={{ fontSize: 22, color: 'var(--pop)' }}>✓</span>
+                  <h4>{t.sentTitle}</h4>
+                  <p style={{ fontSize: 13.5, color: 'var(--soft)' }}>{t.sentBody}</p>
+                  <button className="btn btn-ghost" onClick={() => setFormState('idle')} style={{ fontSize: 12.5 }}>{t.sentAgain}</button>
+                </div>
+              )}
             </div>
 
           </div>
