@@ -3,19 +3,43 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sergiu Țigan — Senior Frontend Engineer · Angular</title>
-    <meta name="description" content="Frontend engineer, eight years deep in Angular. Casino platforms, vehicle software updates, bank reporting, regulatory compliance — plus three own SaaS products, shipped and operated solo." />
-    <meta property="og:title" content="Sergiu Țigan — Senior Frontend Engineer" />
-    <meta property="og:description" content="Angular, in places where a mistake is expensive. Nine case studies with interactive demos." />
+    <title>Sergiu Țigan — Senior Frontend Engineer · Angular, multi-brand platforms</title>
+    <meta name="description" content="Senior Frontend Engineer in Cluj-Napoca. 8+ years of Angular in regulated industries, multi-brand platforms, own SaaS. Open to remote contracts." />
+    <meta property="og:title" content="Sergiu Țigan · Senior Frontend Engineer" />
+    <meta property="og:description" content="This page is configuration. Switch the edition and the whole site re-themes from tokens. Nine case studies, each with a working demo." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://sergiu.tigan.dev" />
-    <meta name="theme-color" content="#fffdf9" />
+    <meta property="og:image" content="https://sergiu.tigan.dev/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0b0b0e" />
+    <link rel="canonical" href="https://sergiu.tigan.dev/" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="icon" type="image/png" sizes="64x64" href="/favicon-64.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    
+    <script>
+      // apply the saved edition before first paint — no flash of the wrong theme
+      try {
+        var raw = localStorage.getItem('st.edition'); var v = raw && JSON.parse(raw);
+        var P = { paper: ['#f7f3ec', '#17150f'], terminal: ['#050806', '#d9ffe3'], atelier: ['#efe8dc', '#1f1512'] };
+        if (v && P[v.id]) { document.documentElement.style.setProperty('--bg', P[v.id][0]); document.documentElement.style.setProperty('--ink', P[v.id][1]); }
+      } catch (e) {}
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Sergiu Țigan",
+      "alternateName": "Sergiu-Marian Țigan",
+      "jobTitle": "Senior Frontend Engineer",
+      "url": "https://sergiu.tigan.dev",
+      "email": "mailto:sergiu@tigan.dev",
+      "address": { "@type": "PostalAddress", "addressLocality": "Cluj-Napoca", "addressCountry": "RO" },
+      "sameAs": ["https://github.com/SergiuTigan", "https://linkedin.com/in/sergiu-tigan"],
+      "knowsAbout": ["Angular", "TypeScript", "NgRx", "Micro-frontends", "White-label platforms", "React", "NestJS"]
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
