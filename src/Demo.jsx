@@ -828,10 +828,108 @@ function HoraeDemo({ L }) {
   )
 }
 
+/* ── alfred — agentic assistant over encrypted data ─────────────────── */
+function AlfredDemo({ L }) {
+  const PROMPTS = [
+    { id: 'water', text: T('Log 500 ml of water', 'Loghează 500 ml apă'), tools: [['log_water', '{ ml: 500 }', '→ 1.9 / 2.5 l']], reply: T('Logged. 1.9 l today — 600 ml short of target.', 'Logat. 1,9 l azi — mai lipsesc 600 ml din țintă.'), water: 1.9 },
+    { id: 'bench', text: T('How is my bench progressing?', 'Cum merge progresia la împins?'), tools: [['exercise_progression', '{ exercise: "bench" }', '→ 5 sessions'], ['training_consistency', '{ days: 28 }', '→ 4.2 / 5 wk']], reply: T('Five sessions at 80 kg, reps 8→8→9→10→10. Every set hit the top of its range last time — raise to 82.5 kg on Push 1.', 'Cinci sesiuni la 80 kg, repetări 8→8→9→10→10. Data trecută fiecare serie a atins capătul intervalului — urcă la 82,5 kg la Push 1.') },
+    { id: 'spend', text: T('Add 42 lei groceries', 'Adaugă 42 lei cumpărături'), tools: [['add_expense', '{ line: "groceries", amount: 42 }', '→ ok'], ['budget_summary', '{ month: "current" }', '→ pace 108%']], reply: T('Added. Groceries is at 108% of its monthly pace — about 90 lei over if the rest of the month looks like the first half.', 'Adăugat. Cumpărăturile sunt la 108% din ritmul lunar — cam 90 lei peste, dacă restul lunii arată ca prima jumătate.'), obs: true },
+    { id: 'invest', text: T('Should I move my savings into crypto?', 'Să-mi mut economiile în crypto?'), tools: [], reply: T('I have no tool that covers that, and I won’t guess — I can show you the savings line and its 3-month trend if that helps.', 'Nu am niciun tool care să acopere asta și nu ghicesc — pot să-ți arăt linia de economii și trendul pe 3 luni, dacă ajută.') },
+  ]
+  const [log, setLog] = useState(() => [{ role: 'a', text: L(T('Morning. Push 1 is up today; you’re 1.4 l into water. Ask me something or pick a message.', 'Bună dimineața. Azi e Push 1; ești la 1,4 l apă. Întreabă-mă ceva sau alege un mesaj.')) }])
+  const [water, setWater] = useState(1.4)
+  const [busy, setBusy] = useState(false)
+  const [obs, setObs] = useState(null) // null | 'open' | 'ack' | 'dismiss' | 'task'
+  const [reason, setReason] = useState('')
+  const endRef = useRef(null)
+
+  useEffect(() => { endRef.current?.scrollIntoView({ block: 'nearest', behavior: 'smooth' }) }, [log, busy])
+
+  const send = async pr => {
+    if (busy) return
+    setBusy(true)
+    setLog(l => [...l, { role: 'u', text: L(pr.text) }])
+    for (const [name, args, out] of pr.tools) {
+      await new Promise(r => setTimeout(r, 420))
+      setLog(l => [...l, { role: 't', name, args, out }])
+    }
+    await new Promise(r => setTimeout(r, 520))
+    setLog(l => [...l, { role: 'a', text: L(pr.reply) }])
+    if (pr.water) setWater(pr.water)
+    if (pr.obs) setTimeout(() => setObs('open'), 700)
+    setBusy(false)
+  }
+
+  const pct = Math.min(100, Math.round(water / 2.5 * 100))
+  const col = { cursor: 'pointer', font: 'inherit', fontSize: 11, padding: '5px 10px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--color-neutral-800)', background: 'transparent', color: 'var(--color-neutral-300)' }
+
+  return (
+    <div className="demo-2col" style={{ display: 'grid', gridTemplateColumns: '1.3fr 0.8fr', gap: 0 }}>
+      {/* chat */}
+      <div style={{ padding: 16, borderRight: '1px solid var(--color-neutral-900)', display: 'grid', gridTemplateRows: '1fr auto', gap: 12, minHeight: 360 }}>
+        <div style={{ display: 'grid', gap: 8, alignContent: 'start', maxHeight: 300, overflowY: 'auto', paddingRight: 4 }}>
+          {log.map((m, i) => m.role === 't' ? (
+            <div key={i} style={{ fontFamily: 'var(--font-mono)', fontSize: 10.5, color: 'var(--color-neutral-500)', padding: '5px 9px', border: '1px dashed var(--color-neutral-800)', borderRadius: 'var(--radius-sm)', display: 'flex', gap: 8, flexWrap: 'wrap', animation: 'demoRise 0.25s ease' }}>
+              <span style={{ color: '#f5b544' }}>⚙ {m.name}</span><span>{m.args}</span><span style={{ marginLeft: 'auto', color: 'var(--color-neutral-400)' }}>{m.out}</span>
+            </div>
+          ) : (
+            <div key={i} style={{ justifySelf: m.role === 'u' ? 'end' : 'start', maxWidth: '85%', fontSize: 12.5, lineHeight: 1.45, padding: '8px 11px', borderRadius: 12, background: m.role === 'u' ? '#f5b544' : '#1b1d2c', color: m.role === 'u' ? '#1a1304' : 'var(--color-text)', border: m.role === 'u' ? 0 : '1px solid var(--color-neutral-800)', animation: 'demoRise 0.25s ease' }}>{m.text}</div>
+          ))}
+          {busy && <div style={{ fontSize: 11, color: 'var(--color-neutral-500)' }}>…</div>}
+          <div ref={endRef} />
+        </div>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+          {PROMPTS.map(pr => <button key={pr.id} onClick={() => send(pr)} disabled={busy} style={{ ...col, opacity: busy ? 0.5 : 1 }}>{L(pr.text)}</button>)}
+        </div>
+      </div>
+      {/* today + observation */}
+      <div style={{ padding: 16, display: 'grid', gap: 12, alignContent: 'start' }}>
+        <span style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--color-neutral-600)' }}>{L(T('Today', 'Azi'))}</span>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
+          <div style={{ padding: '10px 12px', border: '1px solid var(--color-neutral-800)', borderRadius: 'var(--radius-sm)', background: '#1b1d2c' }}>
+            <div style={{ fontSize: 10, color: 'var(--color-neutral-500)' }}>{L(T('Water', 'Apă'))}</div>
+            <div style={{ fontSize: 18, fontWeight: 600 }}>{water.toFixed(1).replace('.', L(T('.', ','))) } <span style={{ fontSize: 11, color: 'var(--color-neutral-500)' }}>/ 2,5 l</span></div>
+            <div style={{ height: 4, borderRadius: 99, background: 'var(--color-neutral-900)', marginTop: 6, overflow: 'hidden' }}><div style={{ width: pct + '%', height: '100%', background: '#f5b544', transition: 'width 0.5s ease' }} /></div>
+          </div>
+          <div style={{ padding: '10px 12px', border: '1px solid var(--color-neutral-800)', borderRadius: 'var(--radius-sm)', background: '#1b1d2c' }}>
+            <div style={{ fontSize: 10, color: 'var(--color-neutral-500)' }}>Push 1</div>
+            <div style={{ fontSize: 13, fontWeight: 600 }}>Bench 82,5 kg <span style={{ fontSize: 10, color: '#4fb8a0' }}>↑</span></div>
+            <div style={{ fontSize: 10, color: 'var(--color-neutral-500)', marginTop: 4 }}>{L(T('3 × 8–10 · last: 80 kg', '3 × 8–10 · ultima: 80 kg'))}</div>
+          </div>
+        </div>
+        <span style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--color-neutral-600)', marginTop: 4 }}>{L(T('Observations', 'Observații'))}</span>
+        {obs === null && <div style={{ fontSize: 11, color: 'var(--color-neutral-600)' }}>{L(T('Nothing open. The reflection loop runs 07:30 daily and Sunday 18:00.', 'Nimic deschis. Bucla de reflecție rulează zilnic la 07:30 și duminica la 18:00.'))}</div>}
+        {obs === 'open' && (
+          <div style={{ padding: '10px 12px', border: '1px solid #f5b544', borderRadius: 'var(--radius-sm)', background: 'color-mix(in srgb, #f5b544 10%, transparent)', display: 'grid', gap: 8, animation: 'demoRise 0.25s ease' }}>
+            <div style={{ fontSize: 10, color: '#f5b544', letterSpacing: '0.08em' }}>BUDGET_PACE · {L(T('warning', 'avertisment'))}</div>
+            <div style={{ fontSize: 12, lineHeight: 1.45 }}>{L(T('Groceries at 108% of pace on day 14. At this rate the line ends ~90 lei over.', 'Cumpărăturile la 108% din ritm în ziua 14. În ritmul ăsta linia se închide cu ~90 lei peste.'))}</div>
+            <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+              <button style={col} onClick={() => setObs('ack')}>{L(T('Acknowledge', 'Confirmă'))}</button>
+              <button style={col} onClick={() => setObs('task')}>{L(T('Make it a task', 'Fă-l task'))}</button>
+              <button style={col} onClick={() => setObs('dismiss')}>{L(T('Dismiss…', 'Respinge…'))}</button>
+            </div>
+          </div>
+        )}
+        {obs === 'dismiss' && (
+          <div style={{ display: 'grid', gap: 6, animation: 'demoRise 0.25s ease' }}>
+            <input className="input" value={reason} onChange={e => setReason(e.target.value)} placeholder={L(T('Reason is mandatory — why dismiss?', 'Motivul e obligatoriu — de ce respingi?'))} style={{ fontSize: 12 }} />
+            <button style={{ ...col, justifySelf: 'start', opacity: reason.trim() ? 1 : 0.5 }} disabled={!reason.trim()} onClick={() => setObs('ack')}>{L(T('Dismiss with reason', 'Respinge cu motiv'))}</button>
+          </div>
+        )}
+        {obs === 'ack' && <div style={{ fontSize: 11, color: 'var(--color-neutral-500)' }}>{L(T('Closed. It will not be raised again this month.', 'Închisă. Nu va mai fi ridicată luna asta.'))}</div>}
+        {obs === 'task' && <div style={{ fontSize: 11, color: 'var(--color-neutral-400)' }}>✓ {L(T('High-priority task created: “Review groceries line”, due tomorrow.', 'Task cu prioritate mare creat: „Verifică linia cumpărături”, scadent mâine.'))}</div>}
+        <p style={{ marginTop: 6, fontSize: 11, lineHeight: 1.5, color: 'var(--color-neutral-500)' }}>
+          {L(T('Every figure the assistant says comes from a tool call in that turn. No tool, no number.', 'Fiecare cifră spusă de asistent vine dintr-un apel de tool din acea tură. Fără tool, fără cifră.'))}
+        </p>
+      </div>
+    </div>
+  )
+}
+
 /* ── frame ──────────────────────────────────────────────────────────── */
 const KINDS = {
   platform: PlatformDemo, exadel: ExadelDemo, mtd: MtdDemo, she: SheDemo,
-  be: BeDemo, pulse: PulseDemo, dobby: DobbyDemo, luppy: LuppyDemo, horae: HoraeDemo,
+  be: BeDemo, pulse: PulseDemo, dobby: DobbyDemo, luppy: LuppyDemo, horae: HoraeDemo, alfred: AlfredDemo,
 }
 
 export default function Demo({ kind, lang, chrome }) {

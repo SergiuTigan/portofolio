@@ -18,7 +18,7 @@ export default function Work({ onOpen }) {
       <div className="wrap">
         <Reveal className="section-head">
           <span className="index">01</span>
-          <h2 id="work-h">{L(T('Nine projects, each in its own colors', 'Nouă proiecte, fiecare în culorile lui'))}</h2>
+          <h2 id="work-h">{L(T('Ten projects, each in its own colors', 'Zece proiecte, fiecare în culorile lui'))}</h2>
           <p className="sub lead">{L(T('Every one has a working demo of its interface, anonymised where an NDA applies. The page re-tints itself to the project you open.', 'Fiecare are un demo funcțional al interfeței, anonimizat acolo unde există NDA. Pagina se colorează după proiectul pe care îl deschizi.'))}</p>
         </Reveal>
 

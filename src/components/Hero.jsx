@@ -28,7 +28,7 @@ export default function Hero({ edition, onJump, onGenerate, onOpenEditions }) {
     ['8+', T('years of Angular', 'ani de Angular')],
     ['10', T('brands, one codebase', 'branduri, un singur cod')],
     ['5', T('VW Group marques', 'mărci VW Group')],
-    ['4', T('own products live', 'produse proprii live')],
+    ['5', T('own products live', 'produse proprii live')],
     ['−80%', T('review time, automated', 'timp de review, automatizat')],
   ]
 
@@ -60,33 +60,34 @@ export default function Hero({ edition, onJump, onGenerate, onOpenEditions }) {
           </div>
         </div>
 
-        {/* the page's own tokens — live proof of the headline */}
-        <aside className="spec rise d2" style={{ '--tilt': '-1.2deg' }} aria-label={L(T('Current edition tokens', 'Tokenurile ediției curente'))}>
-          <div className="spec-top">
-            <span className="swatch" aria-hidden />
-            <span className="name" style={{ fontFamily: t['--font-display'] }}>{edition.name}</span>
-            <span className="live"><span className="dot" style={{ width: 6, height: 6 }} aria-hidden />{L(T('live tokens', 'tokenuri live'))}</span>
-          </div>
-          <div className="spec-rows">
-            <div className="spec-row"><span className="k">accent</span><span className="v">{t['--accent']}</span><span className="sw" style={{ background: t['--accent'] }} /></div>
-            <div className="spec-row"><span className="k">action</span><span className="v">{t['--pop']}</span><span className="sw" style={{ background: t['--pop'] }} /></div>
-            <div className="spec-row"><span className="k">surface</span><span className="v">{t['--bg']}</span><span className="sw" style={{ background: t['--bg'] }} /></div>
-            <div className="spec-row"><span className="k">display</span><span className="v" style={{ fontFamily: t['--font-display'] }}>{FONT_LABEL(t['--font-display'])}</span><span style={{ fontFamily: t['--font-display'], fontSize: 16, lineHeight: 1 }}>Aa</span></div>
-            <div className="spec-row"><span className="k">radius</span><span className="v">{t['--radius']}</span><span className="shape" /></div>
-            <div className="spec-row"><span className="k">scheme</span><span className="v">{t['--scheme']}</span><span className="v" style={{ color: 'var(--muted)' }}>{edition.generated ? 'generated' : 'curated'}</span></div>
-          </div>
-          <div className="spec-photo">
-            {photoOk ? <img src="/me.jpg" alt="" width="56" height="56" loading="lazy" onError={() => setPhotoOk(false)} /> : <span style={{ width: 56, height: 56, borderRadius: 'var(--radius-sm)', background: 'var(--card-2)' }} />}
-            <div className="who"><b>Sergiu Țigan</b><span>Cluj-Napoca · CET · {L(T('4h overlap with US Eastern', '4h suprapunere cu US Eastern'))}</span></div>
-          </div>
-          <p className="spec-caption">
-            {L(T('This page is configuration. ', 'Pagina asta e configurație. '))}
-            <button onClick={onOpenEditions}>{L(T('Pick an edition', 'Alege o ediție'))}</button>
-            {L(T(' or ', ' sau '))}
-            <button onClick={onGenerate}>{L(T('generate a brand', 'generează un brand'))}</button>
-            {L(T(' — same markup, different tokens.', ' — același markup, alte tokenuri.'))}
-          </p>
-        </aside>
+        {/* portrait + the page's own tokens — live proof of the headline */}
+        <div className="hero-side rise d2">
+          <figure className="portrait">
+            {photoOk ? <img src="/me.jpg" alt="Sergiu Țigan" width="1200" height="1200" fetchPriority="high" onError={() => setPhotoOk(false)} /> : <div className="portrait-fallback" />}
+            <figcaption><b>Sergiu Țigan</b><span>Cluj-Napoca · CET · {L(T('4h overlap with US Eastern', '4h suprapunere cu US Eastern'))}</span></figcaption>
+          </figure>
+          <aside className="spec" style={{ '--tilt': '-1.2deg' }} aria-label={L(T('Current edition tokens', 'Tokenurile ediției curente'))}>
+            <div className="spec-top">
+              <span className="swatch" aria-hidden />
+              <span className="name" style={{ fontFamily: t['--font-display'] }}>{edition.name}</span>
+              <span className="live"><span className="dot" style={{ width: 6, height: 6 }} aria-hidden />{L(T('live tokens', 'tokenuri live'))}</span>
+            </div>
+            <div className="spec-rows">
+              <div className="spec-row"><span className="k">accent</span><span className="v">{t['--accent']}</span><span className="sw" style={{ background: t['--accent'] }} /></div>
+              <div className="spec-row"><span className="k">action</span><span className="v">{t['--pop']}</span><span className="sw" style={{ background: t['--pop'] }} /></div>
+              <div className="spec-row"><span className="k">surface</span><span className="v">{t['--bg']}</span><span className="sw" style={{ background: t['--bg'] }} /></div>
+              <div className="spec-row"><span className="k">display</span><span className="v" style={{ fontFamily: t['--font-display'] }}>{FONT_LABEL(t['--font-display'])}</span><span style={{ fontFamily: t['--font-display'], fontSize: 16, lineHeight: 1 }}>Aa</span></div>
+              <div className="spec-row"><span className="k">radius</span><span className="v">{t['--radius']}</span><span className="shape" /></div>
+            </div>
+            <p className="spec-caption">
+              {L(T('This page is configuration. ', 'Pagina asta e configurație. '))}
+              <button onClick={onOpenEditions}>{L(T('Pick an edition', 'Alege o ediție'))}</button>
+              {L(T(' or ', ' sau '))}
+              <button onClick={onGenerate}>{L(T('generate a brand', 'generează un brand'))}</button>
+              {L(T(' — same markup, different tokens.', ' — același markup, alte tokenuri.'))}
+            </p>
+          </aside>
+        </div>
       </div>
     </section>
   )

@@ -173,11 +173,21 @@ select.input { appearance: none; background-image: linear-gradient(45deg, transp
     radial-gradient(60% 50% at var(--mx, 70%) var(--my, 20%), color-mix(in srgb, var(--accent) 22%, transparent), transparent 70%),
     radial-gradient(40% 40% at 10% 90%, color-mix(in srgb, var(--pop) 10%, transparent), transparent 70%);
   transition: background var(--t-theme) ease; }
-.hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.85fr); gap: clamp(28px, 5vw, 72px); align-items: center; }
+.hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.95fr); gap: clamp(28px, 5vw, 72px); align-items: center; }
+.hero-side { position: relative; padding-bottom: 150px; }
+.portrait { margin: 0; position: relative; aspect-ratio: 4 / 5; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); background: var(--card-2); box-shadow: 0 40px 90px -40px rgba(0,0,0,0.6); }
+.portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; filter: saturate(0.95) contrast(1.03); transition: filter var(--t-theme) ease; }
+[data-edition="terminal"] .portrait img { filter: grayscale(1) contrast(1.15) sepia(0.4) hue-rotate(70deg) saturate(1.6); }
+[data-edition="atelier"] .portrait img { filter: saturate(0.6) contrast(1.05) sepia(0.2); }
+.portrait-fallback { width: 100%; height: 100%; background: radial-gradient(80% 80% at 50% 30%, color-mix(in srgb, var(--accent) 30%, transparent), transparent 70%); }
+.portrait figcaption { position: absolute; left: 14px; bottom: 14px; display: grid; gap: 1px; padding: 8px 12px; border-radius: var(--radius-sm); background: color-mix(in srgb, var(--bg) 78%, transparent); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid var(--line); }
+.portrait figcaption b { font-size: 13.5px; }
+.portrait figcaption span { font-size: 11.5px; color: var(--soft); }
+.hero-side .spec { position: absolute; left: clamp(-56px, -4vw, -16px); right: 12%; bottom: 0; }
 .avail { display: inline-flex; align-items: center; gap: 9px; padding: 6px 12px 6px 8px; border: 1px solid var(--line-2); border-radius: var(--radius-pill); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--soft); }
 .dot { width: 8px; height: 8px; border-radius: 50%; background: #3dd68c; box-shadow: 0 0 0 0 rgba(61,214,140,0.5); animation: ping 2.2s ease-out infinite; }
 @keyframes ping { 0% { box-shadow: 0 0 0 0 rgba(61,214,140,0.5) } 70% { box-shadow: 0 0 0 9px transparent } 100% { box-shadow: 0 0 0 0 transparent } }
-.hero h1 { font-size: clamp(42px, 7vw, 96px); font-weight: 800; line-height: 0.98; margin-top: 22px; max-width: 12ch; overflow-wrap: anywhere; }
+.hero h1 { font-size: clamp(42px, 6.2vw, 86px); font-weight: 800; line-height: 0.98; margin-top: 22px; max-width: 12ch; overflow-wrap: anywhere; }
 [data-edition="terminal"] .hero h1 { font-size: clamp(32px, 5.4vw, 72px); max-width: 15ch; overflow-wrap: normal; }
 .hero h1 em { font-style: normal; color: var(--accent); transition: color var(--t-theme) ease; }
 [data-edition="atelier"] .hero h1 em { font-style: italic; }
@@ -392,7 +402,9 @@ select.input { appearance: none; background-image: linear-gradient(45deg, transp
 }
 @media (max-width: 900px) {
   .hero-grid { grid-template-columns: 1fr; }
-  .spec { --tilt: 0deg; max-width: 460px; }
+  .hero-side { padding-bottom: 0; display: grid; gap: 16px; max-width: 520px; }
+  .portrait { aspect-ratio: 1 / 1; }
+  .hero-side .spec { position: static; --tilt: 0deg; }
   .stats { grid-template-columns: repeat(3, auto); }
   .feature { grid-template-columns: 1fr; }
   .feature .vis { border-left: 0; border-top: 1px solid var(--line); min-height: 220px; }
