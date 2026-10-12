@@ -326,7 +326,7 @@ function MtdDemo({ L }) {
           </button>
         ))}
       </div>
-      <div style={{ overflow: 'hidden', border: '1px solid var(--color-neutral-800)', borderRadius: 'var(--radius-md)' }}>
+      <div style={{ overflowX: 'auto', border: '1px solid var(--color-neutral-800)', borderRadius: 'var(--radius-md)' }}>
         <table className="table" style={{ width: '100%', fontSize: 12 }}>
           <thead>
             <tr>
