@@ -301,7 +301,9 @@ select.input { appearance: none; background-image: linear-gradient(45deg, transp
 .rail .pn button { cursor: pointer; text-align: left; background: none; border: 0; padding: 6px 10px; border-radius: var(--radius-sm); color: var(--soft); font-size: 13px; display: grid; gap: 1px; }
 .rail .pn button small { font-family: var(--font-mono); font-size: 10px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
 .rail .pn button:hover { background: color-mix(in srgb, var(--ink) 6%, transparent); color: var(--ink); }
-.cs { display: grid; gap: clamp(36px, 5vw, 64px); }
+.cs { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(36px, 5vw, 64px); min-width: 0; }
+.cs > * { min-width: 0; }
+.cs .demo-scope { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 .cs section { scroll-margin-top: 84px; }
 .cs h2 { font-size: clamp(24px, 3vw, 36px); margin-bottom: 16px; display: flex; align-items: baseline; gap: 14px; }
 .cs h2 .n { font-family: var(--font-mono); font-size: 11px; color: var(--flavor); letter-spacing: 0.12em; }
@@ -373,7 +375,7 @@ select.input { appearance: none; background-image: linear-gradient(45deg, transp
 @media (max-width: 1080px) {
   .work-grid { grid-template-columns: 1fr; }
   .preview { display: none; }
-  .case-body { grid-template-columns: 1fr; }
+  .case-body { grid-template-columns: minmax(0, 1fr); }
   .rail { position: static; display: flex; flex-wrap: wrap; gap: 6px; }
   .rail a { border-left: 0; border: 1px solid var(--line); border-radius: var(--radius-pill); padding: 6px 12px; }
   .rail .pn { display: none; }

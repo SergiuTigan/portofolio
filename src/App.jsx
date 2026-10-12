@@ -41,6 +41,11 @@ export default function App() {
     document.title = c ? `${c.client} — Sergiu Țigan` : 'Sergiu Țigan — Senior Frontend Engineer · Angular, multi-brand platforms'
   }, [route])
 
+  // unknown /work/<id> → home, replacing the bad entry
+  useEffect(() => {
+    if (route.view === 'case' && !CASES.some(c => c.id === route.id)) navigate('/', { replace: true })
+  }, [route, navigate])
+
   const openCase = useCallback(id => {
     if (!CASES.some(c => c.id === id)) return
     navigate('/work/' + id)
