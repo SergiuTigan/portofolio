@@ -1,6 +1,6 @@
 // Ten-line history router. Routes: "/" and "/work/:id". Legacy "#/case/:id"
 // hashes are promoted to real paths so old links keep working.
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 export function parsePath(pathname = window.location.pathname, hash = window.location.hash) {
   const h = hash.match(/^#\/case\/([\w-]+)/)
@@ -14,20 +14,23 @@ export function useRoute() {
   const [route, setRoute] = useState(() => parsePath())
 
   useEffect(() => {
-    // promote legacy hash links to a clean path
-    const h = window.location.hash.match(/^#\/case\/([\w-]+)/)
-    if (h) history.replaceState(null, '', '/work/' + h[1])
-    const onPop = () => setRoute(parsePath())
-    window.addEventListener('popstate', onPop)
-    window.addEventListener('hashchange', onPop)
-    return () => { window.removeEventListener('popstate', onPop); window.removeEventListener('hashchange', onPop) }
+    // promote legacy hash links to a clean path — on load and whenever the hash changes
+    const promote = () => {
+      const h = window.location.hash.match(/^#\/case\/([\w-]+)/)
+      if (h) history.replaceState(null, '', '/work/' + h[1])
+      setRoute(parsePath())
+    }
+    promote()
+    window.addEventListener('popstate', promote)
+    window.addEventListener('hashchange', promote)
+    return () => { window.removeEventListener('popstate', promote); window.removeEventListener('hashchange', promote) }
   }, [])
 
-  const navigate = (path, { replace = false } = {}) => {
-    if (path === window.location.pathname) return
+  const navigate = useCallback((path, { replace = false } = {}) => {
+    if (path === window.location.pathname + window.location.hash) return
     history[replace ? 'replaceState' : 'pushState'](null, '', path)
     setRoute(parsePath(path, ''))
-  }
+  }, [])
 
   return [route, navigate]
 }

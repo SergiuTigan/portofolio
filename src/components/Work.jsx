@@ -45,16 +45,18 @@ export default function Work({ onOpen }) {
         <div className="work-grid">
           <div className="worklist" role="list">
             {rest.map((c, n) => (
-              <button key={c.id} role="listitem" className={'row' + (hover === c.id ? ' on' : '')} style={{ '--flavor': FLAVOR[c.id] }} onClick={() => onOpen(c.id)} onMouseEnter={() => setHover(c.id)} onFocus={() => setHover(c.id)}>
+              <div role="listitem" key={c.id} style={{ display: 'contents' }}>
+              <button className={'row' + (hover === c.id ? ' on' : '')} style={{ '--flavor': FLAVOR[c.id] }} onClick={() => onOpen(c.id)} onMouseEnter={() => setHover(c.id)} onFocus={() => setHover(c.id)}>
                 <span className="n">{String(n + 2).padStart(2, '0')}</span>
                 <span><span className="client">{c.client}</span><span className="sector">{L(DOMAIN[c.id])}{c.own ? ' · ' + L(T('own product', 'produs propriu')) : ''}</span></span>
                 <span className="one">{L(c.oneLiner)}</span>
                 <span className="when">{L(c.period)}</span>
                 <span className="go" aria-hidden>→</span>
               </button>
+              </div>
             ))}
           </div>
-          <aside className="preview" aria-hidden>
+          <aside className="preview" aria-hidden inert>
             <div className="pv" key={pv.id} style={{ '--flavor': FLAVOR[pv.id] }}>
               <div className="domain"><span className="eyebrow">{L(DOMAIN[pv.id])}</span><span className="mono muted" style={{ fontSize: 11 }}>{L(pv.period)}</span></div>
               <h4>{pv.client}</h4>

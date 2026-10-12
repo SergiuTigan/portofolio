@@ -18,12 +18,17 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Serif:ital@0;1&family=Space+Mono:wght@400;700&display=swap" />
     <script>
       // apply the saved edition before first paint — no flash of the wrong theme
       try {
-        var raw = localStorage.getItem('st.edition'); var v = raw && JSON.parse(raw);
-        var P = { paper: ['#f7f3ec', '#17150f'], terminal: ['#050806', '#d9ffe3'], atelier: ['#efe8dc', '#1f1512'] };
-        if (v && P[v.id]) { document.documentElement.style.setProperty('--bg', P[v.id][0]); document.documentElement.style.setProperty('--ink', P[v.id][1]); }
+        var raw = localStorage.getItem('st.edition.tokens'); var v = raw && JSON.parse(raw);
+        if (v && v.tokens) {
+          var r = document.documentElement;
+          for (var k in v.tokens) r.style.setProperty(k, v.tokens[k]);
+          r.dataset.edition = v.id; r.style.colorScheme = v.tokens['--scheme'] || 'dark';
+          var m = document.querySelector('meta[name="theme-color"]'); if (m) m.setAttribute('content', v.tokens['--bg']);
+        }
       } catch (e) {}
     </script>
     <script type="application/ld+json">

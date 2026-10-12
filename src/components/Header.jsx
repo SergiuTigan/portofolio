@@ -17,7 +17,7 @@ export default function Header({ edition, onPickEdition, onGenerate, onHome, onJ
   return (
     <header className={'hdr' + (scrolled ? ' scrolled' : '')}>
       <div className="wrap hdr-in">
-        <button className="brand" onClick={onHome} aria-label="Home">
+        <button className="brand" onClick={onHome} aria-label="Sergiu Țigan — home">
           <span className="mark"><Logo size={24} /></span>
           <span className="name">Sergiu Țigan</span>
         </button>
@@ -25,8 +25,9 @@ export default function Header({ edition, onPickEdition, onGenerate, onHome, onJ
           <button onClick={() => onJump('work')}>{L(T('Work', 'Proiecte'))}</button>
           <button onClick={() => onJump('about')}>{L(T('About', 'Despre'))}</button>
           <button onClick={() => onJump('contact')}>{L(T('Contact', 'Contact'))}</button>
-          <button onClick={onPalette} title={L(T('Command palette', 'Paletă de comenzi'))} style={{ display: 'inline-flex', gap: 6, alignItems: 'center' }}>
-            <span className="kbd">{isMac ? '⌘' : 'Ctrl'} K</span>
+          <button className="pal-btn" onClick={onPalette} title={L(T('Command palette', 'Paletă de comenzi'))} aria-label={L(T('Open menu and command palette', 'Deschide meniul și paleta de comenzi'))}>
+            <span className="pal-lbl">{L(T('Menu', 'Meniu'))}</span>
+            <span className="kbd" aria-hidden>{isMac ? '⌘' : 'Ctrl'} K</span>
           </button>
         </nav>
         <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 8 }} className="hdr-right">

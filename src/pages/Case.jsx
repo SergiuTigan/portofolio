@@ -61,7 +61,7 @@ export default function Case({ id, onOpen, onHome }) {
             </div>
           </div>
           {c.live && (
-            <div className="live">
+            <div className="case-live">
               <a className="btn btn-accent btn-sm" href={c.live.url} target="_blank" rel="noreferrer">{L(T('Try it live', 'Încearcă live'))} ↗</a>
               <span>{L(T('Demo account', 'Cont demo'))}: <code>{c.live.user}</code> · <code>{c.live.pass}</code></span>
               <span className="muted" style={{ fontSize: 12.5 }}>{L(T('Sandbox — data resets, nothing is real.', 'Sandbox — datele se resetează, nimic nu e real.'))}</span>

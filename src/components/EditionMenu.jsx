@@ -11,7 +11,7 @@ export default function EditionMenu({ edition, onPick, onGenerate }) {
   useEffect(() => {
     if (!open) return
     const onDoc = e => { if (ref.current && !ref.current.contains(e.target)) setOpen(false) }
-    const onKey = e => { if (e.key === 'Escape') setOpen(false) }
+    const onKey = e => { if (e.key === 'Escape') { e.preventDefault(); e.stopPropagation(); setOpen(false); ref.current?.querySelector('.ed-btn')?.focus() } }
     document.addEventListener('mousedown', onDoc)
     document.addEventListener('keydown', onKey)
     return () => { document.removeEventListener('mousedown', onDoc); document.removeEventListener('keydown', onKey) }
@@ -19,19 +19,19 @@ export default function EditionMenu({ edition, onPick, onGenerate }) {
 
   return (
     <div ref={ref} style={{ position: 'relative' }}>
-      <button className="ed-btn" onClick={() => setOpen(o => !o)} aria-haspopup="menu" aria-expanded={open} title={L(T('Edition — re-theme the site', 'Ediție — schimbă tema site-ului'))}>
+      <button className="ed-btn" onClick={() => setOpen(o => !o)} aria-expanded={open} aria-controls="ed-pop" title={L(T('Edition — re-theme the site', 'Ediție — schimbă tema site-ului'))}>
         <span className="swatch" aria-hidden />
         <span className="lbl">{edition.name}</span>
-        <span aria-hidden style={{ fontSize: 10, color: 'var(--muted)' }}>▾</span>
+        <span aria-hidden style={{ fontSize: 10, color: 'var(--soft)' }}>▾</span>
       </button>
       {open && (
-        <div className="ed-pop" role="menu">
+        <div className="ed-pop" id="ed-pop">
           <div className="title">
             <span className="kicker">{L(T('Edition', 'Ediție'))}</span>
             <span style={{ fontSize: 12, color: 'var(--muted)' }}>{L(T('same markup, other tokens', 'același markup, alte tokenuri'))}</span>
           </div>
           {EDITIONS.map(e => (
-            <button key={e.id} role="menuitemradio" aria-checked={edition.id === e.id} className={'ed-row' + (edition.id === e.id ? ' on' : '')} onClick={() => { onPick(e); setOpen(false) }}>
+            <button key={e.id} aria-pressed={edition.id === e.id} className={'ed-row' + (edition.id === e.id ? ' on' : '')} onClick={() => { onPick(e); setOpen(false) }}>
               <span className="prev" style={{ background: e.tokens['--bg'] }} aria-hidden>
                 <i style={{ background: e.tokens['--accent'] }} />
                 <i style={{ background: e.tokens['--pop'] }} />
