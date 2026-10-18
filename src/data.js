@@ -460,15 +460,16 @@ const CASES = [
     demoNote: null,
   },
   {
-    id: 'pickup', client: 'Scheduled Pickup', demo: null, own: true,
-    sector: T('Client work · WooCommerce plugin', 'Proiect pentru client · plugin WooCommerce'),
-    period: T('v0.10, 2026', 'v0.10, 2026'),
-    tags: ['WordPress', 'WooCommerce', 'PHP 8.1', 'Blocks'],
-    stack: ['PHP 8.1', 'WordPress 6.6+', 'WooCommerce 9+ (HPOS)', 'Cart/Checkout Blocks', 'Classic checkout', 'WP REST API', 'PHPUnit', 'wp-env', 'i18n (ro_RO)'],
+    id: 'pickup', client: 'Pickupia', demo: null, own: true,
+    sector: T('Own product · WooCommerce plugin, first built for a client', 'Produs propriu · plugin WooCommerce, făcut inițial pentru un client'),
+    period: T('v0.12, 2026 · Free + Pro', 'v0.12, 2026 · Free + Pro'),
+    tags: ['WordPress', 'WooCommerce', 'PHP 8.1', 'Blocks', 'Freemius'],
+    stack: ['PHP 8.1', 'WordPress 6.6+', 'WooCommerce 9+ (HPOS)', 'Cart/Checkout Blocks', 'Classic checkout', 'WP REST API', 'Freemius (licensing, Free/Pro builds)', 'PHPUnit', 'Playwright', 'wp-env', 'Plugin Check', 'i18n (ro_RO)'],
     oneLiner: T('A WooCommerce plugin that gives every product a pickup date: the customer picks a valid day on the product page, and the date follows the line through cart, checkout, order, emails and the shop’s admin.', 'Un plugin WooCommerce care dă fiecărui produs o dată de ridicare: clientul alege o zi validă pe pagina produsului, iar data urmează linia prin coș, checkout, comandă, emailuri și adminul magazinului.'),
     context: [
       T('A Cluj confectionery — the same business that runs on Horae — takes cake and pastry orders online, and every product has its own lead time: a cozonac only before Christmas, a custom cake with three days’ notice, macarons any day. A free-text “delivery date” field at checkout was producing impossible dates and phone calls.', 'O cofetărie din Cluj — aceeași afacere care rulează pe Horae — primește online comenzi de torturi și prăjituri, iar fiecare produs are propriul termen: cozonacul doar înainte de Crăciun, tortul personalizat cu trei zile înainte, macarons în orice zi. Un câmp text liber „data livrării” din checkout producea date imposibile și telefoane.'),
       T('The plugin replaces that field with rules. Reusable pickup profiles describe when something can be collected; they attach to a category or a product, and the storefront only ever offers dates that are actually possible.', 'Pluginul înlocuiește acel câmp cu reguli. Profilurile de ridicare reutilizabile descriu când se poate ridica ceva; se atașează unei categorii sau unui produs, iar magazinul oferă doar date care chiar sunt posibile.'),
+      T('It worked well enough that it became a product: Pickupia, free on WordPress.org for the basics, with a Pro edition (delivery methods, per-method rules, per-group shipping) sold and updated through Freemius.', 'A mers destul de bine încât a devenit produs: Pickupia, gratuit pe WordPress.org pentru baza, cu o ediție Pro (moduri de livrare, reguli per mod, transport pe grup) vândută și actualizată prin Freemius.'),
     ],
     challenge: [
       T('WooCommerce has two checkouts — classic and Blocks — and a shipping system that was never designed for “this cake on Saturday at the shop, those macarons delivered on Monday”. The plugin has to work with both checkouts and split one order into correctly charged delivery groups.', 'WooCommerce are două checkouturi — clasic și Blocks — și un sistem de livrare care n-a fost gândit pentru „tortul ăsta sâmbătă la magazin, macaronsurile astea livrate luni”. Pluginul trebuie să meargă cu ambele checkouturi și să împartă o comandă în grupuri de livrare taxate corect.'),
@@ -485,9 +486,11 @@ const CASES = [
       { label: T('Impossible dates at checkout', 'Date imposibile la checkout'), before: T('free text', 'text liber'), after: '0', note: T('Only dates the rules allow can be chosen.', 'Se pot alege doar datele permise de reguli.') },
       { label: T('Rule levels', 'Niveluri de reguli'), before: '1', after: '4', note: T('Global, category, subcategory, product.', 'Global, categorie, subcategorie, produs.') },
       { label: T('Checkouts supported', 'Checkouturi suportate'), before: '—', after: '2', note: T('Classic and Blocks, HPOS-compatible.', 'Clasic și Blocks, compatibil HPOS.') },
+      { label: T('Plugin Check errors', 'Erori Plugin Check'), before: '207', after: '0', note: T('Before the WordPress.org review.', 'Înainte de review-ul WordPress.org.') },
     ],
     lessons: [
       { title: T('Validate where WooCommerce forgets to', 'Validează unde uită WooCommerce'), body: T('Adding to the cart programmatically skips WooCommerce’s own validation hook, so the date is enforced again when the cart item is built.', 'Adăugarea programatică în coș sare peste hookul de validare al WooCommerce, așa că data e verificată din nou când se construiește linia din coș.') },
+      { title: T('Test the build you actually ship', 'Testează build-ul pe care îl livrezi'), body: T('Freemius strips the Pro files to produce the free build; free code that still referenced one Pro class would have crashed every product page. A script now builds the stripped version locally and smoke-tests every screen before each release.', 'Freemius scoate fișierele Pro ca să genereze build-ul gratuit; codul Free care încă referea o clasă Pro ar fi dat crash pe fiecare pagină de produs. Acum un script construiește local versiunea fără Pro și verifică fiecare ecran înainte de fiecare release.') },
       { title: T('Scope down before you build', 'Restrânge înainte să construiești'), body: T('The client’s first list was a clone of a pro plugin with slots, fees and capacity. Asking what the shop actually does every day cut it to dates and methods — and shipped it in days.', 'Prima listă a clientului era o clonă a unui plugin pro, cu sloturi, taxe și capacitate. Întrebând ce face magazinul de fapt în fiecare zi, am redus-o la date și moduri de livrare — și am livrat-o în câteva zile.') },
     ],
     arch: [

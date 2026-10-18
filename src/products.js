@@ -67,9 +67,9 @@ export const PRODUCTS = [
   },
 
   {
-    id: 'pickup', name: 'Scheduled Pickup', color: '#7f54b3', caseId: 'pickup',
-    kind: T('WooCommerce plugin', 'Plugin WooCommerce'),
-    status: T('v0.10, built for a client', 'v0.10, făcut pentru un client'),
+    id: 'pickup', name: 'Pickupia', color: '#1F7A6D', caseId: 'pickup',
+    kind: T('WooCommerce plugin · Free + Pro', 'Plugin WooCommerce · Free + Pro'),
+    status: T('v0.12, Pro on Freemius, WordPress.org in review', 'v0.12, Pro pe Freemius, WordPress.org în review'),
     pitch: T(
       'A pickup date per product for a confectionery shop: the customer picks a valid day on the product page, and the date follows the line through cart, checkout, order, emails and admin. Rules live in reusable profiles that cascade from category to subcategory to product.',
       'Dată de ridicare per produs pentru o cofetărie: clientul alege o zi validă pe pagina produsului, iar data urmează linia prin coș, checkout, comandă, emailuri și admin. Regulile stau în profiluri reutilizabile care se moștenesc de la categorie la subcategorie la produs.'
@@ -78,8 +78,9 @@ export const PRODUCTS = [
       [T('Platform', 'Platformă'), T('WordPress 6.6+, PHP 8.1+, WooCommerce 9+, HPOS and Blocks checkout', 'WordPress 6.6+, PHP 8.1+, WooCommerce 9+, HPOS și checkout Blocks')],
       [T('Admin', 'Admin'), T('A pickups board (today, tomorrow, upcoming), an orders column and date filter', 'Un panou de ridicări (azi, mâine, următoarele), o coloană și un filtru pe comenzi')],
       [T('Integrates', 'Integrare'), T('REST availability endpoint, shortcode, hooks, method ids mapped to Horae', 'Endpoint REST de disponibilitate, shortcode, hookuri, metode mapate în Horae')],
+      [T('Ships as', 'Distribuție'), T('Free on WordPress.org, Pro with licensing and updates through Freemius', 'Free pe WordPress.org, Pro cu licențe și update-uri prin Freemius')],
     ],
-    figures: [['3', T('levels of rule inheritance', 'niveluri de moștenire a regulilor')], ['19', T('unit tests on the rules', 'teste unitare pe reguli')], ['2', T('checkouts supported', 'checkouturi suportate')]],
+    figures: [['3', T('levels of rule inheritance', 'niveluri de moștenire a regulilor')], ['19 + 4', T('unit and end-to-end tests', 'teste unitare și end-to-end')], ['2', T('checkouts supported', 'checkouturi suportate')]],
   },
   {
     id: 'ironpulse', name: 'Iron Pulse', color: '#2f6fe4', caseId: 'ironpulse',

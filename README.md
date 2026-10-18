@@ -2,7 +2,7 @@
 
 Personal portfolio of Sergiu Țigan — senior frontend engineer who also builds and runs whole products.
 
-The home page is organised around six products (Horae, Alfred, Job Check, Dobby, Scheduled Pickup,
+The home page is organised around six products (Horae, Alfred, Job Check, Dobby, Pickupia,
 Iron Pulse), each shown through real screenshots of the running apps filled with invented data,
 followed by the client work, how I work, and a contact form.
 
