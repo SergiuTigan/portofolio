@@ -1,6 +1,6 @@
 /* sergiu.tigan.dev — aluminium, indigo ink, one cobalt signal.
    Each product brings its own colour (--pc) into its chapter.
-   One family: Archivo, using its width axis — condensed for names, normal for reading. */
+   Familjen Grotesk for names, headings and figures; Host Grotesk for reading. */
 
 :root {
   --bg: #e9ecf0;
@@ -16,7 +16,8 @@
   --phone: #121633;
   --shadow: 0 1px 0 rgba(18, 22, 51, 0.04), 0 24px 48px -28px rgba(18, 22, 51, 0.45);
 
-  --font: 'Archivo', system-ui, sans-serif;
+  --font: 'Host Grotesk', system-ui, sans-serif;
+  --display: 'Familjen Grotesk', system-ui, sans-serif;
   --mono: 'JetBrains Mono', ui-monospace, monospace;
   --max: 1200px;
   --wide: 1480px;
@@ -65,7 +66,7 @@ body {
   -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
   overflow-x: clip;
 }
-h1, h2, h3, h4 { margin: 0; line-height: 1.02; text-wrap: balance; font-weight: 750; }
+h1, h2, h3, h4 { margin: 0; line-height: 1.02; text-wrap: balance; font-weight: 700; }
 p { margin: 0; }
 a { color: inherit; }
 button { font: inherit; color: inherit; }
@@ -129,8 +130,8 @@ dl, dd { margin: 0; }
 .hero-who img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; flex: none; }
 .hero-h {
   margin-top: clamp(18px, 2.4vw, 28px);
-  font-stretch: 62%; font-weight: 820; letter-spacing: -0.012em;
-  font-size: clamp(50px, 8.4vw, 128px); line-height: 0.88;
+  font-family: var(--display); font-weight: 700; letter-spacing: -0.025em;
+  font-size: clamp(42px, 6.4vw, 98px); line-height: 0.98;
 }
 .hero-h span { display: block; }
 .hero-h span + span { color: var(--signal); }
@@ -169,7 +170,7 @@ dl, dd { margin: 0; }
 .dock-item:hover .dock-name { color: var(--ink); }
 .dock-item.on::before { background: color-mix(in srgb, var(--pc) 30%, transparent); }
 .dock-item.on .dock-name { color: var(--pc-text); }
-.dock-name { font-stretch: 75%; font-weight: 760; font-size: 21px; line-height: 1.1; color: var(--soft); transition: color 0.3s; }
+.dock-name { font-family: var(--display); font-weight: 700; font-size: 19px; line-height: 1.1; color: var(--soft); transition: color 0.3s; }
 .dock-kind { font-size: 13px; line-height: 1.35; }
 .dock-timer { position: absolute; left: 0; right: 14px; top: -1px; height: 3px; background: var(--pc); transform-origin: left; animation: dock-fill linear forwards; }
 @keyframes dock-fill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
@@ -187,13 +188,13 @@ dl, dd { margin: 0; }
 
 /* ── section heads ───────────────────────────────────────────────────── */
 .sec-head { display: grid; gap: 16px; margin-bottom: clamp(32px, 5vw, 56px); }
-.sec-head h2, .about h2, .contact h2 { font-stretch: 72%; font-weight: 780; font-size: clamp(38px, 5.4vw, 72px); line-height: 0.95; letter-spacing: -0.01em; max-width: 18ch; }
+.sec-head h2, .about h2, .contact h2 { font-family: var(--display); font-weight: 700; font-size: clamp(34px, 4.4vw, 60px); line-height: 1; letter-spacing: -0.025em; max-width: 18ch; }
 
 /* ── product chapters ────────────────────────────────────────────────── */
 .products { padding-top: clamp(24px, 3vw, 40px); }
 .chapter { background: var(--pc-wash); border-top: 1px solid color-mix(in srgb, var(--pc) 22%, var(--line)); padding: clamp(48px, 7vw, 96px) 0 clamp(40px, 6vw, 80px); }
 .ch-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px 32px; }
-.ch-name { font-stretch: 62%; font-weight: 880; font-size: clamp(64px, 13vw, 200px); line-height: 0.8; letter-spacing: -0.015em; color: var(--pc-text); }
+.ch-name { font-family: var(--display); font-weight: 700; font-size: clamp(54px, 9.4vw, 148px); line-height: 0.9; letter-spacing: -0.035em; color: var(--pc-text); }
 .ch-meta { display: grid; gap: 4px; justify-items: end; text-align: right; padding-bottom: 6px; }
 .ch-kind { font-weight: 650; font-size: 17px; }
 .ch-status { display: inline-flex; align-items: center; gap: 8px; font-size: 14.5px; color: var(--soft); }
@@ -206,7 +207,7 @@ dl, dd { margin: 0; }
 .ch-facts dd { font-size: 15.5px; color: var(--soft); line-height: 1.5; }
 .ch-figures { list-style: none; padding: 0; margin: clamp(28px, 4vw, 48px) 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
 .ch-figures li { display: grid; gap: 4px; }
-.ch-figures b { font-stretch: 62%; font-weight: 820; font-size: clamp(44px, 5.4vw, 76px); line-height: 0.9; color: var(--pc-text); font-variant-numeric: tabular-nums; }
+.ch-figures b { font-family: var(--display); font-weight: 700; font-size: clamp(40px, 4.6vw, 64px); letter-spacing: -0.02em; line-height: 0.9; color: var(--pc-text); font-variant-numeric: tabular-nums; }
 .ch-figures span { font-size: 14.5px; color: var(--soft); max-width: 22ch; }
 .ch-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
 
@@ -246,7 +247,7 @@ dl, dd { margin: 0; }
 
 /* ── smaller things ──────────────────────────────────────────────────── */
 .side { padding-block: clamp(56px, 8vw, 96px); }
-.side h3 { font-stretch: 75%; font-size: clamp(28px, 3vw, 38px); }
+.side h3 { font-family: var(--display); font-size: clamp(28px, 3vw, 38px); }
 .side ul { list-style: none; padding: 0; margin: 24px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0 32px; }
 .side li { display: grid; gap: 4px; padding: 16px 0; border-top: 1px solid var(--line); }
 .side b { font-weight: 680; }
@@ -266,11 +267,11 @@ dl, dd { margin: 0; }
 .cl-row:hover::before, .cl-row:focus-visible::before { transform: scaleY(1); }
 .cl-row:hover .cl-name { color: var(--pc-text); }
 .cl-period { font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; }
-.cl-name { font-stretch: 72%; font-weight: 760; font-size: clamp(24px, 2.4vw, 32px); line-height: 1.05; transition: color 0.25s; }
+.cl-name { font-family: var(--display); font-weight: 700; font-size: clamp(21px, 2vw, 27px); letter-spacing: -0.01em; line-height: 1.05; transition: color 0.25s; }
 .cl-one { color: var(--soft); font-size: 15.5px; line-height: 1.5; }
 .cl-domain { font-size: 14px; color: var(--muted); text-align: right; }
 .earlier { margin-top: clamp(48px, 6vw, 72px); }
-.earlier h3 { font-stretch: 75%; font-size: clamp(24px, 2.6vw, 32px); }
+.earlier h3 { font-family: var(--display); font-size: clamp(24px, 2.6vw, 32px); }
 .earlier ol { list-style: none; padding: 0; margin: 16px 0 0; }
 .earlier li { display: grid; grid-template-columns: 150px minmax(200px, 1.1fr) 2fr; gap: 6px 28px; padding: 14px 0; border-top: 1px solid var(--line); align-items: baseline; }
 .earlier li b { font-weight: 650; }
@@ -284,7 +285,7 @@ dl, dd { margin: 0; }
 .about .lead { margin-top: 20px; }
 .how { display: grid; gap: 0; margin-top: 36px; }
 .how > div { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.6fr); gap: 8px 28px; padding: 20px 0; border-top: 1px solid var(--line); }
-.how dt { font-stretch: 80%; font-weight: 720; font-size: 20px; line-height: 1.2; }
+.how dt { font-family: var(--display); font-weight: 720; font-size: 20px; line-height: 1.2; }
 .how dd { color: var(--soft); line-height: 1.55; }
 .stack-line { margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--soft); font-size: 15.5px; line-height: 1.7; }
 .stack-line b { color: var(--ink); margin-right: 10px; }
@@ -335,14 +336,14 @@ select.input { appearance: none; background-image: linear-gradient(45deg, transp
 .case-head { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 64px); margin-top: 24px; align-items: end; }
 .case-sector { font-weight: 650; color: color-mix(in oklab, var(--flavor) 72%, var(--ink)); }
 .case-head > div:first-child > div { font-size: 15px; }
-.case-head h1 { font-stretch: 62%; font-weight: 860; font-size: clamp(56px, 9vw, 132px); line-height: 0.84; letter-spacing: -0.015em; margin: 14px 0 20px; color: color-mix(in oklab, var(--flavor) 72%, var(--ink)); }
+.case-head h1 { font-family: var(--display); font-weight: 700; font-size: clamp(48px, 7vw, 104px); line-height: 0.92; letter-spacing: -0.03em; margin: 14px 0 20px; color: color-mix(in oklab, var(--flavor) 72%, var(--ink)); }
 .stack { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 20px; }
 .tag { font-size: 13px; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line-2); color: var(--soft); background: var(--surface); }
 .mstrip { display: grid; gap: 0; }
 .m { display: grid; gap: 2px; padding: 14px 0; border-top: 1px solid color-mix(in srgb, var(--flavor) 22%, var(--line)); }
 .m .l { font-size: 14px; color: var(--soft); }
 .m .b { color: var(--muted); text-decoration: line-through; text-decoration-color: var(--line-2); margin-right: 10px; font-size: 15px; }
-.m .a { font-stretch: 72%; font-weight: 780; font-size: 28px; line-height: 1.1; }
+.m .a { font-family: var(--display); font-weight: 700; font-size: 28px; line-height: 1.1; }
 .case-live { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; margin-top: 28px; font-size: 15px; color: var(--soft); }
 .case-live code { font-family: var(--mono); font-size: 13.5px; background: var(--surface); border: 1px solid var(--line); padding: 2px 6px; border-radius: 4px; color: var(--ink); }
 
@@ -355,8 +356,8 @@ select.input { appearance: none; background-image: linear-gradient(45deg, transp
 .rail .pn button { text-align: left; background: none; border: 0; cursor: pointer; padding: 0; font-weight: 650; display: grid; font-size: 15px; }
 .rail .pn small { font-weight: 400; color: var(--muted); font-size: 13px; }
 .cs { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(56px, 7vw, 88px); min-width: 0; }
-.cs h2 { font-stretch: 75%; font-weight: 760; font-size: clamp(30px, 3.4vw, 44px); line-height: 1; display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px; }
-.h2-hint { font-stretch: 100%; font-size: 14px; font-weight: 400; color: var(--muted); }
+.cs h2 { font-family: var(--display); font-weight: 700; font-size: clamp(30px, 3.4vw, 44px); line-height: 1; display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px; }
+.h2-hint { font-family: var(--display); font-size: 14px; font-weight: 400; color: var(--muted); }
 .cs .note { color: var(--soft); margin: 12px 0 24px; max-width: 64ch; }
 .cs-wide .gallery { margin-top: 8px; }
 .cs-wide .g-web { width: min(760px, 80vw); }
@@ -366,7 +367,7 @@ select.input { appearance: none; background-image: linear-gradient(45deg, transp
 .imp .v { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
 .imp .b { color: var(--muted); font-size: 15px; }
 .imp .to { color: color-mix(in oklab, var(--flavor) 72%, var(--ink)); }
-.imp .a { font-stretch: 72%; font-weight: 780; font-size: 30px; line-height: 1.05; }
+.imp .a { font-family: var(--display); font-weight: 700; font-size: 30px; line-height: 1.05; }
 .imp p { font-size: 14.5px; color: var(--soft); line-height: 1.5; }
 .built li { padding: 18px 0; border-top: 1px solid var(--line); line-height: 1.55; }
 .built li:first-child { margin-top: 24px; }
@@ -385,14 +386,14 @@ select.input { appearance: none; background-image: linear-gradient(45deg, transp
 .arch-note p { color: var(--soft); line-height: 1.6; }
 .lessons { display: grid; gap: 0; margin-top: 24px; }
 .lesson { padding: 20px 0; border-top: 1px solid var(--line); display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.6fr); gap: 8px 28px; }
-.lesson b { font-stretch: 80%; font-weight: 720; font-size: 20px; line-height: 1.2; }
+.lesson b { font-family: var(--display); font-weight: 720; font-size: 20px; line-height: 1.2; }
 .lesson p { color: var(--soft); line-height: 1.6; }
 .pn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .pn-card { text-align: left; cursor: pointer; display: grid; gap: 4px; padding: 22px; border-radius: var(--radius-lg); border: 1px solid var(--line); background: var(--surface); }
 .pn-card:hover { border-color: var(--flavor); }
 .pn-card.r { text-align: right; }
 .pn-card small { color: var(--muted); font-size: 14px; }
-.pn-card b { font-stretch: 70%; font-weight: 780; font-size: clamp(26px, 3vw, 38px); line-height: 1; color: color-mix(in oklab, var(--flavor) 72%, var(--ink)); }
+.pn-card b { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 3vw, 38px); line-height: 1; color: color-mix(in oklab, var(--flavor) 72%, var(--ink)); }
 .rise { animation: rise 0.5s var(--ease) both; }
 @keyframes rise { from { opacity: 0; transform: translateY(10px); } }
 
