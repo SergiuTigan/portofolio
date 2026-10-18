@@ -119,6 +119,13 @@ dl, dd { margin: 0; }
 .hnav { display: flex; gap: 4px; }
 .hnav button { background: none; border: 0; cursor: pointer; padding: 8px 10px; font-size: 15px; color: var(--soft); border-radius: var(--radius-sm); }
 .hnav button:hover { color: var(--ink); background: color-mix(in srgb, var(--ink) 6%, transparent); }
+.menu-btn { display: none; align-items: center; gap: 8px; border: 1px solid var(--line-2); background: var(--raised); border-radius: 999px; padding: 8px 12px; font-size: 14px; font-weight: 600; cursor: pointer; }
+.menu-btn i { display: grid; gap: 3px; width: 14px; }
+.menu-btn i::before, .menu-btn i::after { content: ''; height: 2px; border-radius: 2px; background: currentColor; }
+.menu-sheet { position: absolute; left: var(--gutter); right: var(--gutter); top: 60px; display: grid; padding: 8px; background: var(--raised); border: 1px solid var(--line); border-radius: var(--radius-lg); box-shadow: var(--shadow); animation: lb-in 0.2s var(--ease); }
+.menu-sheet button, .menu-sheet a { text-align: left; background: none; border: 0; cursor: pointer; padding: 14px 12px; font-size: 17px; font-weight: 600; border-radius: var(--radius-sm); text-decoration: none; }
+.menu-sheet button:hover, .menu-sheet a:hover { background: color-mix(in srgb, var(--ink) 6%, transparent); }
+.menu-sheet a { color: var(--signal); }
 .hdr-right { margin-left: auto; display: flex; align-items: center; gap: 10px; }
 .seg { display: inline-flex; border: 1px solid var(--line-2); border-radius: 999px; padding: 2px; }
 .seg button { border: 0; background: none; cursor: pointer; font-size: 12.5px; font-weight: 600; padding: 6px 10px; border-radius: 999px; color: var(--muted); }
@@ -164,7 +171,7 @@ dl, dd { margin: 0; }
 .dock { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); margin-top: 14px; border-top: 1px solid var(--line); }
 .dock-item {
   position: relative; text-align: left; background: none; border: 0; cursor: pointer;
-  padding: 14px 14px 10px 0; display: grid; gap: 2px; color: var(--muted);
+  padding: 14px 14px 10px 0; display: grid; gap: 2px; align-content: start; color: var(--muted);
 }
 .dock-item::before { content: ''; position: absolute; left: 0; right: 14px; top: -1px; height: 3px; background: transparent; transition: background-color 0.3s; }
 .dock-item:hover .dock-name { color: var(--ink); }
@@ -410,6 +417,9 @@ select.input { appearance: none; background-image: linear-gradient(45deg, transp
 /* ── responsive ──────────────────────────────────────────────────────── */
 @media (max-width: 980px) {
   .hnav { display: none; }
+  .dock { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .menu-btn { display: inline-flex; }
+  .hdr-in { position: relative; }
   .ch-body, .case-head, .about-grid, .contact { grid-template-columns: 1fr; }
   .about-photo { position: static; max-width: 320px; }
   .cl-row { grid-template-columns: 1fr; gap: 4px; padding: 20px 0; }
@@ -423,6 +433,7 @@ select.input { appearance: none; background-image: linear-gradient(45deg, transp
   body { font-size: 16px; }
   .hdr-in { gap: 12px; }
   .brand > span { display: none; }
+  .hdr-right .btn-ink { display: none; }
   .stage { aspect-ratio: 4 / 4.4; }
   .stage-main { left: 5%; top: 6%; width: 90%; }
   .stage-main.stage-phone { left: 30%; width: 40%; }
@@ -431,11 +442,15 @@ select.input { appearance: none; background-image: linear-gradient(45deg, transp
   .stage-side.stage-web { display: none; }
   .stage-trio { width: 90%; top: 5%; gap: 3%; }
   .dock { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 0; scrollbar-width: none; }
-  .dock-item { flex: 0 0 auto; min-width: 140px; scroll-snap-align: start; }
+  .dock-item { flex: 0 0 42vw; min-width: 0; scroll-snap-align: start; }
+  .dock-name { font-size: 17px; }
   .ch-meta { justify-items: start; text-align: left; }
   .gallery-strip { align-items: flex-start; }
-  .g-phone { width: 40vw; }
-  .g-panel { width: 58vw; }
+  .g-web, .cs-wide .g-web { width: 84vw; }
+  .g-phone, .cs-wide .g-phone { width: 30vw; }
+  .g-panel, .cs-wide .g-panel { width: 32vw; }
+  .g-item figcaption { font-size: 13px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .g-phone figcaption, .g-panel figcaption { -webkit-line-clamp: 4; }
   .ch-figures { gap: 12px; }
   .ch-figures b { font-size: 40px; }
   .ch-figures span { font-size: 13px; }
