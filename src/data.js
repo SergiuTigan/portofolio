@@ -295,7 +295,7 @@ const CASES = [
     oneLiner: T('A multi-tenant production and inventory platform for confectionery businesses — recipes, production tasks, FIFO stock, orders, deliveries and multi-location transfers — one NestJS backend serving a Next.js web app plus native iOS and Android clients.', 'O platformă multi-tenant de producție și inventar pentru cofetării — rețete, taskuri de producție, stoc FIFO, comenzi, livrări și transferuri între locații — un singur backend NestJS care servește o aplicație web Next.js plus clienți nativi iOS și Android.'),
     context: [
       T('Horae is the largest thing I have built alone. It runs the day of a confectionery business end to end: recipes and costing, production tasks, stock with FIFO lots, orders, delivery notes, transfers between locations, equipment and analytics. Acadeea, the first customer, is now simply the flagship tenant — one organisation among many.', 'Horae e cel mai mare lucru construit de mine singur. Acoperă ziua unei cofetării cap-coadă: rețete și costuri, taskuri de producție, stoc cu loturi FIFO, comenzi, avize de livrare, transferuri între locații, echipamente și analize. Acadeea, primul client, e acum pur și simplu tenantul principal — o organizație între multe altele.'),
-      T('One NestJS + Prisma + PostgreSQL backend owns all business logic; four thin clients consume the same REST + WebSocket contract: a Next.js 16 admin web app, a native SwiftUI iOS app, an early-stage Kotlin/Compose Android app, and inbound webhooks from eBriza and WooCommerce. I designed it, built it, deploy it and operate it.', 'Un singur backend NestJS + Prisma + PostgreSQL deține toată logica de business; patru clienți subțiri consumă același contract REST + WebSocket: o aplicație web de administrare în Next.js 16, o aplicație nativă SwiftUI pe iOS, o aplicație Android Kotlin/Compose la început de drum și webhookuri de la eBriza și WooCommerce. Eu am proiectat-o, am construit-o, o deployez și o operez.'),
+      T('One NestJS + Prisma + PostgreSQL backend owns all business logic; four thin clients consume the same REST + WebSocket contract: a Next.js 16 admin web app, a native SwiftUI iOS app, a Kotlin/Compose Android app, and inbound webhooks from eBriza and WooCommerce. I designed it, built it, deploy it and operate it.', 'Un singur backend NestJS + Prisma + PostgreSQL deține toată logica de business; patru clienți subțiri consumă același contract REST + WebSocket: o aplicație web de administrare în Next.js 16, o aplicație nativă SwiftUI pe iOS, o aplicație Android Kotlin/Compose și webhookuri de la eBriza și WooCommerce. Eu am proiectat-o, am construit-o, o deployez și o operez.'),
     ],
     challenge: [
       T('Multi-tenancy is the part that has to be right on the first try. Around twenty-two data models carry an organisation id, and a single missed scope in a query is a data leak between two competing businesses — not a bug you patch politely.', 'Multi-tenancy e partea care trebuie să fie corectă din prima. Vreo douăzeci și două de modele de date au un id de organizație, iar un singur scope ratat într-un query e o scurgere de date între două afaceri concurente — nu un bug pe care îl repari relaxat.'),
@@ -328,7 +328,7 @@ const CASES = [
       { title: T('Clients', 'Clienți'), nodes: [
         { label: T('Web — Next.js 16', 'Web — Next.js 16'), note: T('App Router with React 19: the full admin surface — recipes, tasks, stock, orders, transfers, analytics. Host-routed, so each organisation lives on its own subdomain while marketing stays on the apex.', 'App Router cu React 19: toată suprafața de administrare — rețete, taskuri, stoc, comenzi, transferuri, analize. Rutată pe host, deci fiecare organizație stă pe propriul subdomeniu, iar marketingul rămâne pe domeniul principal.') },
         { label: T('iOS — SwiftUI', 'iOS — SwiftUI'), note: T('A production-grade native app covering every domain, built for people working with their hands busy in a kitchen. Tokens in Keychain, real-time over the WebSocket channel.', 'O aplicație nativă completă, care acoperă toate domeniile, făcută pentru oameni care lucrează cu mâinile ocupate în bucătărie. Tokenuri în Keychain, timp real prin canalul WebSocket.') },
-        { label: T('Android — Compose', 'Android — Compose'), note: T('Kotlin and Jetpack Compose, early-stage: core flows only. Tokens in encrypted preferences; it consumes exactly the same REST contract.', 'Kotlin și Jetpack Compose, la început de drum: doar fluxurile principale. Tokenuri în preferințe criptate; consumă exact același contract REST.') },
+        { label: T('Android — Compose', 'Android — Compose'), note: T('Kotlin and Jetpack Compose, covering almost every domain; a few admin screens stay web-only. Tokens in encrypted preferences; it consumes exactly the same REST contract.', 'Kotlin și Jetpack Compose, acoperă aproape toate domeniile; câteva ecrane de administrare rămân doar pe web. Tokenuri în preferințe criptate; consumă exact același contract REST.') },
         { label: T('Integrations', 'Integrări'), note: T('eBriza and WooCommerce push orders in through per-integration webhooks; they land as external order rows and become real orders on an explicit sync.', 'eBriza și WooCommerce trimit comenzi prin webhookuri per integrare; acestea ajung ca rânduri de comenzi externe și devin comenzi reale la o sincronizare explicită.') },
       ] },
       { title: T('Contract', 'Contract'), nodes: [
@@ -408,6 +408,144 @@ const CASES = [
     ],
     demoNote: T('The assistant, anonymised: pick a message and watch it call tools before it answers — then see the reflection loop raise an observation you have to deal with.', 'Asistentul, anonimizat: alege un mesaj și urmărește cum apelează tool-uri înainte să răspundă — apoi vezi bucla de reflecție ridicând o observație de care trebuie să te ocupi.'),
   },
+  {
+    id: 'jobcheck', client: 'Job Check', demo: null, own: true,
+    sector: T('Own product · browser extension, part of Alfred', 'Produs propriu · extensie de browser, parte din Alfred'),
+    period: T('v3.3, daily use', 'v3.3, folosită zilnic'),
+    tags: ['Manifest V3', 'Chrome / Arc', 'Claude', 'Alfred API'],
+    stack: ['Chrome Extension MV3', 'Service worker queue', 'Content script + side panel', 'chrome.storage', 'Anthropic / OpenAI / Gemini / OpenRouter', 'Alfred API (Node, Claude with web search)'],
+    oneLiner: T('A browser extension that reads a job post where you find it and answers one question — apply, maybe, or skip — after checking hard constraints and researching the company. Every yes lands in Alfred’s job pipeline.', 'O extensie de browser care citește un anunț de job acolo unde îl găsești și răspunde la o singură întrebare — aplic, poate, sau nu — după ce verifică constrângerile dure și cercetează compania. Fiecare „da” ajunge în pipeline-ul de joburi din Alfred.'),
+    context: [
+      T('Job hunting has a boring, expensive middle: opening forty tabs, reading every post to find the one sentence that says “hybrid, Munich, three days a week”, then searching the company on four review sites. Job Check does that middle while you keep browsing.', 'Căutarea unui job are o parte de mijloc plictisitoare și scumpă: deschizi patruzeci de taburi, citești fiecare anunț ca să găsești propoziția care spune „hibrid, München, trei zile pe săptămână”, apoi cauți compania pe patru site-uri de recenzii. Job Check face partea asta în timp ce tu navighezi mai departe.'),
+      T('You add the job on the page, or a whole search list at once. A background queue analyses three at a time and sorts them into matches, to clarify, in progress, applied and not worth it — each with a fit score, the posting quoted where it matters, and a researched view of the company.', 'Adaugi jobul de pe pagină sau o listă întreagă de rezultate dintr-odată. O coadă în fundal analizează câte trei deodată și le sortează în potrivite, de clarificat, în lucru, aplicate și nu merită — fiecare cu scor de potrivire, anunțul citat acolo unde contează și o imagine cercetată a companiei.'),
+    ],
+    challenge: [
+      T('An AI that says “great fit!” to a role you legally cannot take is worse than useless. Eligibility — location, remote rules, visa, language — has to be checked first and quoted from the posting, not inferred.', 'Un AI care spune „potrivire excelentă!” pentru un rol pe care legal nu îl poți lua e mai rău decât inutil. Eligibilitatea — locație, reguli de remote, viză, limbă — trebuie verificată prima și citată din anunț, nu dedusă.'),
+      T('And research is expensive. Most posts can be ruled out for free, so the tool must spend tokens only on the jobs that survive the cheap checks.', 'Iar cercetarea costă. Majoritatea anunțurilor pot fi eliminate gratis, deci unealta trebuie să cheltuie tokeni doar pe joburile care trec de verificările ieftine.'),
+    ],
+    built: [
+      { title: T('Verdicts you can audit', 'Verdicte pe care le poți verifica'), body: T('DA / POATE / NU with a 0–100 score, the eligibility line quoted from the post, fit point by point, company size and funding, what reviewers and the press say, interview process, salary estimate, questions for the recruiter, and sources.', 'DA / POATE / NU cu scor 0–100, linia de eligibilitate citată din anunț, potrivirea punct cu punct, mărimea și finanțarea companiei, ce spun recenziile și presa, procesul de interviu, estimarea de salariu, întrebări pentru recruiter și surse.') },
+      { title: T('A queue that survives the browser', 'O coadă care rezistă browserului'), body: T('A service-worker queue runs three analyses in parallel and picks up where it stopped after the worker sleeps; the toolbar badge counts what is left, then the good matches.', 'O coadă în service worker rulează trei analize în paralel și continuă de unde a rămas după ce workerul adoarme; badge-ul din toolbar numără ce a rămas, apoi potrivirile bune.') },
+      { title: T('Zero-token filters first', 'Întâi filtre fără tokeni'), body: T('On-site and hybrid roles, excluded companies and past employers are dropped locally before any AI call; an optional quick check runs before the full research.', 'Rolurile on-site și hibride, companiile excluse și foștii angajatori sunt eliminați local, înainte de orice apel AI; o verificare rapidă opțională rulează înaintea cercetării complete.') },
+      { title: T('Bring your own model, or use Alfred', 'Modelul tău sau Alfred'), body: T('Any of Anthropic, OpenAI, Gemini, OpenRouter or an OpenAI-compatible API, detected from the key — or sign in to Alfred and run the check server-side with web search.', 'Anthropic, OpenAI, Gemini, OpenRouter sau orice API compatibil OpenAI, detectat din cheie — sau te autentifici în Alfred și analiza rulează pe server, cu căutare web.') },
+      { title: T('Two-way sync with Alfred Jobs', 'Sincronizare în ambele sensuri cu Alfred Jobs'), body: T('Yes and maybe become leads with the verdict on their timeline; marking applied moves the lead, dismissing closes it; the CV and profile import back from Alfred, and “Apply” uses Alfred’s cover-letter tools.', '„Da” și „poate” devin leaduri cu verdictul pe istoric; marcarea ca aplicat mută leadul, respingerea îl închide; CV-ul și profilul se importă din Alfred, iar „Aplică” folosește uneltele de scrisori din Alfred.') },
+    ],
+    metrics: [
+      { label: T('Reading a post for eligibility', 'Citirea unui anunț pentru eligibilitate'), before: T('by hand', 'manual'), after: T('quoted', 'citat'), note: T('The deciding sentence is shown, not paraphrased.', 'Propoziția decisivă e arătată, nu parafrazată.') },
+      { label: T('Parallel analyses', 'Analize în paralel'), before: '1', after: '3', note: T('Queued in the background while you browse.', 'În coadă, în fundal, cât navighezi.') },
+      { label: T('Job boards logged into', 'Conturi folosite pe site-uri de joburi'), before: '—', after: '0', note: T('Public post data only; nothing is submitted on your behalf.', 'Doar date publice din anunțuri; nimic nu e trimis în numele tău.') },
+    ],
+    lessons: [
+      { title: T('Make the model quote, not judge', 'Pune modelul să citeze, nu să judece'), body: T('Verdicts became trustworthy the moment each one had to show the sentence from the post it was based on.', 'Verdictele au devenit de încredere din momentul în care fiecare a trebuit să arate propoziția din anunț pe care se bazează.') },
+      { title: T('The cheapest call is the one you skip', 'Cel mai ieftin apel e cel pe care nu-l faci'), body: T('A local filter for the obvious no’s cut the cost of a search page more than any prompt tuning did.', 'Un filtru local pentru „nu”-urile evidente a redus costul unei pagini de rezultate mai mult decât orice optimizare de prompt.') },
+    ],
+    arch: [
+      { title: T('In the browser', 'În browser'), nodes: [
+        { label: T('Content script', 'Content script'), note: T('Reads the current job, docks the panel beside the page and, on supported boards, collects a whole results list.', 'Citește jobul curent, lipește panoul lângă pagină și, pe site-urile suportate, colectează o listă întreagă de rezultate.') },
+        { label: T('Side panel + list', 'Panou lateral + listă'), note: T('The queue grouped by verdict, the verdict detail, and the apply / applied / dismiss actions.', 'Coada grupată pe verdict, detaliul verdictului și acțiunile aplică / am aplicat / respinge.') },
+        { label: T('Service worker', 'Service worker'), note: T('The analysis queue, retries and the badge; everything persisted in chrome.storage so nothing is lost when it sleeps.', 'Coada de analize, reîncercările și badge-ul; totul salvat în chrome.storage, ca nimic să nu se piardă când adoarme.') },
+      ] },
+      { title: T('Engines', 'Motoare'), nodes: [
+        { label: T('Own key', 'Cheie proprie'), note: T('Direct calls to the provider the key belongs to.', 'Apeluri directe la furnizorul căruia îi aparține cheia.') },
+        { label: 'Alfred', note: T('A server-side check with web search on Alfred’s subscription, polled until done; results filed as leads.', 'O analiză pe serverul Alfred, cu căutare web, pe abonamentul Alfred, interogată până e gata; rezultatele intră ca leaduri.') },
+      ] },
+    ],
+    demoNote: null,
+  },
+  {
+    id: 'pickup', client: 'Scheduled Pickup', demo: null, own: true,
+    sector: T('Client work · WooCommerce plugin', 'Proiect pentru client · plugin WooCommerce'),
+    period: T('v0.10, 2026', 'v0.10, 2026'),
+    tags: ['WordPress', 'WooCommerce', 'PHP 8.1', 'Blocks'],
+    stack: ['PHP 8.1', 'WordPress 6.6+', 'WooCommerce 9+ (HPOS)', 'Cart/Checkout Blocks', 'Classic checkout', 'WP REST API', 'PHPUnit', 'wp-env', 'i18n (ro_RO)'],
+    oneLiner: T('A WooCommerce plugin that gives every product a pickup date: the customer picks a valid day on the product page, and the date follows the line through cart, checkout, order, emails and the shop’s admin.', 'Un plugin WooCommerce care dă fiecărui produs o dată de ridicare: clientul alege o zi validă pe pagina produsului, iar data urmează linia prin coș, checkout, comandă, emailuri și adminul magazinului.'),
+    context: [
+      T('A Cluj confectionery — the same business that runs on Horae — takes cake and pastry orders online, and every product has its own lead time: a cozonac only before Christmas, a custom cake with three days’ notice, macarons any day. A free-text “delivery date” field at checkout was producing impossible dates and phone calls.', 'O cofetărie din Cluj — aceeași afacere care rulează pe Horae — primește online comenzi de torturi și prăjituri, iar fiecare produs are propriul termen: cozonacul doar înainte de Crăciun, tortul personalizat cu trei zile înainte, macarons în orice zi. Un câmp text liber „data livrării” din checkout producea date imposibile și telefoane.'),
+      T('The plugin replaces that field with rules. Reusable pickup profiles describe when something can be collected; they attach to a category or a product, and the storefront only ever offers dates that are actually possible.', 'Pluginul înlocuiește acel câmp cu reguli. Profilurile de ridicare reutilizabile descriu când se poate ridica ceva; se atașează unei categorii sau unui produs, iar magazinul oferă doar date care chiar sunt posibile.'),
+    ],
+    challenge: [
+      T('WooCommerce has two checkouts — classic and Blocks — and a shipping system that was never designed for “this cake on Saturday at the shop, those macarons delivered on Monday”. The plugin has to work with both checkouts and split one order into correctly charged delivery groups.', 'WooCommerce are două checkouturi — clasic și Blocks — și un sistem de livrare care n-a fost gândit pentru „tortul ăsta sâmbătă la magazin, macaronsurile astea livrate luni”. Pluginul trebuie să meargă cu ambele checkouturi și să împartă o comandă în grupuri de livrare taxate corect.'),
+    ],
+    built: [
+      { title: T('Pickup profiles with a live preview', 'Profiluri de ridicare cu previzualizare live'), body: T('Earliest and latest day, weekdays, allowed periods or fixed dates, exclusions and a same-day cut-off; the editor shows exactly which dates the rules produce.', 'Cea mai apropiată și cea mai îndepărtată zi, zilele săptămânii, perioade permise sau date fixe, excluderi și ora limită pentru aceeași zi; editorul arată exact ce date rezultă din reguli.') },
+      { title: T('Inheritance that matches how shops think', 'Moștenire așa cum gândește magazinul'), body: T('Product beats subcategory beats category beats the global default — one profile for “Cakes”, an exception for one cake.', 'Produsul bate subcategoria, care bate categoria, care bate setarea globală — un profil pentru „Torturi”, o excepție pentru un singur tort.') },
+      { title: T('Delivery methods and per-group shipping', 'Moduri de livrare și transport pe grup'), body: T('Several methods per order, each linked to a WooCommerce shipping method; the cart splits into one package per method and date, each with its own shipping line. Methods can skip the date entirely, like national courier.', 'Mai multe moduri per comandă, fiecare legat de o metodă de livrare WooCommerce; coșul se împarte într-un pachet per mod și dată, fiecare cu propria linie de transport. Unele moduri pot să nu ceară dată, ca livrarea prin curier național.') },
+      { title: T('The date everywhere it matters', 'Data peste tot unde contează'), body: T('Cart, mini-cart, both checkouts, order items, thank-you page, My Account and every WooCommerce email.', 'Coș, mini-coș, ambele checkouturi, articolele comenzii, pagina de mulțumire, Contul meu și toate emailurile WooCommerce.') },
+      { title: T('A pickups board for the shop', 'Un panou de ridicări pentru magazin'), body: T('WooCommerce → Pickups: today, tomorrow, upcoming, past or a range, grouped by day with product, quantity, method, customer and phone; plus a pickup column and date filter on the orders list.', 'WooCommerce → Ridicări: azi, mâine, următoarele, trecute sau un interval, grupate pe zile cu produs, cantitate, mod, client și telefon; plus o coloană și un filtru pe dată în lista de comenzi.') },
+      { title: T('Built to be integrated', 'Făcut pentru integrare'), body: T('A shortcode for page builders, a public availability endpoint, filters, actions and a JS refresh event, and order meta with external method ids so Horae can import pickups.', 'Un shortcode pentru page buildere, un endpoint public de disponibilitate, filtre, acțiuni și un eveniment JS de refresh, plus meta pe comandă cu id-uri externe ale modurilor, ca Horae să poată importa ridicările.') },
+    ],
+    metrics: [
+      { label: T('Impossible dates at checkout', 'Date imposibile la checkout'), before: T('free text', 'text liber'), after: '0', note: T('Only dates the rules allow can be chosen.', 'Se pot alege doar datele permise de reguli.') },
+      { label: T('Rule levels', 'Niveluri de reguli'), before: '1', after: '4', note: T('Global, category, subcategory, product.', 'Global, categorie, subcategorie, produs.') },
+      { label: T('Checkouts supported', 'Checkouturi suportate'), before: '—', after: '2', note: T('Classic and Blocks, HPOS-compatible.', 'Clasic și Blocks, compatibil HPOS.') },
+    ],
+    lessons: [
+      { title: T('Validate where WooCommerce forgets to', 'Validează unde uită WooCommerce'), body: T('Adding to the cart programmatically skips WooCommerce’s own validation hook, so the date is enforced again when the cart item is built.', 'Adăugarea programatică în coș sare peste hookul de validare al WooCommerce, așa că data e verificată din nou când se construiește linia din coș.') },
+      { title: T('Scope down before you build', 'Restrânge înainte să construiești'), body: T('The client’s first list was a clone of a pro plugin with slots, fees and capacity. Asking what the shop actually does every day cut it to dates and methods — and shipped it in days.', 'Prima listă a clientului era o clonă a unui plugin pro, cu sloturi, taxe și capacitate. Întrebând ce face magazinul de fapt în fiecare zi, am redus-o la date și moduri de livrare — și am livrat-o în câteva zile.') },
+    ],
+    arch: [
+      { title: T('Storefront', 'Magazin'), nodes: [
+        { label: T('Product field', 'Câmpul de pe produs'), note: T('Method choice and a calendar that only offers valid days, pre-filled when there is a single option.', 'Alegerea modului și un calendar care oferă doar zile valide, precompletat când există o singură opțiune.') },
+        { label: T('Cart and checkout', 'Coș și checkout'), note: T('Line meta for classic and Blocks, and shipping packages split by method and date.', 'Meta pe linie pentru clasic și Blocks, și pachete de livrare împărțite pe mod și dată.') },
+      ] },
+      { title: T('Domain', 'Domeniu'), nodes: [
+        { label: T('Rule resolver', 'Rezolvarea regulilor'), note: T('Walks product → subcategory → category → global and returns the allowed dates; covered by unit tests.', 'Parcurge produs → subcategorie → categorie → global și întoarce datele permise; acoperit de teste unitare.') },
+      ] },
+      { title: 'Admin', nodes: [
+        { label: T('Profiles and methods', 'Profiluri și moduri'), note: T('Custom post types with live previews.', 'Tipuri de conținut proprii, cu previzualizare live.') },
+        { label: T('Pickups board', 'Panoul de ridicări'), note: T('The shop’s daily list, plus the orders column and filter.', 'Lista zilnică a magazinului, plus coloana și filtrul din comenzi.') },
+        { label: T('REST + order meta', 'REST + meta pe comandă'), note: T('Availability for themes and apps; method ids and dates for Horae’s import.', 'Disponibilitate pentru teme și aplicații; id-urile modurilor și datele pentru importul în Horae.') },
+      ] },
+    ],
+    demoNote: null,
+  },
+  {
+    id: 'ironpulse', client: 'Iron Pulse', demo: null, own: true,
+    sector: T('Own product · coaching platform for personal trainers', 'Produs propriu · platformă de coaching pentru antrenori'),
+    period: T('iOS on TestFlight', 'iOS pe TestFlight'),
+    tags: ['SwiftUI', 'NestJS', 'Offline-first', 'Multi-tenant'],
+    stack: ['SwiftUI (iOS 17+)', 'Local database + sync', 'NestJS', 'Prisma', 'PostgreSQL', 'Next.js (trainer web)', 'UUIDv7', 'pnpm + Turborepo', 'Docker'],
+    oneLiner: T('A coaching platform that replaces the printed workout sheet: trainers prescribe and watch progress, clients log every set live in the gym — with or without signal.', 'O platformă de coaching care înlocuiește foaia de antrenament tipărită: antrenorii prescriu și urmăresc progresul, clienții își loghează fiecare serie live în sală — cu sau fără semnal.'),
+    context: [
+      T('Most personal trainers still run their practice on paper: an A4 sheet per client, filled in with a pen between sets, retyped into a spreadsheet if at all. Progress is invisible until someone flips back through the pages.', 'Majoritatea antrenorilor personali își țin încă practica pe hârtie: o foaie A4 per client, completată cu pixul între serii, rescrisă într-un tabel dacă se mai rescrie. Progresul e invizibil până când cineva răsfoiește înapoi paginile.'),
+      T('Iron Pulse gives each trainer their own branded, isolated practice. The trainer builds programs and sees clients ranked by what needs attention; the client gets their own app to log sets, attendance and measurements while they train.', 'Iron Pulse îi dă fiecărui antrenor propria practică, cu brandul lui, izolată de ceilalți. Antrenorul construiește programe și își vede clienții ordonați după ce cere atenție; clientul are propria aplicație în care își loghează seriile, prezența și măsurătorile în timp ce se antrenează.'),
+    ],
+    challenge: [
+      T('Gyms are often basements. The app has to work completely offline mid-workout, resume a session interrupted by a phone call, and reconcile afterwards without ever losing or silently overwriting a logged set.', 'Sălile sunt adesea la subsol. Aplicația trebuie să meargă complet offline în mijlocul antrenamentului, să reia o sesiune întreruptă de un telefon și să se sincronizeze după, fără să piardă sau să suprascrie vreodată pe tăcute o serie logată.'),
+      T('And a trainer with thirty clients does not want an alphabetical list — they want to know who has disappeared, who has plateaued and who is in the gym right now.', 'Iar un antrenor cu treizeci de clienți nu vrea o listă alfabetică — vrea să știe cine a dispărut, cine a stagnat și cine e acum în sală.'),
+    ],
+    built: [
+      { title: T('Offline-first sync', 'Sincronizare offline-first'), body: T('A local database mirrors the server; push and pull with per-entity conflict rules, client-generated time-ordered ids, and the next workout computed on the device.', 'O bază locală oglindește serverul; push și pull cu reguli de conflict pe entitate, id-uri generate pe client și ordonate în timp, iar următorul antrenament e calculat pe dispozitiv.') },
+      { title: T('Logged data is never overwritten', 'Datele logate nu se suprascriu niciodată'), body: T('Every entry records who entered it, when and from which device; later changes are appended as corrections.', 'Fiecare înregistrare păstrează cine a introdus-o, când și de pe ce dispozitiv; modificările ulterioare se adaugă drept corecturi.') },
+      { title: T('Real prescriptions', 'Prescripții reale'), body: T('Warm-ups, drop sets, rest-pause, supersets and tempo, assembled in a phone builder or a keyboard-first web builder, and published to the client with conflicts resolved first.', 'Încălzire, drop seturi, rest-pause, superseturi și tempo, puse cap la cap într-un constructor pe telefon sau într-unul web condus din tastatură, și publicate către client după rezolvarea conflictelor.') },
+      { title: T('Signals, not lists', 'Semnale, nu liste'), body: T('The trainer’s panel ranks clients by absence, plateau and “in the gym now”, with the chart behind each signal one tap away.', 'Panoul antrenorului ordonează clienții după absență, platou și „în sală acum”, cu graficul din spatele fiecărui semnal la o atingere distanță.') },
+      { title: T('A tenant per trainer', 'Un tenant per antrenor'), body: T('Each trainer’s clients, library and branding are isolated by a data-layer extension, so a query that forgets the filter still cannot leak.', 'Clienții, biblioteca și brandul fiecărui antrenor sunt izolate printr-o extensie în stratul de date, așa că un query care uită filtrul tot nu poate scurge date.') },
+    ],
+    metrics: [
+      { label: T('Workout sheet', 'Foaia de antrenament'), before: T('paper', 'hârtie'), after: T('live app', 'aplicație live'), note: T('Logged by the client, set by set.', 'Logată de client, serie cu serie.') },
+      { label: T('Signal needed in the gym', 'Semnal necesar în sală'), before: '—', after: '0', note: T('Fully offline, reconciled afterwards.', 'Complet offline, sincronizat după.') },
+      { label: T('Logged sets overwritten', 'Serii logate suprascrise'), before: '—', after: '0', note: T('Corrections are appended, never replaced.', 'Corecturile se adaugă, nu înlocuiesc.') },
+    ],
+    lessons: [
+      { title: T('Design the offline case first', 'Proiectează întâi cazul offline'), body: T('Treating “no signal” as the normal state, not an error, decided the data model, the ids and the sync — and made the online case trivial.', 'Tratând „fără semnal” ca stare normală, nu ca eroare, s-au decis modelul de date, id-urile și sincronizarea — iar cazul online a devenit banal.') },
+      { title: T('Sort is not filter', 'Sortarea nu e filtrare'), body: T('A trainer wants to see every client, ordered by urgency, and narrow the list only when they choose to. Making those two separate controls shaped the whole panel.', 'Un antrenor vrea să-și vadă toți clienții, ordonați după urgență, și să restrângă lista doar când alege el. Separarea celor două controale a dat forma întregului panou.') },
+    ],
+    arch: [
+      { title: T('Apps', 'Aplicații'), nodes: [
+        { label: T('Client — iOS', 'Client — iOS'), note: T('Today, live logging, attendance, measurements and progress; works without a connection.', 'Azi, logare live, prezență, măsurători și progres; merge fără conexiune.') },
+        { label: T('Trainer — iOS', 'Antrenor — iOS'), note: T('Panel of signals, clients, builder, assign and publish, in-session measurements.', 'Panoul de semnale, clienți, constructor, atribuire și publicare, măsurători în sesiune.') },
+        { label: T('Trainer — web', 'Antrenor — web'), note: T('The desk: a three-panel, keyboard-driven builder and client sheets.', 'Biroul: un constructor în trei panouri, condus din tastatură, și fișele clienților.') },
+      ] },
+      { title: 'Sync', nodes: [
+        { label: T('Local store', 'Stocare locală'), note: T('Mirrors the server schema so every screen reads locally.', 'Oglindește schema serverului, ca fiecare ecran să citească local.') },
+        { label: T('Push / pull', 'Push / pull'), note: T('A cursor per device, conflict rules per entity, corrections appended.', 'Un cursor per dispozitiv, reguli de conflict pe entitate, corecturi adăugate.') },
+      ] },
+      { title: T('Backend', 'Backend'), nodes: [
+        { label: 'NestJS + Prisma', note: T('Tenancy enforced in the data layer; one contract for iOS and web.', 'Tenancy impus în stratul de date; un singur contract pentru iOS și web.') },
+      ] },
+    ],
+    demoNote: null,
+  },
 ];
 
 const EARLIER = [
@@ -418,4 +556,149 @@ const EARLIER = [
   { period: T('Nov 2015 — Dec 2016', 'Noi 2015 — Dec 2016'), client: T('Draexlmaier Group — Germany', 'Draexlmaier Group — Germania'), note: T('Backend developer intern: SAP ABAP training, front- and back-end features for a retail app on S/4HANA, SAPUI5 and Fiori.', 'Intern backend: training SAP ABAP, funcționalități front- și back-end pentru o aplicație de retail pe S/4HANA, SAPUI5 și Fiori.') },
 ];
 
-export { T, CASES, EARLIER };
+// What is inside each product, app by app — high level, for the case pages.
+const APPS = {
+  horae: [
+    { name: T('Web app', 'Aplicația web'), tech: 'Next.js 16 · React 19', items: [
+      T('Dashboard for the day: production, deliveries, stock alerts, expiring lots', 'Panoul zilei: producție, livrări, alerte de stoc, loturi care expiră'),
+      T('Production board and calendar; recipes with nested costing and versions', 'Tabla și calendarul de producție; rețete cu cost cuibărit și versiuni'),
+      T('Stock across locations: lots, expiry, movements, low stock, stock reviews', 'Stoc pe locații: loturi, expirări, mișcări, stoc scăzut, revizii de stoc'),
+      T('Orders, delivery calendar, transfers, sales-to-stock from eBriza and WooCommerce', 'Comenzi, calendar de livrări, transferuri, vânzări → stoc din eBriza și WooCommerce'),
+      T('Statistics, users and roles, branding, backups, activity log', 'Statistici, utilizatori și roluri, branding, backupuri, jurnal de activitate'),
+    ] },
+    { name: 'iOS', tech: 'SwiftUI · iOS 17+', items: [
+      T('Every domain of the web app, built for hands busy in a kitchen', 'Toate domeniile aplicației web, pentru mâini ocupate în laborator'),
+      T('Tasks with yield capture as production finishes', 'Taskuri cu înregistrarea randamentului la finalizare'),
+      T('Orders, deliveries and transfers between locations', 'Comenzi, livrări și transferuri între locații'),
+      T('Real-time updates, notifications, in-app tutorial and help', 'Actualizări în timp real, notificări, tutorial și ajutor în aplicație'),
+    ] },
+    { name: 'Android', tech: 'Kotlin · Jetpack Compose', items: [
+      T('Dashboard, recipes with cost breakdown, create and edit', 'Panou, rețete cu defalcarea costului, creare și editare'),
+      T('Tasks, stock movements, transfers, sales-to-stock confirmation', 'Taskuri, mișcări de stoc, transferuri, confirmarea vânzărilor în stoc'),
+      T('Orders with signature, users and roles, bulk actions', 'Comenzi cu semnătură, utilizatori și roluri, acțiuni în masă'),
+      T('A few admin screens stay web-only', 'Câteva ecrane de administrare rămân doar pe web'),
+    ] },
+    { name: 'API', tech: 'NestJS · Prisma · PostgreSQL', items: [
+      T('One module per domain; all business logic lives here', 'Un modul pe domeniu; toată logica de business stă aici'),
+      T('Tenant isolation in the data layer, CASL roles from the database', 'Izolarea tenanților în stratul de date, roluri CASL din baza de date'),
+      T('Org-scoped real-time over Socket.IO', 'Timp real limitat la organizație, prin Socket.IO'),
+      T('eBriza and WooCommerce webhooks, invitations, backups, changelog, OpenAPI', 'Webhookuri eBriza și WooCommerce, invitații, backupuri, changelog, OpenAPI'),
+    ] },
+  ],
+  alfred: [
+    { name: 'iPhone', tech: 'SwiftUI · WidgetKit · App Intents', items: [
+      T('Today: eating window, shopping list, macros, lesson of the day', 'Azi: fereastra de mâncat, lista de cumpărături, macro-uri, lecția zilei'),
+      T('Workout logging with the progression engine', 'Logarea antrenamentelor, cu motorul de progresie'),
+      T('Chat with the assistant, with attachments', 'Chat cu asistentul, cu atașamente'),
+      T('Vault: money, payments, documents, jobs', 'Vault: bani, plăți, documente, joburi'),
+      T('Widgets, share extension, Siri shortcuts', 'Widgeturi, extensie de share, scurtături Siri'),
+    ] },
+    { name: 'Mac', tech: 'SwiftUI', items: [
+      T('Native sidebar app with every module', 'Aplicație nativă cu sidebar și toate modulele'),
+      T('Menu bar extra next to the clock', 'Extra în bara de meniu, lângă ceas'),
+    ] },
+    { name: T('Web app', 'Aplicația web'), tech: 'React · Vite', items: [
+      T('The desk version: home, chat, plan, body, learn, vault, goals', 'Versiunea de birou: acasă, chat, plan, corp, învățare, vault, obiective'),
+      T('Job pipeline from lead to offer, with drafts and timelines', 'Pipeline de joburi de la lead la ofertă, cu ciorne și istoric'),
+      T('Courses, flashcards, music playlists, a public blog', 'Cursuri, flashcarduri, playlisturi, un blog public'),
+    ] },
+    { name: 'API', tech: 'Node · Express · Prisma · PostgreSQL', items: [
+      T('22 modules behind one API, 135 assistant tools', '22 de module în spatele unui API, 135 de tool-uri pentru asistent'),
+      T('Encryption at rest with AES-256-GCM', 'Criptare la repaus cu AES-256-GCM'),
+      T('Reflection loop, digests and reminders on a schedule, push to the phone', 'Bucla de reflecție, rezumate și amintiri programate, push pe telefon'),
+      T('Google Calendar, Gmail and IMAP triage, Apple Health, BNR rates', 'Google Calendar, triere Gmail și IMAP, Apple Health, cursuri BNR'),
+    ] },
+    { name: T('Connectors', 'Conectori'), tech: 'MCP · browser extension', items: [
+      T('claude.ai and Claude Desktop connector over OAuth 2.1', 'Conector pentru claude.ai și Claude Desktop, prin OAuth 2.1'),
+      T('Job Check extension files verdicts as leads', 'Extensia Job Check trimite verdictele ca leaduri'),
+      T('Calendar feed Apple Calendar subscribes to', 'Feed de calendar la care se abonează Apple Calendar'),
+    ] },
+  ],
+  jobcheck: [
+    { name: T('Side panel', 'Panoul lateral'), tech: 'Content script · iframe', items: [
+      T('The job on the current page, with apply / applied / dismiss', 'Jobul de pe pagina curentă, cu aplică / am aplicat / respinge'),
+      T('The queue grouped by verdict and sorted by fit', 'Coada grupată pe verdict și sortată după potrivire'),
+      T('Full verdict: eligibility quote, fit, company, salary, sources', 'Verdictul complet: citatul de eligibilitate, potrivire, companie, salariu, surse'),
+    ] },
+    { name: T('Background', 'În fundal'), tech: 'Service worker', items: [
+      T('Analysis queue, three at a time, survives restarts', 'Coada de analize, câte trei deodată, rezistă repornirilor'),
+      T('Toolbar badge: jobs left, then good matches', 'Badge în toolbar: joburi rămase, apoi potrivirile bune'),
+      T('Collects whole result lists from supported boards', 'Colectează liste întregi de rezultate de pe site-urile suportate'),
+    ] },
+    { name: T('Settings', 'Setări'), tech: 'chrome.storage', items: [
+      T('Engine: own key for any major provider, or Alfred', 'Motor: cheie proprie pentru orice furnizor major, sau Alfred'),
+      T('Profile and CV, imported from Alfred', 'Profil și CV, importate din Alfred'),
+      T('Token savers: local filters, excluded and past companies, quick check', 'Economie de tokeni: filtre locale, companii excluse și trecute, verificare rapidă'),
+    ] },
+    { name: T('Alfred side', 'Partea din Alfred'), tech: 'Alfred API', items: [
+      T('Server-side check with web search', 'Analiză pe server, cu căutare web'),
+      T('Yes and maybe become leads; applied and dismissed stay in sync', '„Da” și „poate” devin leaduri; aplicat și respins rămân sincronizate'),
+      T('Cover letter and message drafts from the panel', 'Scrisori de intenție și mesaje direct din panou'),
+    ] },
+  ],
+  dobby: [
+    { name: 'iOS', tech: 'SwiftUI · iOS 17+', items: [
+      T('One-question onboarding: your name', 'Onboarding dintr-o întrebare: cum te cheamă'),
+      T('Home: orders you host, orders you owe on, history', 'Acasă: comenzi organizate, comenzi la care datorezi, istoric'),
+      T('New order from a Wolt, Glovo or Bolt Food link, with a deadline', 'Comandă nouă dintr-un link Wolt, Glovo sau Bolt Food, cu oră limită'),
+      T('The order: everyone’s items, countdown, lock the list', 'Comanda: produsele tuturor, numărătoare inversă, închiderea listei'),
+      T('Settle: who you owe, how to pay, host confirms', 'Decontare: cui datorezi, cum plătești, gazda confirmă'),
+      T('Profile with encrypted payment methods; deep links', 'Profil cu metode de plată criptate; deep links'),
+    ] },
+    { name: 'API', tech: 'Express 5 · Prisma · PostgreSQL', items: [
+      T('Guest accounts, profiles, payment methods with IBAN check', 'Conturi de oaspete, profiluri, metode de plată cu verificare IBAN'),
+      T('Order lifecycle: open, locked, settling, closed', 'Ciclul comenzii: deschisă, închisă, în decontare, finalizată'),
+      T('Exact proportional or equal splits', 'Împărțire exactă, proporțională sau egală'),
+      T('Link previews and a public page per order code', 'Previzualizări de link și o pagină publică per cod de comandă'),
+    ] },
+    { name: T('Next', 'Urmează'), tech: T('planned', 'planificat'), items: [
+      T('Android app and a web join page', 'Aplicația Android și o pagină web de join'),
+      T('Push reminders and a share extension', 'Amintiri push și o extensie de share'),
+    ] },
+  ],
+  pickup: [
+    { name: T('Storefront', 'Magazinul'), tech: T('classic + Blocks', 'clasic + Blocks'), items: [
+      T('Method choice and a calendar of valid days on the product page', 'Alegerea modului și un calendar cu zile valide pe pagina produsului'),
+      T('Date and method on every cart line, mini-cart and checkout', 'Data și modul pe fiecare linie din coș, mini-coș și checkout'),
+      T('Shipping charged per method and day', 'Transport taxat pe mod și zi'),
+      T('Thank-you page, My Account and every email', 'Pagina de mulțumire, Contul meu și toate emailurile'),
+    ] },
+    { name: T('Shop admin', 'Adminul magazinului'), tech: 'WooCommerce', items: [
+      T('Pickup profiles with a live preview of the dates', 'Profiluri de ridicare cu previzualizare live a datelor'),
+      T('Assignment per category, subcategory or product', 'Atribuire pe categorie, subcategorie sau produs'),
+      T('Delivery methods linked to shipping, with optional no-date', 'Moduri de livrare legate de transport, opțional fără dată'),
+      T('Pickups board by day; orders column and date filter', 'Panou de ridicări pe zile; coloană și filtru pe dată în comenzi'),
+    ] },
+    { name: T('For developers', 'Pentru dezvoltatori'), tech: 'PHP · REST', items: [
+      T('Shortcode for page builders', 'Shortcode pentru page buildere'),
+      T('Public availability endpoint per product', 'Endpoint public de disponibilitate per produs'),
+      T('Filters, actions and a JS refresh event', 'Filtre, acțiuni și un eveniment JS de refresh'),
+      T('Order meta that Horae reads on import', 'Meta pe comandă pe care Horae o citește la import'),
+    ] },
+  ],
+  ironpulse: [
+    { name: T('Client app', 'Aplicația clientului'), tech: 'SwiftUI · offline-first', items: [
+      T('Today’s workout, resumed if it was interrupted', 'Antrenamentul de azi, reluat dacă a fost întrerupt'),
+      T('Live set logging, “machine is taken”, session tally', 'Logare live pe serii, „aparatul e ocupat”, bilanțul sesiunii'),
+      T('Attendance, measurements, progress per exercise', 'Prezență, măsurători, progres pe exercițiu'),
+      T('Branded with the trainer’s identity', 'Cu brandul antrenorului'),
+    ] },
+    { name: T('Trainer app', 'Aplicația antrenorului'), tech: 'SwiftUI', items: [
+      T('Panel of clients ranked by urgency signals', 'Panoul clienților, ordonați după semnale de urgență'),
+      T('Client sheet: program, last sessions, plateaus', 'Fișa clientului: program, ultimele sesiuni, platouri'),
+      T('Day builder, assign and publish, templates', 'Constructor de zi, atribuire și publicare, șabloane'),
+      T('In-session measurements and invitations', 'Măsurători în sesiune și invitații'),
+    ] },
+    { name: T('Trainer web', 'Web pentru antrenor'), tech: 'Next.js', items: [
+      T('Keyboard-first three-panel program builder', 'Constructor de program în trei panouri, condus din tastatură'),
+      T('Client list, sheets and progress charts', 'Lista clienților, fișe și grafice de progres'),
+    ] },
+    { name: 'API', tech: 'NestJS · Prisma · PostgreSQL', items: [
+      T('A tenant per trainer, isolated in the data layer', 'Un tenant per antrenor, izolat în stratul de date'),
+      T('Push/pull sync with per-entity conflict rules', 'Sincronizare push/pull cu reguli de conflict pe entitate'),
+      T('Append-only corrections with author and device', 'Corecturi adăugate, cu autor și dispozitiv'),
+    ] },
+  ],
+}
+
+export { T, CASES, EARLIER, APPS };

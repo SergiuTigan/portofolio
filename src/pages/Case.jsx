@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { CASES, T } from '../data.js'
+import { CASES, APPS, T } from '../data.js'
 import { FLAVOR, ORDER } from '../lib/meta.js'
 import { useLang } from '../lib/i18n.jsx'
 import Demo from '../Demo.jsx'
@@ -10,7 +10,7 @@ export default function Case({ id, onOpen, onHome }) {
   const { L, lang } = useLang()
   const c = CASES.find(x => x.id === id)
   const [nodeKey, setNodeKey] = useState('0-0')
-  const SECTIONS = ['screens', 'demo', 'impact', 'built', 'story', 'arch', 'lessons'].filter(s => s === 'screens' ? shotsFor(id).length : s === 'demo' ? c?.demo : true)
+  const SECTIONS = ['apps', 'screens', 'demo', 'impact', 'built', 'story', 'arch', 'lessons'].filter(s => s === 'apps' ? APPS[id] : s === 'screens' ? shotsFor(id).length : s === 'demo' ? c?.demo : true)
   const [active, setActive] = useState(SECTIONS[0])
 
   const idx = ORDER.indexOf(id)
@@ -35,7 +35,7 @@ export default function Case({ id, onOpen, onHome }) {
   const [li, ni] = nodeKey.split('-').map(Number)
   const node = (c.arch[li] && c.arch[li].nodes[ni]) || c.arch[0].nodes[0]
   const titles = {
-    screens: T('Screens', 'Ecrane'), demo: T('Working demo', 'Demo funcțional'), impact: T('Impact', 'Impact'), built: T('Shipped', 'Livrat'),
+    apps: T('What’s inside', 'Ce conține'), screens: T('Screens', 'Ecrane'), demo: T('Working demo', 'Demo funcțional'), impact: T('Impact', 'Impact'), built: T('Shipped', 'Livrat'),
     story: T('The story', 'Povestea'), arch: T('Architecture', 'Arhitectura'), lessons: T('Lessons', 'Lecții'),
   }
   const go = s => { document.getElementById('s-' + s)?.scrollIntoView({ behavior: 'smooth', block: 'start' }) }
@@ -81,6 +81,21 @@ export default function Case({ id, onOpen, onHome }) {
         </nav>
 
         <div className="cs">
+          {APPS[c.id] && (
+            <section id="s-apps">
+              <h2>{L(titles.apps)}</h2>
+              <p className="note">{L(T('Each app at a glance — what it is for and what it already does.', 'Fiecare aplicație pe scurt — la ce folosește și ce face deja.'))}</p>
+              <div className="apps">
+                {APPS[c.id].map(a => (
+                  <div className="app-card" key={L(a.name)}>
+                    <div className="app-head"><b>{L(a.name)}</b><span>{L(a.tech)}</span></div>
+                    <ul>{a.items.map(it => <li key={L(it)}>{L(it)}</li>)}</ul>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+
           {SECTIONS.includes('screens') && (
             <section id="s-screens" className="cs-wide">
               <h2>{L(titles.screens)}</h2>

@@ -221,7 +221,7 @@ dl, dd { margin: 0; }
 .g-item { margin: 0; flex: none; scroll-snap-align: start; display: grid; gap: 10px; }
 .g-web { width: min(860px, 84vw); }
 .g-phone { width: min(250px, 56vw); }
-.g-panel { width: min(330px, 70vw); }
+.g-panel { width: min(250px, 60vw); }
 .g-btn { display: block; padding: 0; border: 0; background: none; cursor: zoom-in; border-radius: var(--radius); }
 .g-btn .frame { box-shadow: var(--shadow); transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease); }
 .g-btn:hover .frame { transform: translateY(-3px); }
@@ -361,6 +361,16 @@ select.input { appearance: none; background-image: linear-gradient(45deg, transp
 .cs .note { color: var(--soft); margin: 12px 0 24px; max-width: 64ch; }
 .cs-wide .gallery { margin-top: 8px; }
 .cs-wide .g-web { width: min(760px, 80vw); }
+.cs-wide .g-phone { width: min(216px, 50vw); }
+.cs-wide .g-panel { width: min(220px, 56vw); }
+.apps { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+.app-card { background: var(--surface); border: 1px solid var(--line); border-top: 3px solid var(--flavor); border-radius: var(--radius); padding: 18px 20px 20px; }
+.app-head { display: grid; gap: 2px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.app-head b { font-family: var(--display); font-weight: 700; font-size: 21px; line-height: 1.15; }
+.app-head span { font-size: 13.5px; color: var(--muted); }
+.app-card ul { list-style: none; padding: 0; margin: 12px 0 0; display: grid; gap: 8px; }
+.app-card li { position: relative; padding-left: 16px; font-size: 15px; line-height: 1.45; color: var(--soft); }
+.app-card li::before { content: ''; position: absolute; left: 0; top: 0.6em; width: 6px; height: 6px; border-radius: 50%; background: var(--flavor); }
 .impact { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 0 28px; margin-top: 24px; }
 .imp { padding: 18px 0; border-top: 1px solid var(--line); display: grid; gap: 6px; align-content: start; }
 .imp .l { font-size: 14px; color: var(--soft); }

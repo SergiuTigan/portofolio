@@ -36,7 +36,7 @@ export const PRODUCTS = [
     figures: [['135', T('assistant tools', 'tool-uri ale asistentului')], ['22', T('modules', 'module')], ['5', T('surfaces, one API', 'suprafețe, un API')]],
   },
   {
-    id: 'jobcheck', name: 'Job Check', color: '#1f9d63', caseId: null,
+    id: 'jobcheck', name: 'Job Check', color: '#1f9d63', caseId: 'jobcheck',
     kind: T('Browser extension, part of Alfred', 'Extensie de browser, parte din Alfred'),
     status: T('Daily use', 'Folosită zilnic'),
     pitch: T(
@@ -66,7 +66,7 @@ export const PRODUCTS = [
     figures: [['0', T('money handled by Dobby', 'bani gestionați de Dobby')], ['2', T('split modes, rounded exactly', 'moduri de împărțire, rotunjite exact')], ['27', T('API tests on a real DB', 'teste de API pe o bază reală')]],
   },
   {
-    id: 'pickup', name: 'Scheduled Pickup', color: '#7f54b3', caseId: null,
+    id: 'pickup', name: 'Scheduled Pickup', color: '#7f54b3', caseId: 'pickup',
     kind: T('WooCommerce plugin', 'Plugin WooCommerce'),
     status: T('v0.10, built for a client', 'v0.10, făcut pentru un client'),
     pitch: T(
@@ -81,7 +81,7 @@ export const PRODUCTS = [
     figures: [['3', T('levels of rule inheritance', 'niveluri de moștenire a regulilor')], ['19', T('unit tests on the rules', 'teste unitare pe reguli')], ['2', T('checkouts supported', 'checkouturi suportate')]],
   },
   {
-    id: 'ironpulse', name: 'Iron Pulse', color: '#2f6fe4', caseId: null,
+    id: 'ironpulse', name: 'Iron Pulse', color: '#2f6fe4', caseId: 'ironpulse',
     kind: T('Coaching platform for personal trainers', 'Platformă de coaching pentru antrenori'),
     status: T('iOS on TestFlight', 'iOS pe TestFlight'),
     pitch: T(
