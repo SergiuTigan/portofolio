@@ -1,0 +1,657 @@
+{
+ "dobby": [
+  {
+   "src": "/shots/dobby/03-order-open.webp",
+   "w": 780,
+   "h": 1696,
+   "kind": "phone",
+   "hero": "main",
+   "cap": {
+    "en": "An open group order: everyone’s items, a countdown to the order time, and a button straight into Wolt.",
+    "ro": "O comandă de grup deschisă: produsele tuturor, timpul rămas până la comandă și un buton direct în Wolt."
+   }
+  },
+  {
+   "src": "/shots/dobby/04-settle-owe.webp",
+   "w": 780,
+   "h": 1696,
+   "kind": "phone",
+   "hero": "trio",
+   "cap": {
+    "en": "Settling up: exactly who you owe, and every way they accept payment.",
+    "ro": "Decontarea: exact cui datorezi și toate felurile în care poți plăti."
+   }
+  },
+  {
+   "src": "/shots/dobby/04b-settle-host-status.webp",
+   "w": 780,
+   "h": 1696,
+   "kind": "phone",
+   "hero": "trio",
+   "cap": {
+    "en": "The host’s view: each share, who paid, and a confirm button per person.",
+    "ro": "Vederea gazdei: partea fiecăruia, cine a plătit și confirmarea pentru fiecare."
+   }
+  },
+  {
+   "src": "/shots/dobby/02-home.webp",
+   "w": 780,
+   "h": 1696,
+   "kind": "phone",
+   "cap": {
+    "en": "Home: orders you host, orders you owe on, and history.",
+    "ro": "Acasă: comenzile pe care le organizezi, cele la care datorezi și istoricul."
+   }
+  },
+  {
+   "src": "/shots/dobby/05-new-order.webp",
+   "w": 780,
+   "h": 1696,
+   "kind": "phone",
+   "cap": {
+    "en": "New order: paste a Wolt, Glovo or Bolt Food link, set a deadline, share the code.",
+    "ro": "Comandă nouă: lipești un link Wolt, Glovo sau Bolt Food, setezi ora și trimiți codul."
+   }
+  },
+  {
+   "src": "/shots/dobby/03b-order-open-more-people.webp",
+   "w": 780,
+   "h": 1696,
+   "kind": "phone",
+   "cap": {
+    "en": "The same order further down — five people, one list.",
+    "ro": "Aceeași comandă mai jos — cinci oameni, o singură listă."
+   }
+  },
+  {
+   "src": "/shots/dobby/06-profile-payment-methods.webp",
+   "w": 780,
+   "h": 1696,
+   "kind": "phone",
+   "cap": {
+    "en": "Payment methods: IBAN, Revolut, RoPay or cash, stored encrypted.",
+    "ro": "Metode de plată: IBAN, Revolut, RoPay sau cash, stocate criptat."
+   }
+  },
+  {
+   "src": "/shots/dobby/03c-order-open-dark.webp",
+   "w": 780,
+   "h": 1696,
+   "kind": "phone",
+   "cap": {
+    "en": "Dark mode.",
+    "ro": "Modul întunecat."
+   }
+  },
+  {
+   "src": "/shots/dobby/01-onboarding.webp",
+   "w": 780,
+   "h": 1696,
+   "kind": "phone",
+   "cap": {
+    "en": "Onboarding is one question: your name.",
+    "ro": "Onboardingul e o singură întrebare: cum te cheamă."
+   }
+  }
+ ],
+ "pickup": [
+  {
+   "src": "/shots/pickup/01-product-calendar-open.webp",
+   "w": 2000,
+   "h": 1250,
+   "kind": "web",
+   "hero": "main",
+   "host": "cofetaria.example/tort-pavlova",
+   "cap": {
+    "en": "The product page: pick how you collect it, then a calendar that only offers valid days.",
+    "ro": "Pagina produsului: alegi cum ridici, apoi un calendar care oferă doar zilele valide."
+   }
+  },
+  {
+   "src": "/shots/pickup/02-product-calendar-open-mobile.webp",
+   "w": 780,
+   "h": 1688,
+   "kind": "phone",
+   "hero": "side",
+   "cap": {
+    "en": "The same date picker on a phone.",
+    "ro": "Același calendar pe telefon."
+   }
+  },
+  {
+   "src": "/shots/pickup/03-cart.webp",
+   "w": 2000,
+   "h": 1250,
+   "kind": "web",
+   "host": "cofetaria.example/cart",
+   "cap": {
+    "en": "Cart: each line keeps its method and date; shipping is charged per method and day.",
+    "ro": "Coșul: fiecare linie își păstrează metoda și data; transportul se taxează pe metodă și zi."
+   }
+  },
+  {
+   "src": "/shots/pickup/04-checkout.webp",
+   "w": 2000,
+   "h": 1133,
+   "kind": "web",
+   "host": "cofetaria.example/checkout",
+   "cap": {
+    "en": "Checkout groups the order by pickup point and date.",
+    "ro": "Checkoutul grupează comanda pe punct de ridicare și dată."
+   }
+  },
+  {
+   "src": "/shots/pickup/05-admin-pickups.webp",
+   "w": 2000,
+   "h": 1250,
+   "kind": "web",
+   "host": "wp-admin · Ridicări",
+   "cap": {
+    "en": "The shop’s pickups board, grouped by day — what to have ready, for whom, and their phone.",
+    "ro": "Panoul de ridicări al magazinului, grupat pe zile — ce trebuie pregătit, pentru cine și telefonul lor."
+   }
+  },
+  {
+   "src": "/shots/pickup/06-admin-orders-list.webp",
+   "w": 2000,
+   "h": 1250,
+   "kind": "web",
+   "host": "wp-admin · Comenzi",
+   "cap": {
+    "en": "A pickup column and a date-range filter on the WooCommerce orders list.",
+    "ro": "O coloană de ridicare și un filtru pe interval în lista de comenzi WooCommerce."
+   }
+  },
+  {
+   "src": "/shots/pickup/07-admin-profile-edit.webp",
+   "w": 2000,
+   "h": 1250,
+   "kind": "web",
+   "host": "wp-admin · Profil de ridicare",
+   "cap": {
+    "en": "A reusable pickup profile with a live preview of what the rules produce.",
+    "ro": "Un profil de ridicare reutilizabil, cu previzualizarea live a rezultatului regulilor."
+   }
+  },
+  {
+   "src": "/shots/pickup/08-admin-settings.webp",
+   "w": 2000,
+   "h": 1250,
+   "kind": "web",
+   "host": "wp-admin · Setări",
+   "cap": {
+    "en": "Plugin settings inside WooCommerce.",
+    "ro": "Setările pluginului, în WooCommerce."
+   }
+  }
+ ],
+ "jobcheck": [
+  {
+   "src": "/shots/jobcheck/05-jobboard-with-panel.webp",
+   "w": 2000,
+   "h": 1250,
+   "kind": "web",
+   "hero": "main",
+   "host": "jobboard.example/jobs/northwind-labs",
+   "cap": {
+    "en": "The panel docks beside any job post. Here: a 90/100 yes, with apply and applied buttons that sync to Alfred.",
+    "ro": "Panoul se lipește lângă orice anunț. Aici: un „da” cu 90/100, cu butoane de aplicare care se sincronizează cu Alfred."
+   }
+  },
+  {
+   "src": "/shots/jobcheck/02-panel-verdict-detail.webp",
+   "w": 840,
+   "h": 1800,
+   "kind": "panel",
+   "cap": {
+    "en": "An opened verdict: location eligibility quoted from the post, fit point by point, then the company.",
+    "ro": "Un verdict deschis: eligibilitatea pe locație citată din anunț, potrivirea punct cu punct, apoi compania."
+   }
+  },
+  {
+   "src": "/shots/jobcheck/01-panel-list.webp",
+   "w": 840,
+   "h": 1800,
+   "kind": "panel",
+   "cap": {
+    "en": "The queue: matches, to clarify, in progress, applied — three checks run at once.",
+    "ro": "Coada: potrivite, de clarificat, în lucru, aplicate — trei analize rulează simultan."
+   }
+  },
+  {
+   "src": "/shots/jobcheck/03c-settings-engine.webp",
+   "w": 1800,
+   "h": 880,
+   "kind": "web",
+   "host": "Job Check · Setări",
+   "cap": {
+    "en": "Engine choice: your own API key, or Alfred’s subscription, which also files every yes as a lead.",
+    "ro": "Alegerea motorului: cheia ta de API sau abonamentul Alfred, care pune și fiecare „da” ca lead."
+   }
+  }
+ ],
+ "horae": [
+  {
+   "src": "/shots/horae/dashboard.webp",
+   "w": 2000,
+   "h": 1250,
+   "kind": "web",
+   "hero": "main",
+   "host": "lumiere.horae.ca",
+   "cap": {
+    "en": "The day at a glance: today’s production with progress, today’s deliveries by hour, stock alerts and what expires soon.",
+    "ro": "Ziua dintr-o privire: producția de azi cu progres, livrările de azi pe ore, alertele de stoc și ce expiră curând."
+   }
+  },
+  {
+   "src": "/shots/horae/mobile-tasks.webp",
+   "w": 780,
+   "h": 1688,
+   "kind": "phone",
+   "hero": "side",
+   "cap": {
+    "en": "The production board on a phone, for hands that are busy in the kitchen.",
+    "ro": "Tabla de producție pe telefon, pentru mâini ocupate în laborator."
+   }
+  },
+  {
+   "src": "/shots/horae/tasks.webp",
+   "w": 2000,
+   "h": 1250,
+   "kind": "web",
+   "host": "lumiere.horae.ca",
+   "cap": {
+    "en": "Production board: every task is a scaled recipe that draws stock down FIFO when it is finished.",
+    "ro": "Tabla de producție: fiecare task e o rețetă scalată care consumă stocul FIFO la finalizare."
+   }
+  },
+  {
+   "src": "/shots/horae/recipe-detail.webp",
+   "w": 2000,
+   "h": 1250,
+   "kind": "web",
+   "host": "lumiere.horae.ca",
+   "cap": {
+    "en": "A recipe with nested semi-finished recipes, cost per line, margin and stock per location.",
+    "ro": "O rețetă cu semipreparate cuibărite, cost pe linie, marjă și stoc pe locații."
+   }
+  },
+  {
+   "src": "/shots/horae/recipes.webp",
+   "w": 2000,
+   "h": 1250,
+   "kind": "web",
+   "host": "lumiere.horae.ca",
+   "cap": {
+    "en": "The recipe catalogue: finished products and semi-finished components.",
+    "ro": "Catalogul de rețete: produse finite și semipreparate."
+   }
+  },
+  {
+   "src": "/shots/horae/stock.webp",
+   "w": 2000,
+   "h": 1250,
+   "kind": "web",
+   "host": "lumiere.horae.ca",
+   "cap": {
+    "en": "Stock across four locations, grouped by category, with minimums and expiry.",
+    "ro": "Stocul pe patru locații, grupat pe categorii, cu minime și expirări."
+   }
+  },
+  {
+   "src": "/shots/horae/orders.webp",
+   "w": 2000,
+   "h": 1250,
+   "kind": "web",
+   "host": "lumiere.horae.ca",
+   "cap": {
+    "en": "Orders with status filters, clients, due dates, delivery or pickup.",
+    "ro": "Comenzile, cu filtre de stare, clienți, termene, livrare sau ridicare."
+   }
+  },
+  {
+   "src": "/shots/horae/orders-calendar.webp",
+   "w": 2000,
+   "h": 1250,
+   "kind": "web",
+   "host": "lumiere.horae.ca",
+   "cap": {
+    "en": "The delivery calendar, day by day.",
+    "ro": "Calendarul de livrări, zi cu zi."
+   }
+  },
+  {
+   "src": "/shots/horae/production-calendar.webp",
+   "w": 2000,
+   "h": 1250,
+   "kind": "web",
+   "host": "lumiere.horae.ca",
+   "cap": {
+    "en": "The week’s production and orders in one calendar.",
+    "ro": "Producția și comenzile săptămânii într-un singur calendar."
+   }
+  },
+  {
+   "src": "/shots/horae/stats.webp",
+   "w": 2000,
+   "h": 1250,
+   "kind": "web",
+   "host": "lumiere.horae.ca",
+   "cap": {
+    "en": "Statistics: orders per day, top products, on-time rate and output per person.",
+    "ro": "Statistici: comenzi pe zi, produse de top, livrări la timp și producție pe persoană."
+   }
+  },
+  {
+   "src": "/shots/horae/transfers.webp",
+   "w": 2000,
+   "h": 1250,
+   "kind": "web",
+   "host": "lumiere.horae.ca",
+   "cap": {
+    "en": "Transfers between locations, with approval and in-transit states.",
+    "ro": "Transferuri între locații, cu aprobare și stări de tranzit."
+   }
+  },
+  {
+   "src": "/shots/horae/mobile-dashboard.webp",
+   "w": 780,
+   "h": 1688,
+   "kind": "phone",
+   "cap": {
+    "en": "The dashboard on a phone.",
+    "ro": "Panoul principal pe telefon."
+   }
+  },
+  {
+   "src": "/shots/horae/mobile-orders.webp",
+   "w": 780,
+   "h": 1688,
+   "kind": "phone",
+   "cap": {
+    "en": "Orders on a phone.",
+    "ro": "Comenzile pe telefon."
+   }
+  }
+ ],
+ "alfred": [
+  {
+   "src": "/shots/alfred/web-chat.webp",
+   "w": 2000,
+   "h": 1250,
+   "kind": "web",
+   "hero": "main",
+   "host": "alfred.app",
+   "cap": {
+    "en": "Chat: the agent logs the workout, the water and the meal through tools — each action shows as a chip — then confirms the calendar event.",
+    "ro": "Chat: agentul loghează antrenamentul, apa și masa prin tool-uri — fiecare acțiune apare ca un chip — apoi confirmă evenimentul din calendar."
+   }
+  },
+  {
+   "src": "/shots/alfred/ios-workout-logging.webp",
+   "w": 780,
+   "h": 1696,
+   "kind": "phone",
+   "hero": "side",
+   "cap": {
+    "en": "Logging a set on iPhone: last session’s weights pre-filled, warm-ups kept out of the maths.",
+    "ro": "Logarea unei serii pe iPhone: greutățile din ultima sesiune precompletate, încălzirea scoasă din calcule."
+   }
+  },
+  {
+   "src": "/shots/alfred/web-home-dark.webp",
+   "w": 2000,
+   "h": 1250,
+   "kind": "web",
+   "host": "alfred.app",
+   "cap": {
+    "en": "Home: eating window, shopping list, today’s macros, the weight trend and the lesson of the day.",
+    "ro": "Acasă: fereastra de mâncat, lista de cumpărături, macro-urile zilei, trendul de greutate și lecția zilei."
+   }
+  },
+  {
+   "src": "/shots/alfred/web-jobs-pipeline.webp",
+   "w": 2000,
+   "h": 1250,
+   "kind": "web",
+   "host": "alfred.app",
+   "cap": {
+    "en": "Jobs: leads from feeds, mail and Job Check, with what needs a reply today and the lead’s timeline.",
+    "ro": "Joburi: leaduri din feeduri, mail și Job Check, cu ce cere răspuns azi și istoricul fiecărui lead."
+   }
+  },
+  {
+   "src": "/shots/alfred/web-training.webp",
+   "w": 2000,
+   "h": 1250,
+   "kind": "web",
+   "host": "alfred.app",
+   "cap": {
+    "en": "Training: push/pull/legs rotation, adherence, weekly volume and new records.",
+    "ro": "Antrenament: rotația push/pull/legs, aderența, volumul săptămânal și recordurile noi."
+   }
+  },
+  {
+   "src": "/shots/alfred/ios-chat.webp",
+   "w": 780,
+   "h": 1696,
+   "kind": "phone",
+   "cap": {
+    "en": "The same assistant on iPhone, answering about the month’s money from real figures.",
+    "ro": "Același asistent pe iPhone, răspunzând despre banii lunii din cifre reale."
+   }
+  },
+  {
+   "src": "/shots/alfred/web-vault-today.webp",
+   "w": 2000,
+   "h": 1250,
+   "kind": "web",
+   "host": "alfred.app",
+   "cap": {
+    "en": "Vault: personal and company balances, spending against budget, payments coming up.",
+    "ro": "Vault: soldurile personale și ale firmei, cheltuieli față de buget, plăți care urmează."
+   }
+  },
+  {
+   "src": "/shots/alfred/web-goals.webp",
+   "w": 2000,
+   "h": 1250,
+   "kind": "web",
+   "host": "alfred.app",
+   "cap": {
+    "en": "Goals with milestones, skills and income streams, reviewed weekly.",
+    "ro": "Obiective cu repere, competențe și surse de venit, revizuite săptămânal."
+   }
+  },
+  {
+   "src": "/shots/alfred/ios-today.webp",
+   "w": 780,
+   "h": 1696,
+   "kind": "phone",
+   "cap": {
+    "en": "Today on iPhone.",
+    "ro": "Azi, pe iPhone."
+   }
+  },
+  {
+   "src": "/shots/alfred/web-nutrition.webp",
+   "w": 2000,
+   "h": 1250,
+   "kind": "web",
+   "host": "alfred.app",
+   "cap": {
+    "en": "Nutrition: targets with the reasoning behind them, fasting clock, water and supplements.",
+    "ro": "Nutriție: ținte cu explicația lor, ceasul de post, apă și suplimente."
+   }
+  },
+  {
+   "src": "/shots/alfred/web-learn-cards.webp",
+   "w": 2000,
+   "h": 1250,
+   "kind": "web",
+   "host": "alfred.app",
+   "cap": {
+    "en": "Learn: spaced-repetition cards by topic, with sources.",
+    "ro": "Învățare: carduri cu repetiție spațiată pe teme, cu surse."
+   }
+  },
+  {
+   "src": "/shots/alfred/ios-vault.webp",
+   "w": 780,
+   "h": 1696,
+   "kind": "phone",
+   "cap": {
+    "en": "Vault on iPhone.",
+    "ro": "Vault pe iPhone."
+   }
+  },
+  {
+   "src": "/shots/alfred/web-calendar.webp",
+   "w": 2000,
+   "h": 1250,
+   "kind": "web",
+   "host": "alfred.app",
+   "cap": {
+    "en": "Calendar: workouts and events in one week.",
+    "ro": "Calendar: antrenamente și evenimente într-o singură săptămână."
+   }
+  },
+  {
+   "src": "/shots/alfred/web-home-light.webp",
+   "w": 2000,
+   "h": 1250,
+   "kind": "web",
+   "host": "alfred.app",
+   "cap": {
+    "en": "Themes are shared across iPhone, Mac and web — the same Home in light.",
+    "ro": "Temele sunt comune pe iPhone, Mac și web — aceeași pagină în varianta deschisă."
+   }
+  }
+ ],
+ "ironpulse": [
+  {
+   "src": "/shots/ironpulse/ios-10-client-live-set-logging.webp",
+   "w": 780,
+   "h": 1696,
+   "kind": "phone",
+   "hero": "main",
+   "cap": {
+    "en": "The client logs a set live: steppers for weight and reps, last time’s numbers, and “the machine is taken”.",
+    "ro": "Clientul loghează o serie live: greutate și repetări, cifrele de data trecută și „aparatul e ocupat”."
+   }
+  },
+  {
+   "src": "/shots/ironpulse/ios-01-trainer-dashboard-signals.webp",
+   "w": 780,
+   "h": 1696,
+   "kind": "phone",
+   "hero": "trio",
+   "cap": {
+    "en": "The trainer’s home: clients ranked by what needs attention — absent, plateaued, in the gym now.",
+    "ro": "Panoul antrenorului: clienții ordonați după ce cere atenție — absenți, pe platou, în sală acum."
+   }
+  },
+  {
+   "src": "/shots/ironpulse/ios-06-trainer-exercise-evolution.webp",
+   "w": 780,
+   "h": 1696,
+   "kind": "phone",
+   "hero": "trio",
+   "cap": {
+    "en": "Progress on one exercise across sessions.",
+    "ro": "Progresul pe un exercițiu, de la o sesiune la alta."
+   }
+  },
+  {
+   "src": "/shots/ironpulse/ios-09-client-home-session-running.webp",
+   "w": 780,
+   "h": 1696,
+   "kind": "phone",
+   "cap": {
+    "en": "The client app, branded for the trainer, resuming a workout in progress.",
+    "ro": "Aplicația clientului, cu brandul antrenorului, reluând un antrenament în curs."
+   }
+  },
+  {
+   "src": "/shots/ironpulse/ios-03-trainer-client-detail.webp",
+   "w": 780,
+   "h": 1696,
+   "kind": "phone",
+   "cap": {
+    "en": "A client’s page: program, next day and the last sessions as logged against prescribed.",
+    "ro": "Pagina unui client: programul, ziua următoare și ultimele sesiuni, logat față de prescris."
+   }
+  },
+  {
+   "src": "/shots/ironpulse/ios-04-trainer-day-builder.webp",
+   "w": 780,
+   "h": 1696,
+   "kind": "phone",
+   "cap": {
+    "en": "Building the next day: exercises and set schemes, swap or remove.",
+    "ro": "Construirea zilei următoare: exerciții și scheme de serii, înlocuiri sau ștergeri."
+   }
+  },
+  {
+   "src": "/shots/ironpulse/ios-05-trainer-client-plateau-chart.webp",
+   "w": 780,
+   "h": 1696,
+   "kind": "phone",
+   "cap": {
+    "en": "A plateau flagged on one lift, with the chart behind it.",
+    "ro": "Un platou semnalat pe un exercițiu, cu graficul din spate."
+   }
+  },
+  {
+   "src": "/shots/ironpulse/ios-12-client-exercise-evolution.webp",
+   "w": 780,
+   "h": 1696,
+   "kind": "phone",
+   "cap": {
+    "en": "The client’s own progress chart and history.",
+    "ro": "Graficul de progres și istoricul, din perspectiva clientului."
+   }
+  },
+  {
+   "src": "/shots/ironpulse/ios-11-client-measurements.webp",
+   "w": 780,
+   "h": 1696,
+   "kind": "phone",
+   "cap": {
+    "en": "Measurements: body weight and girths.",
+    "ro": "Măsurători: greutate și circumferințe."
+   }
+  },
+  {
+   "src": "/shots/ironpulse/ios-13-client-attendance-calendar.webp",
+   "w": 780,
+   "h": 1696,
+   "kind": "phone",
+   "cap": {
+    "en": "Attendance by month.",
+    "ro": "Prezența pe lună."
+   }
+  },
+  {
+   "src": "/shots/ironpulse/ios-07-trainer-program-templates.webp",
+   "w": 780,
+   "h": 1696,
+   "kind": "phone",
+   "cap": {
+    "en": "Reusable program templates.",
+    "ro": "Șabloane de program reutilizabile."
+   }
+  },
+  {
+   "src": "/shots/ironpulse/web-02-builder.webp",
+   "w": 2000,
+   "h": 1250,
+   "kind": "web",
+   "host": "trainer.ironpulse.app",
+   "cap": {
+    "en": "The web trainer view: a keyboard-first program builder on the same sync contract.",
+    "ro": "Vederea web pentru antrenor: un constructor de program condus din tastatură, pe același contract de sync."
+   }
+  }
+ ]
+}

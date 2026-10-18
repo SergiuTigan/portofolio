@@ -8,7 +8,7 @@ const CASES = [
     period: T('Jun 2025 — present', 'Iun 2025 — prezent'),
     tags: ['Angular', 'NgRx', 'Micro-frontends', 'Design systems', 'PWA'],
     stack: ['Angular', 'TypeScript', 'NgRx (Store, Effects, Entity)', 'RxJS', 'Angular Material', 'SCSS', 'PWA', 'i18n', 'Jasmine/Karma', 'Claude Code + GitHub CLI'],
-    oneLiner: T('One frontend serving ten consumer brands in a regulated industry — theming, gamification and payment flows in a single Angular/NgRx codebase.', 'Un singur frontend pentru zece branduri de consum într-o industrie reglementată — theming, gamificare și fluxuri de plată, într-un singur cod Angular/NgRx.'),
+    oneLiner: T('Core Angular/NgRx frontend of a regulated consumer platform: lobby pages, gamification, payment flows and an automated pre-PR code review that cut review time by 80%.', 'Frontendul principal Angular/NgRx al unei platforme de consum reglementate: pagini de lobby, gamificare, fluxuri de plată și un review automat înainte de PR care a redus timpul de review cu 80%.'),
     context: [
       T('I develop the core frontend of a white-label consumer platform in a heavily regulated industry. Ten brands run on it across several European markets, each with its own look, its own regulatory copy and its own promotional calendar — and all of them on one codebase.', 'Dezvolt frontendul principal al unei platforme white-label de consum, într-o industrie strict reglementată. Zece branduri rulează pe ea, în mai multe piețe europene, fiecare cu propriul aspect, propriile texte de reglementare și propriul calendar de promoții — toate pe un singur cod.'),
       T('My side of the work is the modular Angular/NgRx architecture that makes that possible, plus ownership of user-facing feature areas: lobby pages, gamification and payment flows.', 'Partea mea este arhitectura modulară Angular/NgRx care face asta posibilă, plus responsabilitatea unor zone de produs: paginile de lobby, gamificarea și fluxurile de plată.'),
@@ -237,137 +237,54 @@ const CASES = [
     ],
     demoNote: T('Add blocks, reorder them, watch the PDF preview follow. Same interaction model as the real generator, without the bank\'s branding.', 'Adaugă blocuri, reordonează-le, urmărește previzualizarea PDF. Același model de interacțiune ca generatorul real, fără brandul băncii.'),
   },
+
   {
-    id: 'pulse', client: 'Pulse', demo: 'pulse', own: true,
-    sector: T('Own product · AI fitness platform', 'Produs propriu · platformă fitness AI'),
-    period: T('Next Level Tech', 'Next Level Tech'),
-    tags: ['Next.js', 'Firebase', 'AI', 'White-label'],
-    stack: ['Next.js', 'Firebase', 'TypeScript', 'AI workout generation'],
-    oneLiner: T('An AI fitness platform I designed, built, shipped and operate solo: trainer–client workflows, generated workouts, white-label branding.', 'O platformă de fitness cu AI proiectată, construită, lansată și operată de mine singur: fluxuri antrenor–client, antrenamente generate, branding white-label.'),
+    id: 'dobby', client: 'Dobby', demo: null, own: true,
+    sector: T('Own product · group food ordering', 'Produs propriu · comenzi de grup'),
+    period: T('2.0 in build, 2026', '2.0 în lucru, 2026'),
+    tags: ['SwiftUI', 'Express 5', 'Prisma', 'PostgreSQL'],
+    stack: ['SwiftUI (iOS 17+)', 'XcodeGen', 'Express 5', 'TypeScript', 'Prisma 6', 'PostgreSQL 16', 'zod', 'JWT', 'AES-256-GCM', 'Universal Links'],
+    oneLiner: T('Group ordering on top of Bolt Food, Wolt and Glovo: one person orders, everyone adds their items from a shared link, and the bill is split to the ban with a clear “you owe X to Y”.', 'Comenzi de grup peste Bolt Food, Wolt și Glovo: o persoană comandă, toți își adaugă produsele dintr-un link comun, iar nota se împarte la ban, cu un „îi datorezi X lui Y” clar.'),
     context: [
-      T('Pulse is one of three products I built end-to-end on my own — design, code, ship, operate. It handles trainer–client workflows, AI-driven workout generation from a library of 70+ exercises, and white-label branding for gyms and studios.', 'Pulse e unul din trei produse construite de mine cap-coadă — design, cod, lansare, operare. Acoperă fluxurile antrenor–client, generarea de antrenamente cu AI din peste 70 de exerciții și branding white-label pentru săli și studiouri.'),
+      T('Dobby started as an office catering app — Angular, Node and SQLite, later PostgreSQL — that served around 250 people a day. When the office lunch moved to the delivery apps, the real problem moved with it: one person orders for twelve, then spends the afternoon chasing money.', 'Dobby a început ca aplicație de catering pentru birou — Angular, Node și SQLite, apoi PostgreSQL — folosită de aproximativ 250 de oameni pe zi. Când prânzul de la birou s-a mutat pe aplicațiile de livrare, problema reală s-a mutat odată cu el: o persoană comandă pentru doisprezece, apoi își petrece după-amiaza alergând după bani.'),
+      T('Dobby 2.0 is a rebuild around that moment. The host pastes a restaurant link and shares a code; friends add what they want; the host locks the list, places the real order in the delivery app, enters fees and discounts, and Dobby does the arithmetic and the reminders.', 'Dobby 2.0 e o reconstrucție în jurul acelui moment. Gazda lipește linkul restaurantului și trimite un cod; prietenii adaugă ce vor; gazda închide lista, plasează comanda reală în aplicația de livrare, introduce taxele și reducerile, iar Dobby face calculele și amintirile.'),
     ],
     challenge: [
-      T('A generated plan that a trainer does not trust is worse than no plan. The generation has to be good enough to start from, and the trainer has to be able to override any part of it before the client ever sees it.', 'Un plan generat în care antrenorul nu are încredere e mai rău decât niciun plan. Generarea trebuie să fie suficient de bună ca punct de plecare, iar antrenorul trebuie să poată modifica orice parte înainte ca clientul să o vadă.'),
+      T('Money between friends is awkward precisely because the numbers have to be exact. Delivery fees, service fees and discounts must split proportionally or equally and still add up to the receipt, to the ban, every time.', 'Banii între prieteni sunt delicați tocmai pentru că cifrele trebuie să fie exacte. Taxa de livrare, taxa de serviciu și reducerile trebuie împărțite proporțional sau egal și tot să dea totalul de pe bon, la ban, de fiecare dată.'),
+      T('And Dobby must never touch the money: it only tells people who to pay and how, so payment details have to be stored safely and shown only to the people who owe.', 'Iar Dobby nu trebuie să atingă niciodată banii: le spune doar oamenilor cui plătesc și cum, deci datele de plată trebuie stocate în siguranță și arătate doar celor care datorează.'),
     ],
     built: [
-      { title: T('Trainer–client workflows', 'Fluxuri antrenor–client'), body: T('Assignment, progression and feedback between the two roles.', 'Atribuire, progresie și feedback între cele două roluri.') },
-      { title: T('AI workout generation', 'Generare de antrenamente cu AI'), body: T('Plans composed from a 70+ exercise library against goal and session length.', 'Planuri compuse dintr-o bibliotecă de peste 70 de exerciții, în funcție de obiectiv și durata sesiunii.') },
-      { title: T('White-label branding', 'Branding white-label'), body: T('Gyms and studios run Pulse under their own identity.', 'Sălile și studiourile rulează Pulse sub propria identitate.') },
+      { title: T('An explicit order lifecycle', 'Un ciclu de viață explicit'), body: T('Open, locked, settling, closed — every transition is an endpoint with its own rules, so a list cannot change after the real order was placed.', 'Deschisă, închisă, în decontare, finalizată — fiecare tranziție e un endpoint cu regulile lui, deci lista nu se mai poate schimba după ce comanda reală a fost plasată.') },
+      { title: T('Exact splits', 'Împărțire exactă'), body: T('Proportional or equal, with largest-remainder rounding so the shares always sum to the receipt.', 'Proporțional sau egal, cu rotunjire după cel mai mare rest, ca părțile să dea mereu totalul de pe bon.') },
+      { title: T('Pay how you like', 'Plătești cum vrei'), body: T('Revolut, IBAN (validated), RoPay, PayPal or cash; details encrypted with AES-256-GCM; the host confirms each payment.', 'Revolut, IBAN (validat), RoPay, PayPal sau cash; detaliile criptate cu AES-256-GCM; gazda confirmă fiecare plată.') },
+      { title: T('Links that open the app', 'Linkuri care deschid aplicația'), body: T('A short code and a public landing page per order; the restaurant name and image come from the link itself.', 'Un cod scurt și o pagină publică pentru fiecare comandă; numele și imaginea restaurantului vin chiar din link.') },
     ],
     metrics: [
-      { label: T('Exercise library', 'Bibliotecă de exerciții'), before: '—', after: '70+', note: T('The pool generation draws from.', 'Sursa din care generează sistemul.') },
-      { label: T('Team', 'Echipă'), before: '—', after: '1', note: T('Designed, built, shipped and operated solo.', 'Proiectat, construit, lansat și operat solo.') },
-      { label: T('Deployment model', 'Model de livrare'), before: T('single brand', 'un singur brand'), after: T('white-label', 'white-label'), note: T('Same product, tenant branding.', 'Același produs, branding pe tenant.') },
+      { label: T('v1 daily users', 'Utilizatori zilnici v1'), before: '—', after: '~250', note: T('The office catering version, before the rebuild.', 'Versiunea de catering pentru birou, înainte de reconstrucție.') },
+      { label: T('Money handled', 'Bani gestionați'), before: '—', after: '0', note: T('Dobby only says who owes whom; payments happen elsewhere.', 'Dobby spune doar cine cui datorează; plățile se fac în altă parte.') },
+      { label: T('API tests', 'Teste de API'), before: '—', after: '27', note: T('Run against a real PostgreSQL, not mocks.', 'Rulate pe un PostgreSQL real, nu pe mock-uri.') },
     ],
     lessons: [
-      { title: T('Ship the override before the automation', 'Livrează suprascrierea înainte de automatizare'), body: T('Generation earns trust only when the human can overrule it in one click.', 'Generarea câștigă încredere doar când omul o poate suprascrie într-un click.') },
-    ],
-    arch: [
-      { title: T('Roles', 'Roluri'), nodes: [
-        { label: T('Trainer', 'Antrenor'), note: T('Reviews and overrides generated plans, tracks client progression.', 'Revizuiește și modifică planurile generate, urmărește progresia clientului.') },
-        { label: T('Client', 'Client'), note: T('Sees only the approved plan and logs sessions against it.', 'Vede doar planul aprobat și își înregistrează sesiunile pe baza lui.') },
-      ] },
-      { title: T('App', 'Aplicație'), nodes: [
-        { label: 'Next.js', note: T('The product surface, rendered fast enough to feel native on a phone at the gym.', 'Suprafața produsului, randată suficient de rapid ca să pară nativă pe telefon, în sală.') },
-        { label: T('Generation engine', 'Motor de generare'), note: T('Composes a session from the exercise library against goal, duration and equipment.', 'Compune o sesiune din biblioteca de exerciții, după obiectiv, durată și echipament.') },
-        { label: T('Tenant theming', 'Theming pe tenant'), note: T('White-label identity per gym or studio.', 'Identitate white-label pentru fiecare sală sau studio.') },
-      ] },
-      { title: T('Platform', 'Platformă'), nodes: [
-        { label: 'Firebase', note: T('Auth, data and hosting — chosen so one person can operate the whole thing.', 'Autentificare, date și hosting — alese ca o singură persoană să poată opera tot.') },
-      ] },
-    ],
-    demoNote: T('Pick a goal, set the session length, generate — then switch the white-label tenant and watch the same plan re-brand.', 'Alege un obiectiv, setează durata, generează — apoi schimbă tenantul white-label și vezi același plan sub alt brand.'),
-  },
-  {
-    id: 'dobby', client: 'Dobby', demo: 'dobby', own: true,
-    sector: T('Own product · food ordering', 'Produs propriu · comenzi de mâncare'),
-    period: T('~250 ' + 'daily active users', '~250 utilizatori activi zilnic'),
-    tags: ['Angular', 'Node', 'Supabase', 'PostgreSQL'],
-    stack: ['Angular', 'Node.js', 'Supabase', 'PostgreSQL', 'Real-time'],
-    oneLiner: T('A food-ordering platform with real-time order updates, serving around 250 daily active users — and a database migration to keep up with them.', 'O platformă de comenzi de mâncare cu actualizări în timp real, cu aproximativ 250 de utilizatori activi zilnic — și o migrare de bază de date ca să țină pasul.'),
-    context: [
-      T('Dobby is the busiest of my own products: an Angular/Node/Supabase food-ordering platform with real-time order updates, serving around 250 daily active users.', 'Dobby e cel mai încărcat dintre produsele mele: o platformă de comenzi de mâncare Angular/Node/Supabase, cu actualizări în timp real și aproximativ 250 de utilizatori activi zilnic.'),
-      T('As it grew I migrated it from SQLite to PostgreSQL to support the load.', 'Odată cu creșterea, am migrat de la SQLite la PostgreSQL pentru a susține încărcarea.'),
-    ],
-    challenge: [
-      T('Real-time order state has two audiences at once — the kitchen and the customer — and they must never disagree about what is happening to an order.', 'Starea comenzii în timp real are două audiențe simultan — bucătăria și clientul — și nu trebuie niciodată să fie în dezacord despre ce se întâmplă cu o comandă.'),
-      T('Growth also outran the original storage choice, so the migration had to happen without losing an order.', 'Creșterea a depășit și alegerea inițială de stocare, deci migrarea trebuia făcută fără pierderea vreunei comenzi.'),
-    ],
-    built: [
-      { title: T('Real-time order updates', 'Actualizări în timp real'), body: T('Kitchen and customer see the same state as it changes.', 'Bucătăria și clientul văd aceeași stare, pe măsură ce se schimbă.') },
-      { title: T('SQLite → PostgreSQL migration', 'Migrare SQLite → PostgreSQL'), body: T('Moved storage to support growth without downtime for users.', 'Am mutat stocarea pentru a susține creșterea, fără downtime pentru utilizatori.') },
-      { title: T('Operating it, not just building it', 'Operare, nu doar construire'), body: T('Solo product: I ship it, run it and answer for it.', 'Produs solo: îl livrez, îl rulez și răspund pentru el.') },
-    ],
-    metrics: [
-      { label: T('Daily active users', 'Utilizatori activi zilnic'), before: '—', after: '~250', note: T('The largest of my three own products.', 'Cel mai mare dintre cele trei produse proprii.') },
-      { label: T('Database', 'Bază de date'), before: 'SQLite', after: 'PostgreSQL', note: T('Migrated to carry the growing load.', 'Migrat pentru a susține încărcarea în creștere.') },
-      { label: T('Order state', 'Starea comenzii'), before: T('polled', 'interogată periodic'), after: T('real-time', 'în timp real'), note: T('Kitchen and customer stay in sync.', 'Bucătăria și clientul rămân sincronizați.') },
-    ],
-    lessons: [
-      { title: T('Pick the boring database sooner', 'Alege baza de date plictisitoare mai devreme'), body: T('SQLite got Dobby to real users fast. It also set a date for a migration I could have skipped.', 'SQLite a dus Dobby rapid la utilizatori reali. Dar mi-a fixat și data unei migrări pe care aș fi putut să o evit.') },
+      { title: T('Rebuild around the moment that hurts', 'Reconstruiește în jurul momentului care doare'), body: T('v1 solved ordering. The pain had moved to settling up, so 2.0 is built around the split, not the menu.', 'v1 rezolva comanda. Durerea se mutase la decontare, așa că 2.0 e construit în jurul împărțirii, nu al meniului.') },
+      { title: T('Pick the boring database sooner', 'Alege baza de date plictisitoare mai devreme'), body: T('SQLite got v1 to real users fast and then set a date for a migration I could have skipped.', 'SQLite a dus v1 rapid la utilizatori reali și apoi mi-a fixat data unei migrări pe care aș fi putut s-o evit.') },
     ],
     arch: [
       { title: T('Clients', 'Clienți'), nodes: [
-        { label: T('Customer app', 'Aplicația clientului'), note: T('Order placement and live status.', 'Plasarea comenzii și status live.') },
-        { label: T('Kitchen board', 'Panoul bucătăriei'), note: T('The lane view staff work from; advancing an order here is what the customer sees.', 'Vederea pe coloane cu care lucrează personalul; avansarea unei comenzi aici e ce vede clientul.') },
+        { label: 'iOS — SwiftUI', note: T('Home, new order, the order itself, settle and profile; deep links open an order straight from a shared code.', 'Acasă, comandă nouă, comanda, decontare și profil; deep linkurile deschid comanda direct din codul trimis.') },
+        { label: T('Public order page', 'Pagina publică a comenzii'), note: T('A landing page per code for people without the app yet.', 'O pagină pentru fiecare cod, pentru cine nu are încă aplicația.') },
       ] },
-      { title: T('Services', 'Servicii'), nodes: [
-        { label: 'Node.js API', note: T('Order lifecycle and menu; the single writer of order state.', 'Ciclul de viață al comenzii și meniul; singurul care scrie starea comenzii.') },
-        { label: T('Real-time channel', 'Canal în timp real'), note: T('Pushes state changes to both audiences at once, which is why they never disagree.', 'Trimite schimbările de stare simultan către ambele audiențe — de asta nu ajung în dezacord.') },
+      { title: 'API', nodes: [
+        { label: 'Express 5 + zod', note: T('Guest auth, profile, payment methods, orders, items, lock, finalize, settlement; validation at every edge.', 'Autentificare de oaspete, profil, metode de plată, comenzi, produse, închidere, finalizare, decontare; validare la fiecare intrare.') },
+        { label: T('Link unfurl', 'Previzualizare link'), note: T('Reads the restaurant name and image from the delivery app link.', 'Citește numele și imaginea restaurantului din linkul aplicației de livrare.') },
       ] },
       { title: T('Data', 'Date'), nodes: [
-        { label: 'Supabase / PostgreSQL', note: T('The post-migration home for orders. PostgreSQL replaced SQLite when the load justified it.', 'Casa comenzilor după migrare. PostgreSQL a înlocuit SQLite când încărcarea a justificat-o.') },
+        { label: 'PostgreSQL + Prisma', note: T('Orders, items, shares and payments; payment details are ciphertext.', 'Comenzi, produse, părți și plăți; datele de plată sunt criptate.') },
       ] },
     ],
-    demoNote: T('A live kitchen board: place an order, tap it forward through the lanes, watch the ages tick while you look at it.', 'Un panou de bucătărie live: plasează o comandă, avansează-o prin coloane, urmărește cum cresc timpii chiar în timp ce te uiți.'),
+    demoNote: null,
   },
-  {
-    id: 'luppy', client: 'Luppy', demo: 'luppy', own: true,
-    sector: T('Own product · digital pet health platform', 'Produs propriu · platformă digitală de sănătate veterinară'),
-    period: '2025',
-    tags: ['Next.js', 'Firebase', 'RBAC', 'Scheduling'],
-    stack: ['Next.js', 'Firebase', 'Role-based dashboards', 'Scheduling', 'Messaging'],
-    oneLiner: T('The pet health booklet, digitised — one medical record, two portals: the clinic runs administration, lab results and appointments; the owner follows their pet\'s health, books visits and messages the vet.', 'Carnetul de sănătate al animalului, digitalizat — o singură fișă medicală, două portaluri: clinica gestionează administrarea, analizele și programările; proprietarul urmărește sănătatea animalului, face programări și comunică cu veterinarul.'),
-    context: [
-      T('Luppy replaces the paper health booklet with a living medical record. On one side, a portal for veterinarians and clinics: patient administration, consultations, treatments, lab results and the clinic\'s appointment calendar. On the other, an app for the owner: the pet\'s profile and history, upcoming appointments, and a direct line to the clinic.', 'Luppy înlocuiește carnetul de sănătate pe hârtie cu o fișă medicală vie. Pe o parte, un portal pentru veterinari și clinici: administrarea pacienților, consultații, tratamente, analize și calendarul de programări al clinicii. Pe cealaltă, o aplicație pentru proprietar: profilul și istoricul animalului, programările următoare și o linie directă de comunicare cu clinica.'),
-    ],
-    challenge: [
-      T('One medical record, two very different readers. The vet needs clinical depth — values, dosages, differential notes; the owner needs clarity and reassurance. Both look at the same data, so the projection per role has to live in the data model, not in the UI.', 'O singură fișă medicală, doi cititori foarte diferiți. Veterinarul are nevoie de profunzime clinică — valori, dozaje, note diferențiale; proprietarul are nevoie de claritate și liniște. Amândoi se uită la aceleași date, deci proiecția pe rol trebuie să stea în modelul de date, nu în UI.'),
-      T('Scheduling and communication cut across both sides: a booking has to respect the clinic\'s real capacity, and a message thread has to connect owner and clinic without leaking clinical internals.', 'Programările și comunicarea traversează ambele părți: o programare trebuie să respecte capacitatea reală a clinicii, iar un fir de mesaje trebuie să lege proprietarul de clinică fără să scurgă detalii clinice interne.'),
-    ],
-    built: [
-      { title: T('Clinic portal — patient administration', 'Portal de clinică — administrarea pacienților'), body: T('Records, consultations and treatments, managed by vets and clinic staff with role-appropriate access.', 'Fișe, consultații și tratamente, gestionate de veterinari și personalul clinicii, cu acces potrivit rolului.') },
-      { title: T('Lab results on the record', 'Analize atașate fișei'), body: T('Results attach to the medical record as they arrive — full values for the vet, a readable summary for the owner.', 'Rezultatele se atașează fișei pe măsură ce sosesc — valori complete pentru veterinar, un sumar lizibil pentru proprietar.') },
-      { title: T('Appointments', 'Programări'), body: T('Owners book online against the clinic\'s calendar; the clinic confirms, reschedules and keeps the day legible.', 'Proprietarii se programează online în calendarul clinicii; clinica confirmă, reprogramează și își ține ziua lizibilă.') },
-      { title: T('Owner–clinic messaging', 'Mesagerie proprietar–clinică'), body: T('A conversation thread anchored to the pet\'s record, so context never gets lost between visits.', 'Un fir de conversație ancorat în fișa animalului, ca între vizite contextul să nu se piardă.') },
-      { title: T('Role-based views of one record', 'Vederi pe rol ale aceleiași fișe'), body: T('Owner, vet and clinic administrator each get their own projection — what a role cannot see, it does not receive.', 'Proprietarul, veterinarul și administratorul clinicii au fiecare propria proiecție — ce nu are voie să vadă un rol, nici nu primește.') },
-    ],
-    metrics: [
-      { label: T('Health record', 'Carnetul de sănătate'), before: T('paper booklet', 'carnet de hârtie'), after: T('living record', 'fișă vie'), note: T('History, results and treatments in one place, for both sides.', 'Istoric, analize și tratamente într-un singur loc, pentru ambele părți.') },
-      { label: T('Booking', 'Programarea'), before: T('phone calls', 'telefoane'), after: T('online', 'online'), note: T('Owners book against real clinic capacity.', 'Proprietarii se programează pe capacitatea reală a clinicii.') },
-      { label: T('Roles served', 'Roluri deservite'), before: '—', after: '3', note: T('Owner, veterinarian, clinic administrator — one record each way.', 'Proprietar, veterinar, administrator de clinică — aceeași fișă, trei vederi.') },
-    ],
-    lessons: [
-      { title: T('Permissions are a product decision', 'Permisiunile sunt o decizie de produs'), body: T('Deciding what an owner should see of a clinical note was harder — and more valuable — than any part of the implementation.', 'Decizia despre ce vede proprietarul dintr-o notă clinică a fost mai grea — și mai valoroasă — decât orice parte din implementare.') },
-      { title: T('Two audiences, one truth', 'Două audiențe, un singur adevăr'), body: T('Write the record clinically once, render it differently per reader. Duplicating it per audience is how records drift apart.', 'Scrii fișa clinic o singură dată și o randezi diferit pe cititor. Duplicarea pe audiențe e felul în care fișele ajung să se contrazică.') },
-    ],
-    arch: [
-      { title: T('Portals', 'Portaluri'), nodes: [
-        { label: T('Clinic portal', 'Portal clinică'), note: T('The working surface for vets and staff: patients, consultations, results, the day\'s calendar.', 'Suprafața de lucru pentru veterinari și personal: pacienți, consultații, rezultate, calendarul zilei.') },
-        { label: T('Owner app', 'Aplicația proprietarului'), note: T('The pet\'s health at a glance: history, upcoming visits, messages — clinical detail translated into clarity.', 'Sănătatea animalului dintr-o privire: istoric, vizite următoare, mesaje — detaliul clinic tradus în claritate.') },
-      ] },
-      { title: T('Core', 'Nucleu'), nodes: [
-        { label: T('Medical record', 'Fișa medicală'), note: T('The single source of truth: consultations, treatments, lab results, documents — ordered and filterable.', 'Singura sursă de adevăr: consultații, tratamente, analize, documente — ordonate și filtrabile.') },
-        { label: T('Scheduling', 'Programări'), note: T('Bookings against clinic capacity, confirmations and rescheduling on both sides.', 'Programări pe capacitatea clinicii, confirmări și reprogramări pe ambele părți.') },
-        { label: T('Messaging', 'Mesagerie'), note: T('Owner–clinic threads anchored to the record, so a question always carries its context.', 'Fire proprietar–clinică ancorate în fișă, ca o întrebare să-și poarte mereu contextul.') },
-      ] },
-      { title: T('Platform', 'Platformă'), nodes: [
-        { label: 'Firebase + RBAC', note: T('Access rules live with the data, so a role never receives what it is not allowed to see.', 'Regulile de acces stau lângă date, deci un rol nu primește niciodată ce nu are dreptul să vadă.') },
-      ] },
-    ],
-    demoNote: T('Switch role and watch the same record change shape — then act as that role: the owner books a visit, the vet attaches a lab result, the clinic confirms the day.', 'Schimbă rolul și vezi cum aceeași fișă își schimbă forma — apoi acționează ca rolul respectiv: proprietarul cere o programare, veterinarul atașează o analiză, clinica confirmă ziua.'),
-  },
+
+
   {
     id: 'horae', client: 'Horae', demo: 'horae', own: true,
     sector: T('Own product · multi-tenant production platform', 'Produs propriu · platformă multi-tenant de producție'),
@@ -454,12 +371,14 @@ const CASES = [
       { title: T('Progression engine for the gym', 'Motor de progresie pentru sală'), body: T('Work sets pre-filled from the last session of that exact slot, warm-up sets excluded from the math, “raise the weight” suggested when every set hits the top of its range, stagnation flagged after three flat sessions.', 'Seriile de lucru precompletate din ultima sesiune a aceluiași slot, seriile de încălzire excluse din calcul, „urcă greutatea” sugerat când fiecare serie atinge capătul intervalului, stagnarea semnalată după trei sesiuni plate.') },
       { title: T('Goals, weekly reviews, calendar feed', 'Obiective, recenzii săptămânale, calendar'), body: T('A five-step weekly review that refuses a sixth next-week task, markdown import/export that round-trips, and a webcal feed Apple Calendar subscribes to without headers.', 'O recenzie săptămânală în cinci pași care refuză al șaselea task, import/export markdown care face dus-întors fără pierderi și un feed webcal la care Apple Calendar se abonează fără headere.') },
       { title: T('Prompt regression suite', 'Suită de regresie pentru prompt'), body: T('Ten scenarios assert the assistant’s first action against system-prompt changes: reads figures via tools, admits what it cannot know, refers medical questions to a doctor, refuses to propose goals.', 'Zece scenarii verifică prima acțiune a asistentului la schimbări de system prompt: citește cifrele prin tool-uri, admite ce nu poate ști, trimite întrebările medicale la medic, refuză să propună obiective.') },
-      { title: T('Native everywhere, one API', 'Nativ peste tot, un singur API'), body: T('SwiftUI on iPhone and Mac with widgets, a share extension and App Intents; a single-file web client for the desk. Every feature ships on all of them together.', 'SwiftUI pe iPhone și Mac, cu widget-uri, extensie de share și App Intents; un client web dintr-un singur fișier pentru birou. Fiecare funcție se livrează pe toate deodată.') },
+      { title: T('A job hunt that runs itself', 'O căutare de job care se ține singură'), body: T('A pipeline from lead to offer fed by public job feeds, mail classification and the Job Check browser extension, which researches a company and drops the verdict on the lead. Alfred drafts the messages; it never logs into a job board.', 'Un pipeline de la lead la ofertă alimentat de feeduri publice de joburi, clasificarea mailurilor și extensia de browser Job Check, care cercetează compania și pune verdictul pe lead. Alfred scrie mesajele; nu intră niciodată în conturi pe site-urile de joburi.') },
+      { title: T('Inside Claude, too', 'Și din Claude'), body: T('An MCP connector with OAuth 2.1 exposes the same tools to claude.ai and Claude Desktop, scoped to one owner.', 'Un conector MCP cu OAuth 2.1 expune aceleași tool-uri în claude.ai și Claude Desktop, limitate la un singur proprietar.') },
+      { title: T('Native everywhere, one API', 'Nativ peste tot, un singur API'), body: T('SwiftUI on iPhone and Mac with widgets, a share extension and App Intents; a React web app for the desk. Every feature ships on all of them together.', 'SwiftUI pe iPhone și Mac, cu widget-uri, extensie de share și App Intents; o aplicație web React pentru birou. Fiecare funcție se livrează pe toate deodată.') },
     ],
     metrics: [
       { label: T('Readable in a DB dump', 'Lizibil într-un dump al bazei'), before: T('everything', 'tot'), after: T('nothing', 'nimic'), note: T('AES-256-GCM on every sensitive field, key separate from auth.', 'AES-256-GCM pe fiecare câmp sensibil, cheie separată de autentificare.') },
-      { label: T('Assistant tools', 'Tool-uri ale asistentului'), before: T('free text', 'text liber'), after: '20+', note: T('Typed read and write tools; the model never guesses a number.', 'Tool-uri tipizate de citire și scriere; modelul nu ghicește niciodată o cifră.') },
-      { label: T('Platforms', 'Platforme'), before: '1', after: '3', note: T('iPhone, Mac, web — every feature on all three.', 'iPhone, Mac, web — fiecare funcție pe toate trei.') },
+      { label: T('Assistant tools', 'Tool-uri ale asistentului'), before: T('free text', 'text liber'), after: '135', note: T('Typed read and write tools; the model never guesses a number.', 'Tool-uri tipizate de citire și scriere; modelul nu ghicește niciodată o cifră.') },
+      { label: T('Platforms', 'Platforme'), before: '1', after: '5', note: T('iPhone, Mac, web, a claude.ai connector and the Job Check browser extension.', 'iPhone, Mac, web, un conector claude.ai și extensia de browser Job Check.') },
       { label: T('Prompt regressions caught', 'Regresii de prompt prinse'), before: T('by hand', 'manual'), after: T('10 scenarios', '10 scenarii'), note: T('Run before any system-prompt change.', 'Rulate înaintea oricărei schimbări de system prompt.') },
       { label: T('Users', 'Utilizatori'), before: '—', after: '1', note: T('Built for exactly one person, which is the point.', 'Făcut pentru exact o persoană — asta e ideea.') },
     ],

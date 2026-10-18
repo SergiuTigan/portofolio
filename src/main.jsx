@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import './theme.css'
+import './styles.css'
 import './demo-dark.css'
 import App from './App.jsx'
 
