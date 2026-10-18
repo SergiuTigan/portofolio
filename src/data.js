@@ -240,49 +240,56 @@ const CASES = [
 
   {
     id: 'dobby', client: 'Dobby', demo: null, own: true,
-    sector: T('Own product · group food ordering', 'Produs propriu · comenzi de grup'),
-    period: T('2.0 in build, 2026', '2.0 în lucru, 2026'),
-    tags: ['SwiftUI', 'Express 5', 'Prisma', 'PostgreSQL'],
-    stack: ['SwiftUI (iOS 17+)', 'XcodeGen', 'Express 5', 'TypeScript', 'Prisma 6', 'PostgreSQL 16', 'zod', 'JWT', 'AES-256-GCM', 'Universal Links'],
-    oneLiner: T('Group ordering on top of Bolt Food, Wolt and Glovo: one person orders, everyone adds their items from a shared link, and the bill is split to the ban with a clear “you owe X to Y”.', 'Comenzi de grup peste Bolt Food, Wolt și Glovo: o persoană comandă, toți își adaugă produsele dintr-un link comun, iar nota se împarte la ban, cu un „îi datorezi X lui Y” clar.'),
+    sector: T('Workplace tool · weekly lunch ordering', 'Unealtă de birou · comanda săptămânală de prânz'),
+    period: T('Nov 2025 — present', 'Nov 2025 — prezent'),
+    tags: ['Angular 20', 'Node', 'SQLite', 'Microsoft sign-in', 'Azure DevOps'],
+    stack: ['Angular 20 (signals, standalone)', 'Tailwind CSS', 'ngx-translate', 'Node.js + Express', 'SQLite (WAL)', 'Passport (Microsoft)', 'ExcelJS / xlsx', 'Nodemailer', 'Swagger', 'Docker + Nginx', 'Azure DevOps', 'Ansible', 'Jest + Supertest', 'Jasmine'],
+    oneLiner: T('The lunch app for a tech company’s offices: the caterer’s weekly Excel menu becomes a week employees pick from, admins lock and export it, and a meal you cannot eat goes to a colleague — about 250 people use it every day.', 'Aplicația de prânz pentru birourile unei companii de tehnologie: meniul săptămânal în Excel al firmei de catering devine o săptămână din care angajații aleg, adminii o închid și o exportă, iar o masă pe care n-o poți mânca ajunge la un coleg — aproximativ 250 de oameni o folosesc zilnic.'),
     context: [
-      T('Dobby started as an office catering app — Angular, Node and SQLite, later PostgreSQL — that served around 250 people a day. When the office lunch moved to the delivery apps, the real problem moved with it: one person orders for twelve, then spends the afternoon chasing money.', 'Dobby a început ca aplicație de catering pentru birou — Angular, Node și SQLite, apoi PostgreSQL — folosită de aproximativ 250 de oameni pe zi. Când prânzul de la birou s-a mutat pe aplicațiile de livrare, problema reală s-a mutat odată cu el: o persoană comandă pentru doisprezece, apoi își petrece după-amiaza alergând după bani.'),
-      T('Dobby 2.0 is a rebuild around that moment. The host pastes a restaurant link and shares a code; friends add what they want; the host locks the list, places the real order in the delivery app, enters fees and discounts, and Dobby does the arithmetic and the reminders.', 'Dobby 2.0 e o reconstrucție în jurul acelui moment. Gazda lipește linkul restaurantului și trimite un cod; prietenii adaugă ce vor; gazda închide lista, plasează comanda reală în aplicația de livrare, introduce taxele și reducerile, iar Dobby face calculele și amintirile.'),
+      T('Lunch at the office is catered. Every week the caterer sends the menu as an Excel file, a few hundred people have to choose from it for five days, and someone has to send the totals back on time.', 'Prânzul la birou vine de la o firmă de catering. În fiecare săptămână, meniul sosește ca fișier Excel, câteva sute de oameni trebuie să aleagă din el pentru cinci zile, iar cineva trebuie să trimită totalurile înapoi la timp.'),
+      T('I built Dobby around that loop. Admins upload the caterer’s file as it is; employees sign in with their work Microsoft account and pick soup, main course or special, salad and extra for each day; the week locks on schedule and exports straight back into the format the caterer expects.', 'Am construit Dobby în jurul acestei bucle. Adminii încarcă fișierul de la catering exact cum vine; angajații intră cu contul Microsoft de serviciu și aleg ciorbă, fel principal sau special, salată și extra pentru fiecare zi; săptămâna se închide la timp și se exportă direct în formatul pe care îl așteaptă firma de catering.'),
     ],
     challenge: [
-      T('Money between friends is awkward precisely because the numbers have to be exact. Delivery fees, service fees and discounts must split proportionally or equally and still add up to the receipt, to the ban, every time.', 'Banii între prieteni sunt delicați tocmai pentru că cifrele trebuie să fie exacte. Taxa de livrare, taxa de serviciu și reducerile trebuie împărțite proporțional sau egal și tot să dea totalul de pe bon, la ban, de fiecare dată.'),
-      T('And Dobby must never touch the money: it only tells people who to pay and how, so payment details have to be stored safely and shown only to the people who owe.', 'Iar Dobby nu trebuie să atingă niciodată banii: le spune doar oamenilor cui plătesc și cum, deci datele de plată trebuie stocate în siguranță și arătate doar celor care datorează.'),
+      T('The input is a human-made spreadsheet. Categories are marked by bold cells, dates live in the file name, and the same menu sometimes arrives twice. The import has to understand the file the caterer actually sends, not the one we wish they sent.', 'Datele de intrare sunt un tabel făcut de om. Categoriile sunt marcate cu celule bold, datele stau în numele fișierului, iar același meniu vine uneori de două ori. Importul trebuie să înțeleagă fișierul pe care îl trimite firma de catering, nu pe cel pe care ni l-am dori.'),
+      T('And the rules are social, not technical: weeks lock, but some people need an exception; plans change, so a meal you will not eat should go to someone who will; guests and interview candidates eat too, without accounts.', 'Iar regulile sunt sociale, nu tehnice: săptămânile se închid, dar unii au nevoie de o excepție; planurile se schimbă, deci o masă pe care n-o mănânci ar trebui să ajungă la cineva care o mănâncă; și invitații sau candidații la interviu mănâncă, fără conturi.'),
     ],
     built: [
-      { title: T('An explicit order lifecycle', 'Un ciclu de viață explicit'), body: T('Open, locked, settling, closed — every transition is an endpoint with its own rules, so a list cannot change after the real order was placed.', 'Deschisă, închisă, în decontare, finalizată — fiecare tranziție e un endpoint cu regulile lui, deci lista nu se mai poate schimba după ce comanda reală a fost plasată.') },
-      { title: T('Exact splits', 'Împărțire exactă'), body: T('Proportional or equal, with largest-remainder rounding so the shares always sum to the receipt.', 'Proporțional sau egal, cu rotunjire după cel mai mare rest, ca părțile să dea mereu totalul de pe bon.') },
-      { title: T('Pay how you like', 'Plătești cum vrei'), body: T('Revolut, IBAN (validated), RoPay, PayPal or cash; details encrypted with AES-256-GCM; the host confirms each payment.', 'Revolut, IBAN (validat), RoPay, PayPal sau cash; detaliile criptate cu AES-256-GCM; gazda confirmă fiecare plată.') },
-      { title: T('Links that open the app', 'Linkuri care deschid aplicația'), body: T('A short code and a public landing page per order; the restaurant name and image come from the link itself.', 'Un cod scurt și o pagină publică pentru fiecare comandă; numele și imaginea restaurantului vin chiar din link.') },
+      { title: T('An import that reads the real file', 'Un import care citește fișierul real'), body: T('Excel menus parsed with bold cells as categories and a heuristic fallback, dates from the file name, duplicates caught by file hash; two menu formats supported side by side.', 'Meniuri Excel citite cu celulele bold drept categorii și o euristică de rezervă, date din numele fișierului, duplicate prinse după hash-ul fișierului; două formate de meniu suportate în paralel.') },
+      { title: T('A week you pick from', 'O săptămână din care alegi'), body: T('Current, next and last week as day cards; a day-by-day picker; week locking with per-person unlock overrides.', 'Săptămâna curentă, următoarea și cea trecută ca fișe pe zile; alegere zi cu zi; închiderea săptămânii, cu deblocări individuale.') },
+      { title: T('Pass the meal', 'Pasează masa'), body: T('Can’t make it? Offer your meal to anyone or to a named colleague, who claims it in one tap — so a meal someone cannot eat goes to someone who will.', 'Nu ajungi? Îți oferi masa oricui sau unui coleg anume, care o revendică dintr-o atingere — așa o masă pe care cineva n-o poate mânca ajunge la cineva care o mănâncă.') },
+      { title: T('Guests without accounts', 'Invitați fără cont'), body: T('Tokenised invite links let visitors and interview candidates pick meals; an admin confirms or rejects, and confirmed guests count in the totals.', 'Linkuri de invitație cu token permit vizitatorilor și candidaților la interviu să-și aleagă mesele; un admin confirmă sau respinge, iar invitații confirmați intră în totaluri.') },
+      { title: T('An admin panel that closes the loop', 'Un panou de admin care închide bucla'), body: T('Upload, statistics per day and person, exports for the caterer, ordering on someone’s behalf, feedback inbox and an email to everyone when the menu is ready.', 'Încărcare, statistici pe zi și pe persoană, exporturi pentru catering, comenzi în numele cuiva, inbox de feedback și un email către toți când meniul e gata.') },
+      { title: T('Several offices, one app', 'Mai multe birouri, o singură aplicație'), body: T('Locations added later as a migration on live data: location admins see their office, a super admin manages offices, assigns people, can view the app as any user, and backs it up.', 'Locațiile au fost adăugate ulterior, ca migrare pe date live: adminii de locație își văd biroul, un super admin administrează birourile, alocă oamenii, poate vedea aplicația ca orice utilizator și face backup.') },
+      { title: T('Reviews, feedback, onboarding', 'Recenzii, feedback, onboarding'), body: T('Star reviews per dish with a public anonymised page, a feedback form and a six-step in-app tutorial.', 'Recenzii cu stele pentru fiecare fel, cu o pagină publică anonimizată, un formular de feedback și un tutorial de șase pași în aplicație.') },
     ],
     metrics: [
-      { label: T('v1 daily users', 'Utilizatori zilnici v1'), before: '—', after: '~250', note: T('The office catering version, before the rebuild.', 'Versiunea de catering pentru birou, înainte de reconstrucție.') },
-      { label: T('Money handled', 'Bani gestionați'), before: '—', after: '0', note: T('Dobby only says who owes whom; payments happen elsewhere.', 'Dobby spune doar cine cui datorează; plățile se fac în altă parte.') },
-      { label: T('API tests', 'Teste de API'), before: '—', after: '27', note: T('Run against a real PostgreSQL, not mocks.', 'Rulate pe un PostgreSQL real, nu pe mock-uri.') },
+      { label: T('Daily users', 'Utilizatori zilnici'), before: '—', after: '~250', note: T('Employees ordering lunch every working day.', 'Angajați care își comandă prânzul în fiecare zi lucrătoare.') },
+      { label: T('Weekly order for the caterer', 'Comanda săptămânală pentru catering'), before: '—', after: T('one export', 'un export'), note: T('Totals per day and dish, in the caterer’s format.', 'Totaluri pe zi și pe fel, în formatul firmei de catering.') },
+      { label: T('Automated tests', 'Teste automate'), before: '—', after: '~240', note: T('API tests with Jest and Supertest, component tests with Jasmine.', 'Teste de API cu Jest și Supertest, teste de componente cu Jasmine.') },
     ],
     lessons: [
-      { title: T('Rebuild around the moment that hurts', 'Reconstruiește în jurul momentului care doare'), body: T('v1 solved ordering. The pain had moved to settling up, so 2.0 is built around the split, not the menu.', 'v1 rezolva comanda. Durerea se mutase la decontare, așa că 2.0 e construit în jurul împărțirii, nu al meniului.') },
-      { title: T('Pick the boring database sooner', 'Alege baza de date plictisitoare mai devreme'), body: T('SQLite got v1 to real users fast and then set a date for a migration I could have skipped.', 'SQLite a dus v1 rapid la utilizatori reali și apoi mi-a fixat data unei migrări pe care aș fi putut s-o evit.') },
+      { title: T('Import the file people already send', 'Importă fișierul pe care oamenii îl trimit deja'), body: T('The caterer’s spreadsheet is the source of truth, so the import reads it as it arrives — bold cells, dates in the file name — instead of asking anyone to change how they work.', 'Tabelul firmei de catering e sursa de adevăr, așa că importul îl citește exact cum vine — celule bold, date în numele fișierului — în loc să ceară cuiva să-și schimbe felul de lucru.') },
+      { title: T('Design for plans that change', 'Proiectează pentru planuri care se schimbă'), body: T('Weeks lock so the caterer gets a firm order, but life does not lock. Passing meals, per-person unlocks and ordering on someone’s behalf all exist for the same reason.', 'Săptămânile se închid ca firma de catering să primească o comandă fermă, dar viața nu se închide. Pasarea meselor, deblocările individuale și comenzile în numele cuiva există toate din același motiv.') },
     ],
     arch: [
       { title: T('Clients', 'Clienți'), nodes: [
-        { label: 'iOS — SwiftUI', note: T('Home, new order, the order itself, settle and profile; deep links open an order straight from a shared code.', 'Acasă, comandă nouă, comanda, decontare și profil; deep linkurile deschid comanda direct din codul trimis.') },
-        { label: T('Public order page', 'Pagina publică a comenzii'), note: T('A landing page per code for people without the app yet.', 'O pagină pentru fiecare cod, pentru cine nu are încă aplicația.') },
+        { label: T('Employee app', 'Aplicația angajatului'), note: T('Angular 20 with signals and lazy routes: weeks, picker, passed meals, reviews, tutorial, in Romanian and English.', 'Angular 20 cu signals și rute lazy: săptămâni, alegere, mese pasate, recenzii, tutorial, în română și engleză.') },
+        { label: T('Admin panel', 'Panoul de admin'), note: T('Upload, weeks, statistics, exports, guests, email, feedback; super-admin tools for offices and backups.', 'Încărcare, săptămâni, statistici, exporturi, invitați, email, feedback; unelte de super admin pentru birouri și backupuri.') },
+        { label: T('Guest page', 'Pagina de invitat'), note: T('A public, token-based page for people without an account.', 'O pagină publică, pe bază de token, pentru cei fără cont.') },
       ] },
       { title: 'API', nodes: [
-        { label: 'Express 5 + zod', note: T('Guest auth, profile, payment methods, orders, items, lock, finalize, settlement; validation at every edge.', 'Autentificare de oaspete, profil, metode de plată, comenzi, produse, închidere, finalizare, decontare; validare la fiecare intrare.') },
-        { label: T('Link unfurl', 'Previzualizare link'), note: T('Reads the restaurant name and image from the delivery app link.', 'Citește numele și imaginea restaurantului din linkul aplicației de livrare.') },
+        { label: 'Node + Express', note: T('89 route handlers across 13 routers, documented in Swagger.', '89 de handlere în 13 routere, documentate în Swagger.') },
+        { label: T('Microsoft sign-in', 'Autentificare Microsoft'), note: T('Work accounts only; people imported in advance are linked on first sign-in.', 'Doar conturi de serviciu; persoanele importate dinainte sunt legate la prima autentificare.') },
+        { label: T('Excel in, Excel out', 'Excel la intrare, Excel la ieșire'), note: T('Menu parsing on upload and exports for the caterer, statistics, reviews and feedback.', 'Citirea meniului la încărcare și exporturi pentru catering, statistici, recenzii și feedback.') },
       ] },
-      { title: T('Data', 'Date'), nodes: [
-        { label: 'PostgreSQL + Prisma', note: T('Orders, items, shares and payments; payment details are ciphertext.', 'Comenzi, produse, părți și plăți; datele de plată sunt criptate.') },
+      { title: T('Data and delivery', 'Date și livrare'), nodes: [
+        { label: 'SQLite (WAL)', note: T('Plain SQL, sixteen tables, migrations by table rebuild — enough for a few hundred people, and one file to back up.', 'SQL simplu, șaisprezece tabele, migrări prin reconstruirea tabelelor — suficient pentru câteva sute de oameni și un singur fișier de salvat.') },
+        { label: T('Pipeline', 'Pipeline'), note: T('Docker images built in Azure DevOps, pushed to a registry, deployed to a stage server provisioned with Ansible, Cloudflare cache purged.', 'Imagini Docker construite în Azure DevOps, urcate într-un registru, livrate pe un server configurat cu Ansible, cu golirea cache-ului Cloudflare.') },
       ] },
     ],
     demoNote: null,
   },
+
 
 
   {
@@ -637,25 +644,34 @@ const APPS = {
     ] },
   ],
   dobby: [
-    { name: 'iOS', tech: 'SwiftUI · iOS 17+', items: [
-      T('One-question onboarding: your name', 'Onboarding dintr-o întrebare: cum te cheamă'),
-      T('Home: orders you host, orders you owe on, history', 'Acasă: comenzi organizate, comenzi la care datorezi, istoric'),
-      T('New order from a Wolt, Glovo or Bolt Food link, with a deadline', 'Comandă nouă dintr-un link Wolt, Glovo sau Bolt Food, cu oră limită'),
-      T('The order: everyone’s items, countdown, lock the list', 'Comanda: produsele tuturor, numărătoare inversă, închiderea listei'),
-      T('Settle: who you owe, how to pay, host confirms', 'Decontare: cui datorezi, cum plătești, gazda confirmă'),
-      T('Profile with encrypted payment methods; deep links', 'Profil cu metode de plată criptate; deep links'),
+    { name: T('Employee app', 'Aplicația angajatului'), tech: 'Angular 20 · Tailwind', items: [
+      T('This week, next week and last week as day cards', 'Săptămâna asta, următoarea și cea trecută, ca fișe pe zile'),
+      T('Day-by-day picker: soup, main or special, salad, extra', 'Alegere zi cu zi: ciorbă, fel principal sau special, salată, extra'),
+      T('Pass a meal to anyone or a named colleague; claim theirs', 'Pasezi masa oricui sau unui coleg anume; o revendici pe a lor'),
+      T('Find a colleague’s week, rate dishes, read reviews', 'Vezi săptămâna unui coleg, dai note felurilor, citești recenzii'),
+      T('Microsoft sign-in, tutorial, Romanian and English', 'Autentificare Microsoft, tutorial, română și engleză'),
     ] },
-    { name: 'API', tech: 'Express 5 · Prisma · PostgreSQL', items: [
-      T('Guest accounts, profiles, payment methods with IBAN check', 'Conturi de oaspete, profiluri, metode de plată cu verificare IBAN'),
-      T('Order lifecycle: open, locked, settling, closed', 'Ciclul comenzii: deschisă, închisă, în decontare, finalizată'),
-      T('Exact proportional or equal splits', 'Împărțire exactă, proporțională sau egală'),
-      T('Link previews and a public page per order code', 'Previzualizări de link și o pagină publică per cod de comandă'),
+    { name: T('Admin panel', 'Panoul de admin'), tech: T('per office', 'pe birou'), items: [
+      T('Upload the caterer’s Excel menu; import selections', 'Încarci meniul Excel de la catering; imporți selecții'),
+      T('Lock and unlock weeks, with per-person exceptions', 'Închizi și deschizi săptămâni, cu excepții individuale'),
+      T('Statistics per day and person; Excel exports', 'Statistici pe zi și pe persoană; exporturi Excel'),
+      T('Guest invites with an approval queue', 'Invitații pentru oaspeți, cu coadă de aprobare'),
+      T('Order for someone else; email everyone; feedback inbox', 'Comanzi în numele cuiva; email către toți; inbox de feedback'),
     ] },
-    { name: T('Next', 'Urmează'), tech: T('planned', 'planificat'), items: [
-      T('Android app and a web join page', 'Aplicația Android și o pagină web de join'),
-      T('Push reminders and a share extension', 'Amintiri push și o extensie de share'),
+    { name: T('Super admin', 'Super admin'), tech: T('all offices', 'toate birourile'), items: [
+      T('Offices and who belongs to which', 'Birourile și cine aparține fiecăruia'),
+      T('Promote office admins', 'Numești adminii de birou'),
+      T('View the app as any user', 'Vezi aplicația ca orice utilizator'),
+      T('Backup and restore', 'Backup și restaurare'),
+    ] },
+    { name: 'API', tech: 'Node · Express · SQLite', items: [
+      T('89 endpoints across 13 routers, Swagger docs', '89 de endpointuri în 13 routere, documentație Swagger'),
+      T('Excel parsing and exports, email notifications', 'Citire și export Excel, notificări pe email'),
+      T('Docker, Azure DevOps pipeline, Ansible, Cloudflare', 'Docker, pipeline Azure DevOps, Ansible, Cloudflare'),
+      T('~240 automated tests', '~240 de teste automate'),
     ] },
   ],
+
   pickup: [
     { name: T('Storefront', 'Magazinul'), tech: T('classic + Blocks', 'clasic + Blocks'), items: [
       T('Method choice and a calendar of valid days on the product page', 'Alegerea modului și un calendar cu zile valide pe pagina produsului'),

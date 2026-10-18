@@ -1,78 +1,145 @@
 {
  "dobby": [
   {
-   "file": "03-order-open.png",
-   "kind": "phone",
-   "hero": "main",
+   "file": "user-01-dashboard-current-week.png",
+   "kind": "web",
+   "host": "dobby.northwind.example",
    "cap": {
-    "en": "An open group order: everyone’s items, a countdown to the order time, and a button straight into Wolt.",
-    "ro": "O comandă de grup deschisă: produsele tuturor, timpul rămas până la comandă și un buton direct în Wolt."
+    "en": "This week as day cards: today highlighted, past days dimmed, a passed meal marked, the week locked.",
+    "ro": "Săptămâna curentă pe zile: azi evidențiat, zilele trecute estompate, o masă pasată marcată, săptămâna închisă."
+   },
+   "hero": "main"
+  },
+  {
+   "file": "mobile-01-dashboard.png",
+   "kind": "phone",
+   "cap": {
+    "en": "The same week on a phone.",
+    "ro": "Aceeași săptămână pe telefon."
+   },
+   "hero": "side"
+  },
+  {
+   "file": "user-08-select-meals-day.png",
+   "kind": "web",
+   "host": "dobby.northwind.example",
+   "cap": {
+    "en": "Picking a day: soup, main course or special, optional salad and extra.",
+    "ro": "Alegerea unei zile: ciorbă, fel principal sau special, salată și extra opționale."
    }
   },
   {
-   "file": "04-settle-owe.png",
-   "kind": "phone",
-   "hero": "trio",
+   "file": "user-03-meal-transfers.png",
+   "kind": "web",
+   "host": "dobby.northwind.example",
    "cap": {
-    "en": "Settling up: exactly who you owe, and every way they accept payment.",
-    "ro": "Decontarea: exact cui datorezi și toate felurile în care poți plăti."
+    "en": "Meals you passed, and meals colleagues are offering — claim one in a tap.",
+    "ro": "Mesele pasate de tine și cele oferite de colegi — revendici una dintr-o atingere."
    }
   },
   {
-   "file": "04b-settle-host-status.png",
-   "kind": "phone",
-   "hero": "trio",
+   "file": "admin-01-overview.png",
+   "kind": "web",
+   "host": "dobby.northwind.example",
    "cap": {
-    "en": "The host’s view: each share, who paid, and a confirm button per person.",
-    "ro": "Vederea gazdei: partea fiecăruia, cine a plătit și confirmarea pentru fiecare."
+    "en": "The admin panel: office and week pickers, then upload, export, weeks, guests, email and feedback.",
+    "ro": "Panoul de admin: alegi biroul și săptămâna, apoi încărcare, export, săptămâni, invitați, email și feedback."
    }
   },
   {
-   "file": "02-home.png",
-   "kind": "phone",
+   "file": "admin-02-statistics.png",
+   "kind": "web",
+   "host": "dobby.northwind.example",
    "cap": {
-    "en": "Home: orders you host, orders you owe on, and history.",
-    "ro": "Acasă: comenzile pe care le organizezi, cele la care datorezi și istoricul."
+    "en": "Statistics: how many people ordered, meals per day, and who picked what.",
+    "ro": "Statistici: câți oameni au comandat, mese pe zi și cine ce a ales."
    }
   },
   {
-   "file": "05-new-order.png",
-   "kind": "phone",
+   "file": "admin-06-upload.png",
+   "kind": "web",
+   "host": "dobby.northwind.example",
    "cap": {
-    "en": "New order: paste a Wolt, Glovo or Bolt Food link, set a deadline, share the code.",
-    "ro": "Comandă nouă: lipești un link Wolt, Glovo sau Bolt Food, setezi ora și trimiți codul."
+    "en": "Upload the caterer’s Excel menu, or import selections.",
+    "ro": "Încarci meniul Excel de la catering sau imporți selecții."
    }
   },
   {
-   "file": "03b-order-open-more-people.png",
-   "kind": "phone",
+   "file": "admin-03-week-management.png",
+   "kind": "web",
+   "host": "dobby.northwind.example",
    "cap": {
-    "en": "The same order further down — five people, one list.",
-    "ro": "Aceeași comandă mai jos — cinci oameni, o singură listă."
+    "en": "Weeks: set the active one, lock or unlock, delete.",
+    "ro": "Săptămânile: o setezi pe cea activă, închizi sau deschizi, ștergi."
    }
   },
   {
-   "file": "06-profile-payment-methods.png",
-   "kind": "phone",
+   "file": "admin-04-guest-invites.png",
+   "kind": "web",
+   "host": "dobby.northwind.example",
    "cap": {
-    "en": "Payment methods: IBAN, Revolut, RoPay or cash, stored encrypted.",
-    "ro": "Metode de plată: IBAN, Revolut, RoPay sau cash, stocate criptat."
+    "en": "Guest invites and the queue of selections waiting for approval.",
+    "ro": "Invitațiile pentru oaspeți și selecțiile care așteaptă aprobare."
    }
   },
   {
-   "file": "03c-order-open-dark.png",
-   "kind": "phone",
+   "file": "admin-10-super-admin.png",
+   "kind": "web",
+   "host": "dobby.northwind.example",
    "cap": {
-    "en": "Dark mode.",
-    "ro": "Modul întunecat."
+    "en": "Super admin: offices, who belongs where, view the app as any user.",
+    "ro": "Super admin: birourile, cine unde aparține, vezi aplicația ca orice utilizator."
    }
   },
   {
-   "file": "01-onboarding.png",
+   "file": "user-09-reviews.png",
+   "kind": "web",
+   "host": "dobby.northwind.example",
+   "cap": {
+    "en": "Dish reviews with star filters.",
+    "ro": "Recenziile felurilor, cu filtre pe stele."
+   }
+  },
+  {
+   "file": "user-10-tutorial.png",
+   "kind": "web",
+   "host": "dobby.northwind.example",
+   "cap": {
+    "en": "A six-step tutorial on first use.",
+    "ro": "Un tutorial în șase pași la prima folosire."
+   }
+  },
+  {
+   "file": "guest-01-invite.png",
+   "kind": "web",
+   "host": "dobby.northwind.example",
+   "cap": {
+    "en": "A guest’s page: pick next week’s meals without an account, pending approval.",
+    "ro": "Pagina unui invitat: alege mesele săptămânii viitoare fără cont, în așteptarea aprobării."
+   }
+  },
+  {
+   "file": "mobile-02-select-meals.png",
    "kind": "phone",
    "cap": {
-    "en": "Onboarding is one question: your name.",
-    "ro": "Onboardingul e o singură întrebare: cum te cheamă."
+    "en": "Picking meals on a phone.",
+    "ro": "Alegerea meselor pe telefon."
+   }
+  },
+  {
+   "file": "mobile-04-available-meals.png",
+   "kind": "phone",
+   "cap": {
+    "en": "Meals colleagues are offering.",
+    "ro": "Mesele oferite de colegi."
+   }
+  },
+  {
+   "file": "mobile-03-reviews.png",
+   "kind": "phone",
+   "cap": {
+    "en": "Reviews on a phone.",
+    "ro": "Recenziile pe telefon."
    }
   }
  ],

@@ -36,7 +36,7 @@ export const PRODUCTS = [
     figures: [['135', T('assistant tools', 'tool-uri ale asistentului')], ['22', T('modules', 'module')], ['5', T('surfaces, one API', 'suprafețe, un API')]],
   },
   {
-    id: 'jobcheck', name: 'Job Check', color: '#1f9d63', caseId: 'jobcheck',
+    id: 'jobcheck', name: 'Job Check', color: '#e8592a', caseId: 'jobcheck',
     kind: T('Browser extension, part of Alfred', 'Extensie de browser, parte din Alfred'),
     status: T('Daily use', 'Folosită zilnic'),
     pitch: T(
@@ -51,20 +51,21 @@ export const PRODUCTS = [
     figures: [['3', T('verdicts: yes, maybe, no', 'verdicte: da, poate, nu')], ['8+', T('review sources per company', 'surse de recenzii per companie')], ['0', T('job boards logged into', 'conturi folosite pe site-uri de joburi')]],
   },
   {
-    id: 'dobby', name: 'Dobby', color: '#f06a1d', caseId: 'dobby',
-    kind: T('Group food ordering', 'Comenzi de grup la mâncare'),
-    status: T('2.0 in build, v1 retired', '2.0 în lucru, v1 retras'),
+    id: 'dobby', name: 'Dobby', color: '#0f9b72', caseId: 'dobby',
+    kind: T('Weekly lunch ordering for an office', 'Comanda săptămânală de prânz pentru birou'),
+    status: T('In production, ~250 daily users', 'În producție, ~250 de utilizatori zilnic'),
     pitch: T(
-      'One person orders on Bolt Food, Wolt or Glovo; everyone else adds what they want from a shared link. The host locks the list, places the real order, enters the fees, and Dobby splits the bill to the ban — then tells each person exactly who they owe and how to pay.',
-      'O persoană comandă pe Bolt Food, Wolt sau Glovo; ceilalți își adaugă ce vor dintr-un link comun. Gazda închide lista, plasează comanda reală, introduce taxele, iar Dobby împarte nota la ban — apoi îi spune fiecăruia exact cui datorează și cum plătește.'
+      'Every week the caterer sends a menu as an Excel file. Dobby turns it into a week employees pick their lunch from, Monday to Friday; admins lock the week, export the order for the caterer and see who eats what. Can’t make it on Thursday? Pass the meal to a colleague instead of throwing it away.',
+      'În fiecare săptămână, firma de catering trimite meniul ca fișier Excel. Dobby îl transformă într-o săptămână din care angajații își aleg prânzul, de luni până vineri; adminii închid săptămâna, exportă comanda pentru catering și văd cine ce mănâncă. Nu ajungi joi? Pasezi masa unui coleg în loc să se arunce.'
     ),
     facts: [
-      [T('Clients', 'Clienți'), T('SwiftUI iOS with deep links; Android and web join page next', 'iOS SwiftUI cu deep links; urmează Android și pagina web de join')],
-      [T('Backend', 'Backend'), T('Express 5, Prisma, PostgreSQL, zod; payment details encrypted', 'Express 5, Prisma, PostgreSQL, zod; datele de plată criptate')],
-      [T('History', 'Istoric'), T('v1 was an office catering app with ~250 daily users', 'v1 a fost o aplicație de catering de birou cu ~250 de utilizatori zilnic')],
+      [T('Frontend', 'Frontend'), T('Angular 20 with signals and standalone components, Tailwind, Romanian and English', 'Angular 20 cu signals și componente standalone, Tailwind, română și engleză')],
+      [T('Backend', 'Backend'), T('Node and Express over SQLite, Microsoft sign-in, Excel import and export', 'Node și Express peste SQLite, autentificare Microsoft, import și export Excel')],
+      [T('Delivery', 'Livrare'), T('Docker images, an Azure DevOps pipeline, Ansible-provisioned servers, Cloudflare', 'Imagini Docker, pipeline Azure DevOps, servere configurate cu Ansible, Cloudflare')],
     ],
-    figures: [['0', T('money handled by Dobby', 'bani gestionați de Dobby')], ['2', T('split modes, rounded exactly', 'moduri de împărțire, rotunjite exact')], ['27', T('API tests on a real DB', 'teste de API pe o bază reală')]],
+    figures: [['~250', T('people ordering every day', 'oameni care comandă zilnic')], ['89', T('API endpoints', 'endpointuri de API')], ['~240', T('automated tests', 'teste automate')]],
   },
+
   {
     id: 'pickup', name: 'Scheduled Pickup', color: '#7f54b3', caseId: 'pickup',
     kind: T('WooCommerce plugin', 'Plugin WooCommerce'),
@@ -103,5 +104,5 @@ export const SIDE = [
   { name: 'Rent radar', note: T('Scrapes three listing sites twice a day for pet-friendly flats within walking distance of work, adds walk time, parks and terrain.', 'Caută de două ori pe zi pe trei site-uri apartamente care acceptă animale, la distanță de mers pe jos de birou, cu timp de mers, parcuri și relief.') },
   { name: 'study.tigan.dev', note: T('My learning site — courses, lessons and a progress tracker — which also feeds Alfred’s daily lesson.', 'Site-ul meu de învățat — cursuri, lecții și progres — care alimentează și lecția zilnică din Alfred.') },
   { name: 'Luppy', note: T('Pet health and breeding records with share links for vets. Early access.', 'Fișe de sănătate și reproducție pentru animale, cu linkuri de partajare pentru veterinari. Early access.'), url: 'https://luppy.app' },
-  { name: T('App template', 'Template de aplicație'), note: T('The monorepo Dobby, Luppy and Iron Pulse start from: NestJS, Next.js, SwiftUI, Compose, auth and deploy done once.', 'Monorepo-ul din care pornesc Dobby, Luppy și Iron Pulse: NestJS, Next.js, SwiftUI, Compose, auth și deploy făcute o singură dată.') },
+  { name: T('App template', 'Template de aplicație'), note: T('The monorepo Luppy and Iron Pulse start from: NestJS, Next.js, SwiftUI, Compose, auth and deploy done once.', 'Monorepo-ul din care pornesc Luppy și Iron Pulse: NestJS, Next.js, SwiftUI, Compose, auth și deploy făcute o singură dată.') },
 ]

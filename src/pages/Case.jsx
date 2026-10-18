@@ -57,7 +57,7 @@ export default function Case({ id, onOpen, onHome }) {
             </div>
             <div className="mstrip">
               {c.metrics.slice(0, 3).map(m => (
-                <div className="m" key={L(m.label)}><span className="l">{L(m.label)}</span><span><span className="b">{L(m.before)}</span><span className="a">{L(m.after)}</span></span></div>
+                <div className="m" key={L(m.label)}><span className="l">{L(m.label)}</span><span>{L(m.before) !== '—' && <span className="b">{L(m.before)}</span>}<span className="a">{L(m.after)}</span></span></div>
               ))}
             </div>
           </div>
@@ -118,7 +118,7 @@ export default function Case({ id, onOpen, onHome }) {
               {c.metrics.map(m => (
                 <div className="imp" key={L(m.label)}>
                   <div className="l">{L(m.label)}</div>
-                  <div className="v"><span className="b">{L(m.before)}</span><span className="to" aria-hidden>→</span><span className="a">{L(m.after)}</span></div>
+                  <div className="v">{L(m.before) !== '—' && <><span className="b">{L(m.before)}</span><span className="to" aria-hidden>→</span></>}<span className="a">{L(m.after)}</span></div>
                   <p>{L(m.note)}</p>
                 </div>
               ))}

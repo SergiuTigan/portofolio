@@ -1,96 +1,177 @@
 {
  "dobby": [
   {
-   "src": "/shots/dobby/03-order-open.webp",
-   "w": 780,
-   "h": 1696,
-   "kind": "phone",
+   "src": "/shots/dobby/user-01-dashboard-current-week.webp",
+   "w": 2000,
+   "h": 1250,
+   "kind": "web",
    "hero": "main",
+   "host": "dobby.northwind.example",
    "cap": {
-    "en": "An open group order: everyone’s items, a countdown to the order time, and a button straight into Wolt.",
-    "ro": "O comandă de grup deschisă: produsele tuturor, timpul rămas până la comandă și un buton direct în Wolt."
+    "en": "This week as day cards: today highlighted, past days dimmed, a passed meal marked, the week locked.",
+    "ro": "Săptămâna curentă pe zile: azi evidențiat, zilele trecute estompate, o masă pasată marcată, săptămâna închisă."
    }
   },
   {
-   "src": "/shots/dobby/04-settle-owe.webp",
+   "src": "/shots/dobby/mobile-01-dashboard.webp",
    "w": 780,
-   "h": 1696,
+   "h": 1688,
    "kind": "phone",
-   "hero": "trio",
+   "hero": "side",
    "cap": {
-    "en": "Settling up: exactly who you owe, and every way they accept payment.",
-    "ro": "Decontarea: exact cui datorezi și toate felurile în care poți plăti."
+    "en": "The same week on a phone.",
+    "ro": "Aceeași săptămână pe telefon."
    }
   },
   {
-   "src": "/shots/dobby/04b-settle-host-status.webp",
-   "w": 780,
-   "h": 1696,
-   "kind": "phone",
-   "hero": "trio",
+   "src": "/shots/dobby/user-08-select-meals-day.webp",
+   "w": 2000,
+   "h": 1250,
+   "kind": "web",
+   "host": "dobby.northwind.example",
    "cap": {
-    "en": "The host’s view: each share, who paid, and a confirm button per person.",
-    "ro": "Vederea gazdei: partea fiecăruia, cine a plătit și confirmarea pentru fiecare."
+    "en": "Picking a day: soup, main course or special, optional salad and extra.",
+    "ro": "Alegerea unei zile: ciorbă, fel principal sau special, salată și extra opționale."
    }
   },
   {
-   "src": "/shots/dobby/02-home.webp",
-   "w": 780,
-   "h": 1696,
-   "kind": "phone",
+   "src": "/shots/dobby/user-03-meal-transfers.webp",
+   "w": 2000,
+   "h": 1250,
+   "kind": "web",
+   "host": "dobby.northwind.example",
    "cap": {
-    "en": "Home: orders you host, orders you owe on, and history.",
-    "ro": "Acasă: comenzile pe care le organizezi, cele la care datorezi și istoricul."
+    "en": "Meals you passed, and meals colleagues are offering — claim one in a tap.",
+    "ro": "Mesele pasate de tine și cele oferite de colegi — revendici una dintr-o atingere."
    }
   },
   {
-   "src": "/shots/dobby/05-new-order.webp",
-   "w": 780,
-   "h": 1696,
-   "kind": "phone",
+   "src": "/shots/dobby/admin-01-overview.webp",
+   "w": 2000,
+   "h": 1250,
+   "kind": "web",
+   "host": "dobby.northwind.example",
    "cap": {
-    "en": "New order: paste a Wolt, Glovo or Bolt Food link, set a deadline, share the code.",
-    "ro": "Comandă nouă: lipești un link Wolt, Glovo sau Bolt Food, setezi ora și trimiți codul."
+    "en": "The admin panel: office and week pickers, then upload, export, weeks, guests, email and feedback.",
+    "ro": "Panoul de admin: alegi biroul și săptămâna, apoi încărcare, export, săptămâni, invitați, email și feedback."
    }
   },
   {
-   "src": "/shots/dobby/03b-order-open-more-people.webp",
-   "w": 780,
-   "h": 1696,
-   "kind": "phone",
+   "src": "/shots/dobby/admin-02-statistics.webp",
+   "w": 2000,
+   "h": 1250,
+   "kind": "web",
+   "host": "dobby.northwind.example",
    "cap": {
-    "en": "The same order further down — five people, one list.",
-    "ro": "Aceeași comandă mai jos — cinci oameni, o singură listă."
+    "en": "Statistics: how many people ordered, meals per day, and who picked what.",
+    "ro": "Statistici: câți oameni au comandat, mese pe zi și cine ce a ales."
    }
   },
   {
-   "src": "/shots/dobby/06-profile-payment-methods.webp",
-   "w": 780,
-   "h": 1696,
-   "kind": "phone",
+   "src": "/shots/dobby/admin-06-upload.webp",
+   "w": 2000,
+   "h": 1250,
+   "kind": "web",
+   "host": "dobby.northwind.example",
    "cap": {
-    "en": "Payment methods: IBAN, Revolut, RoPay or cash, stored encrypted.",
-    "ro": "Metode de plată: IBAN, Revolut, RoPay sau cash, stocate criptat."
+    "en": "Upload the caterer’s Excel menu, or import selections.",
+    "ro": "Încarci meniul Excel de la catering sau imporți selecții."
    }
   },
   {
-   "src": "/shots/dobby/03c-order-open-dark.webp",
-   "w": 780,
-   "h": 1696,
-   "kind": "phone",
+   "src": "/shots/dobby/admin-03-week-management.webp",
+   "w": 2000,
+   "h": 1250,
+   "kind": "web",
+   "host": "dobby.northwind.example",
    "cap": {
-    "en": "Dark mode.",
-    "ro": "Modul întunecat."
+    "en": "Weeks: set the active one, lock or unlock, delete.",
+    "ro": "Săptămânile: o setezi pe cea activă, închizi sau deschizi, ștergi."
    }
   },
   {
-   "src": "/shots/dobby/01-onboarding.webp",
+   "src": "/shots/dobby/admin-04-guest-invites.webp",
+   "w": 2000,
+   "h": 1250,
+   "kind": "web",
+   "host": "dobby.northwind.example",
+   "cap": {
+    "en": "Guest invites and the queue of selections waiting for approval.",
+    "ro": "Invitațiile pentru oaspeți și selecțiile care așteaptă aprobare."
+   }
+  },
+  {
+   "src": "/shots/dobby/admin-10-super-admin.webp",
+   "w": 2000,
+   "h": 1250,
+   "kind": "web",
+   "host": "dobby.northwind.example",
+   "cap": {
+    "en": "Super admin: offices, who belongs where, view the app as any user.",
+    "ro": "Super admin: birourile, cine unde aparține, vezi aplicația ca orice utilizator."
+   }
+  },
+  {
+   "src": "/shots/dobby/user-09-reviews.webp",
+   "w": 2000,
+   "h": 1250,
+   "kind": "web",
+   "host": "dobby.northwind.example",
+   "cap": {
+    "en": "Dish reviews with star filters.",
+    "ro": "Recenziile felurilor, cu filtre pe stele."
+   }
+  },
+  {
+   "src": "/shots/dobby/user-10-tutorial.webp",
+   "w": 2000,
+   "h": 1250,
+   "kind": "web",
+   "host": "dobby.northwind.example",
+   "cap": {
+    "en": "A six-step tutorial on first use.",
+    "ro": "Un tutorial în șase pași la prima folosire."
+   }
+  },
+  {
+   "src": "/shots/dobby/guest-01-invite.webp",
+   "w": 2000,
+   "h": 1250,
+   "kind": "web",
+   "host": "dobby.northwind.example",
+   "cap": {
+    "en": "A guest’s page: pick next week’s meals without an account, pending approval.",
+    "ro": "Pagina unui invitat: alege mesele săptămânii viitoare fără cont, în așteptarea aprobării."
+   }
+  },
+  {
+   "src": "/shots/dobby/mobile-02-select-meals.webp",
    "w": 780,
-   "h": 1696,
+   "h": 1688,
    "kind": "phone",
    "cap": {
-    "en": "Onboarding is one question: your name.",
-    "ro": "Onboardingul e o singură întrebare: cum te cheamă."
+    "en": "Picking meals on a phone.",
+    "ro": "Alegerea meselor pe telefon."
+   }
+  },
+  {
+   "src": "/shots/dobby/mobile-04-available-meals.webp",
+   "w": 780,
+   "h": 1688,
+   "kind": "phone",
+   "cap": {
+    "en": "Meals colleagues are offering.",
+    "ro": "Mesele oferite de colegi."
+   }
+  },
+  {
+   "src": "/shots/dobby/mobile-03-reviews.webp",
+   "w": 780,
+   "h": 1688,
+   "kind": "phone",
+   "cap": {
+    "en": "Reviews on a phone.",
+    "ro": "Recenziile pe telefon."
    }
   }
  ],
