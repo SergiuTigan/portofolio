@@ -1,13 +1,15 @@
 import Hero from '../components/Hero.jsx'
-import Work from '../components/Work.jsx'
+import Products from '../components/Products.jsx'
+import Clients from '../components/Clients.jsx'
 import About from '../components/About.jsx'
 import Contact from '../components/Contact.jsx'
 
-export default function Home({ edition, onOpen, onJump, onGenerate, onOpenEditions }) {
+export default function Home({ onOpen, onJump }) {
   return (
     <main id="main">
-      <Hero edition={edition} onJump={onJump} onGenerate={onGenerate} onOpenEditions={onOpenEditions} />
-      <Work onOpen={onOpen} />
+      <Hero onJump={onJump} />
+      <Products onOpen={onOpen} />
+      <Clients onOpen={onOpen} />
       <About />
       <Contact />
     </main>
